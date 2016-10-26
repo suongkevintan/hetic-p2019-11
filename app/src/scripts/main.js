@@ -1,3 +1,10 @@
+/** ======================================================================= *
+ * @desc jQuery $ alternative in native js                                 *
+ * @param node selector | :string                                          *
+ * @return HTMLnodeElement                                                 *
+ * ======================================================================= *
+ **/
+
 class DomManipulator {
     constructor() {}
     id(id) {
@@ -6,7 +13,7 @@ class DomManipulator {
     el(el) {
         return document.querySelector(el)
     }
-    class (el) {
+    class(el) {
         return document.getElementsByClassName(elClass)
     }
     tag(el) {
@@ -17,36 +24,149 @@ class DomManipulator {
     }
 }
 let $ = new DomManipulator();
+
+
+//canvas options
 const windowHalfX = window.innerWidth / 2;
 const windowHalfY = window.innerHeight / 2;
 let mouseX = 0,
     mouseY = 0;
-var container;
 
+// =======================================================================//
+// ! scope issue for now i keep these in the window object                //
+// =======================================================================//
+
+var container;
 var camera,
     scene,
     renderer,
     object;
 
+
+
+
+
+
 class Cube {
 
-      bindClick() {
+
+    switchInteruptor(pos) {
 
 
-      }
+    }
+
+
+    loadModel() {
+
+        // =======================================================================//
+        // .obj loader from threejs with his native method (onProgress, onerror)  //
+        // =======================================================================//
+
+        let manager = new THREE.LoadingManager();
+
+        // on progress
+        manager.onProgress = (item, loaded, total) => console.log(item, loaded, total);
+        const onProgress = function(xhr) {
+            if (xhr.lengthComputable) {
+                var percentComplete = xhr.loaded / xhr.total * 100;
+                console.log(Math.round(percentComplete, 2) + '% downloaded');
+            }
+        };
+
+        // on error
+        const onError = function(xhr) {};
+
+        //final constructor
+        const loader = new THREE.OBJLoader(manager);
+
+
+        // =======================================================================//
+        // dom events for component ofs the cube,  components are model.children  //
+        // =======================================================================//
+        let model = loader.load('dist/src/models3D/model.obj', (model) => {
+
+
+            //insert loaded model
+            model.position.y = 0;
+            scene.add(model);
+
+            //debug
+            window.model = model;
+
+            //enable library for easy event listener
+            let domEvents = new THREEx.DomEvents(camera, renderer.domElement);
+
+            //bind our components
+            model.children.forEach(function(mesh, index) {
+                domEvents.addEventListener(mesh, 'click', (event) => {
+
+                    //debug
+                    console.info(event.target.name, event.target.id);
+
+                    switch (event.target.id) {
+                        case 12:
+                            // ===================//
+                            // Switch Interruptor //
+                            // ==================//
+                            let x_pos = mesh.position.x || 0
+
+                            if (x_pos === 0)
+                                mesh.position.x = 40
+                            else
+                                mesh.position.x = 0
+
+                            mesh.rotateY(Math.PI);
+                            break;
+                        default:
+
+                    }
+                }, false);
+            });
+
+
+            //send new model to the Cube Class
+            this.group = model;
+
+        }, onProgress, onError);
+
+
+    }
+
+
 
     constructor() {
-        const self = this;
 
+        // this container will be injected to the dom with our canvas
         container = document.createElement('div');
         document.body.appendChild(container);
 
-        camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 2000);
-        camera.position.z = 650;
 
-        // scene
-
+        // ======================//
+        // Init Three.js Canvas //
+        // =====================//
         scene = new THREE.Scene();
+        renderer = new THREE.WebGLRenderer({
+            //antialias : better shape
+            antialias: true,
+            //transparent background
+            alpha: true,
+        });
+        //set size
+        renderer.setPixelRatio(window.devicePixelRatio);
+        renderer.setSize(window.innerWidth, window.innerHeight);
+
+        //ITS ALIIIIIIIIIVE
+        container.appendChild(renderer.domElement);
+
+        //dom events handlers
+        window.addEventListener('resize', this.onWindowResize, false)
+        //document.addEventListener('mousemove', this.onDocumentMouseMove, false);
+
+
+
+        // =======================================================================//
+        // Lights and camera                                                      //
+        // =======================================================================//
 
         var directionalLight = new THREE.DirectionalLight(0xff0000, 0.5);
         directionalLight.position.set(0, 0, 1);
@@ -55,84 +175,46 @@ class Cube {
         var light = new THREE.HemisphereLight(0xffffbb, 0x080820, 1);
         scene.add(light);
 
-        // texture
+        camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 2000);
+        camera.position.z = 1650;
+        camera.position.x = -300;
 
-        var manager = new THREE.LoadingManager();
-        manager.onProgress = function(item, loaded, total) {
+        //orbit controls for debug
+        let controls = new THREE.OrbitControls(camera, renderer.domElement);
 
-            console.log(item, loaded, total);
-
-        };
-
-        var texture = new THREE.Texture();
-
-        var onProgress = function(xhr) {
-            if (xhr.lengthComputable) {
-                var percentComplete = xhr.loaded / xhr.total * 100;
-                console.log(Math.round(percentComplete, 2) + '% downloaded');
-            }
-        };
-
-        var onError = function(xhr) {};
-
-        // model
-
-        var loader = new THREE.OBJLoader(manager);
-        var object = loader.load('dist/src/models3D/model.obj', function(object) {
-
-            object.position.y = 0;
-            object.rotation.x = 1.25;
-
-            scene.add(object);
-            let domEvents = new THREEx.DomEvents(camera, renderer.domElement);
-            object.children.forEach(function(elem, index) {
-                domEvents.addEventListener(elem, 'click', function(event) {
-                    console.log(event.target.name);
-                }, false);
-            });
-            return object;
-        }, onProgress, onError)
-        renderer = new THREE.WebGLRenderer({antialias: true});
-        renderer.setPixelRatio(window.devicePixelRatio);
-        renderer.setSize(window.innerWidth, window.innerHeight);
-        container.appendChild(renderer.domElement);
-
-        document.addEventListener('mousemove', this.onDocumentMouseMove, false);
-
-        window.addEventListener('resize', this.onWindowResize, false);
-        console.log(this.object);
-        this.bindClick();
+        // =======================================================================//
+        // Let's get stared  (ha!)                                                //
+        // =======================================================================//
         this.animate()
+        this.loadModel();
+        console.debug(this);
     }
 
     onWindowResize() {
-
         camera.aspect = window.innerWidth / window.innerHeight;
         camera.updateProjectionMatrix();
-
         renderer.setSize(window.innerWidth, window.innerHeight);
-
     }
 
     onDocumentMouseMove(event) {
-
         mouseX = (event.clientX - windowHalfX) / 2;
         mouseY = (event.clientY - windowHalfY) / 2;
-
     }
 
     animate() {
-        //fiou
+        //fiou dat bind && canvas animation
         window.requestAnimationFrame(this.animate.bind(this));
         this.render();
-
     }
 
     render() {
+        //we need to work on theses ones
         var color = new THREE.Color(0xffffff);
         scene.background = new THREE.Color(0x55556d);
+
         renderer.render(scene, camera);
     }
 }
 
-var cube = new Cube()
+//yay
+let cube = new Cube()
