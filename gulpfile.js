@@ -28,11 +28,11 @@ gulp.task('scripts', function() {
             presets: ['es2015']
         }))
         .pipe(concat('all.js'))
-        .pipe(gulp.dest('dist/js')) // file for dev
+        .pipe(gulp.dest('app/dist/js')) // file for dev
         .pipe(rename('all.min.js')) // rename file
         .pipe(stripDebug()) // remove console.log alert etc..
         .pipe(uglify())
-        .pipe(gulp.dest('dist/js')) // file for prod
+        .pipe(gulp.dest('app/dist/js')) // file for prod
 })
 
 gulp.task('style', function() {
@@ -43,7 +43,7 @@ gulp.task('style', function() {
             cascade: false
         }))
         .pipe(cssnano())
-        .pipe(gulp.dest('dist/css'))
+        .pipe(gulp.dest('app/dist/css'))
 });
 
 gulp.task('sass', function() {
@@ -53,7 +53,7 @@ gulp.task('sass', function() {
             browsers: ['last 4 versions'],
             cascade: false
         }))
-        .pipe(gulp.dest('dist/css'))
+        .pipe(gulp.dest('app/dist/css'))
         .pipe(browserSync.reload({
             stream: true
         }))
@@ -74,7 +74,7 @@ gulp.task('imagemin', function() {
         .pipe(imagemin({
             progressive: true
         }))
-        .pipe(gulp.dest('dist/img'))
+        .pipe(gulp.dest('app/dist/img'))
 })
 
 gulp.task('dev', ['browserSync', 'sass', 'scripts'], function() {

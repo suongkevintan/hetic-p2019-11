@@ -1,1 +1,2 @@
-alert('coucou')
+let yolo = 'test';
+console.log(yolo);
