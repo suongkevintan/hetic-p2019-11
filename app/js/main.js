@@ -1,38 +1,220 @@
-var renderer, scene, camera, mesh;
+/** ======================================================================= *
+ * @desc jQuery $ alternative in native js                                 *
+ * @param node selector | :string                                          *
+ * @return HTMLnodeElement                                                 *
+ * ======================================================================= *
+ **/
 
-init();
-animate();
+class DomManipulator {
+    constructor() {}
+    id(id) {
+        return document.getElementById(id)
+    }
+    el(el) {
+        return document.querySelector(el)
+    }
+    class(el) {
+        return document.getElementsByClassName(elClass)
+    }
+    tag(el) {
+        return document.getElementsByTagName(tag)
+    }
+    all(el) {
+        return document.querySelectorAll(el)
+    }
+}
+let $ = new DomManipulator();
 
-function init(){
-    // on initialise le moteur de rendu
-    renderer = new THREE.WebGLRenderer();
 
-    // si WebGL ne fonctionne pas sur votre navigateur vous pouvez utiliser le moteur de rendu Canvas à la place
-    // renderer = new THREE.CanvasRenderer();
-    renderer.setSize( window.innerWidth, window.innerHeight );
-    document.getElementById('container').appendChild(renderer.domElement);
+//canvas options
+const windowHalfX = window.innerWidth / 2;
+const windowHalfY = window.innerHeight / 2;
+let mouseX = 0,
+    mouseY = 0;
 
-    // on initialise la scène
-    scene = new THREE.Scene();
+// =======================================================================//
+// ! scope issue for now i keep these in the window object                //
+// =======================================================================//
 
-    // on initialise la camera que l’on place ensuite sur la scène
-    camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 1, 10000 );
-    camera.position.set(0, 0, 1000);
-    scene.add(camera);
+var container;
+var camera,
+    scene,
+    renderer,
+    object;
 
-    // on créé un  cube au quel on définie un matériau puis on l’ajoute à la scène
-    var geometry = new THREE.CubeGeometry( 200, 200, 200 );
-    var material = new THREE.MeshBasicMaterial( { color: 0xff0000, wireframe: true } );
-    mesh = new THREE.Mesh( geometry, material );
-    scene.add( mesh );
+
+
+
+
+
+class Cube {
+
+
+    switchInteruptor(pos) {
+
+
+    }
+
+
+    loadModel() {
+
+        // =======================================================================//
+        // .obj loader from threejs with his native method (onProgress, onerror)  //
+        // =======================================================================//
+
+        let manager = new THREE.LoadingManager();
+
+        // on progress
+        manager.onProgress = (item, loaded, total) => console.log(item, loaded, total);
+        const onProgress = function(xhr) {
+            if (xhr.lengthComputable) {
+                var percentComplete = xhr.loaded / xhr.total * 100;
+                console.log(Math.round(percentComplete, 2) + '% downloaded');
+            }
+        };
+
+        // on error
+        const onError = function(xhr) {};
+
+        //final constructor
+        const loader = new THREE.OBJLoader(manager);
+
+
+        // =======================================================================//
+        // dom events for component ofs the cube,  components are model.children  //
+        // =======================================================================//
+        let model = loader.load('src/models3D/fidgetcube.obj', (model) => {
+
+
+            //insert loaded model
+            model.position.y = 0;
+            scene.add(model);
+
+            //debug
+            window.model = model;
+
+            //enable library for easy event listener
+            let domEvents = new THREEx.DomEvents(camera, renderer.domElement);
+
+            //bind our components
+            model.children.forEach(function(mesh, index) {
+                domEvents.addEventListener(mesh, 'click', (event) => {
+
+                    //debug
+                    console.info(event.target.name, event.target.id);
+
+                    switch (event.target.id) {
+                        case 12:
+                            // ===================//
+                            // Switch Interruptor //
+                            // ==================//
+                            let x_pos = mesh.position.x || 0
+
+                            if (x_pos === 0)
+                                mesh.position.x = 40
+                            else
+                                mesh.position.x = 0
+
+                            mesh.rotateY(Math.PI);
+                            break;
+                        default:
+
+                    }
+                }, false);
+            });
+
+
+            //send new model to the Cube Class
+            this.group = model;
+
+        }, onProgress, onError);
+
+
+    }
+
+
+
+    constructor() {
+
+        // this container will be injected to the dom with our canvas
+        container = document.createElement('div');
+        document.body.appendChild(container);
+
+
+        // ======================//
+        // Init Three.js Canvas //
+        // =====================//
+        scene = new THREE.Scene();
+        renderer = new THREE.WebGLRenderer({
+            //antialias : better shape
+            antialias: true,
+            //transparent background
+            alpha: true,
+        });
+        //set size
+        renderer.setPixelRatio(window.devicePixelRatio);
+        renderer.setSize(window.innerWidth, window.innerHeight);
+
+        //ITS ALIIIIIIIIIVE
+        container.appendChild(renderer.domElement);
+
+        //dom events handlers
+        window.addEventListener('resize', this.onWindowResize, false)
+        //document.addEventListener('mousemove', this.onDocumentMouseMove, false);
+
+
+
+        // =======================================================================//
+        // Lights and camera                                                      //
+        // =======================================================================//
+
+        var directionalLight = new THREE.DirectionalLight(0xff0000, 0.5);
+        directionalLight.position.set(0, 0, 1);
+        scene.add(directionalLight);
+
+        var light = new THREE.HemisphereLight(0xffffbb, 0x080820, 1);
+        scene.add(light);
+
+        camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 2000);
+        camera.position.z = 1650;
+        camera.position.x = -300;
+
+        //orbit controls for debug
+        let controls = new THREE.OrbitControls(camera, renderer.domElement);
+
+        // =======================================================================//
+        // Let's get stared  (ha!)                                                //
+        // =======================================================================//
+        this.animate()
+        this.loadModel();
+        console.debug(this);
+    }
+
+    onWindowResize() {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+    }
+
+    onDocumentMouseMove(event) {
+        mouseX = (event.clientX - windowHalfX) / 2;
+        mouseY = (event.clientY - windowHalfY) / 2;
+    }
+
+    animate() {
+        //fiou dat bind && canvas animation
+        window.requestAnimationFrame(this.animate.bind(this));
+        this.render();
+    }
+
+    render() {
+        //we need to work on theses ones
+        var color = new THREE.Color(0xffffff);
+        scene.background = new THREE.Color(0x55556d);
+
+        renderer.render(scene, camera);
+    }
 }
 
-function animate(){
-    // on appel la fonction animate() récursivement à chaque frame
-    requestAnimationFrame( animate );
-    // on fait tourner le cube sur ses axes x et y
-    mesh.rotation.x += 0.01;
-    mesh.rotation.y += 0.02;
-    // on effectue le rendu de la scène
-    renderer.render( scene, camera );
-}
+//yay
+let cube = new Cube()
