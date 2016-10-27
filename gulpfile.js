@@ -19,7 +19,7 @@ gulp.task('lint', function() {
         .on('error', function(error) {
             console.error('' + error);
         })
-})
+});
 
 // Concatenate & Minify JS
 gulp.task('scripts', function() {
@@ -33,7 +33,16 @@ gulp.task('scripts', function() {
         .pipe(stripDebug()) // remove console.log alert etc..
         .pipe(uglify())
         .pipe(gulp.dest('app/dist/js')) // file for prod
-})
+        .pipe(browserSync.reload({
+            stream: true
+        }))
+});
+
+gulp.task('vendor', function() {
+    return gulp.src('app/vendor/*.js')
+      .pipe(uglify())
+      .pipe(gulp.dest('app/dist/vendor'))
+});
 
 gulp.task('style', function() {
     return gulp.src('app/sass/*.scss') // Gets all files ending with .scss in app/scss
@@ -77,11 +86,11 @@ gulp.task('imagemin', function() {
         .pipe(gulp.dest('app/dist/img'))
 })
 
-gulp.task('dev', ['browserSync', 'sass', 'scripts'], function() {
+gulp.task('dev', ['browserSync', 'sass', 'lint'], function() {
     gulp.watch('app/sass/**/*.scss', ['sass']);
     gulp.watch('app/*.html', browserSync.reload);
-    gulp.watch('app/js/**/*.js', browserSync.reload);
+    gulp.watch('app/js/**/*.js', ['scripts']);
     // Other watchers
 });
 
-gulp.task('build', ['imagemin', 'style', 'scripts']);
+gulp.task('build', ['imagemin', 'style', 'scripts', 'vendor']);

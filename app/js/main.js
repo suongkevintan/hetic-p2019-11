@@ -42,11 +42,6 @@ var camera,
     renderer,
     object;
 
-
-
-
-
-
 class Cube {
 
 
@@ -80,10 +75,11 @@ class Cube {
         const loader = new THREE.OBJLoader(manager);
 
 
+
         // =======================================================================//
         // dom events for component ofs the cube,  components are model.children  //
         // =======================================================================//
-        let model = loader.load('src/models3D/fidgetcube.obj', (model) => {
+        let model = loader.load('dist/model3D/model.obj', (model) => {
 
 
             //insert loaded model
@@ -215,6 +211,6 @@ class Cube {
         renderer.render(scene, camera);
     }
 }
-
+  // console.log('yolo');
 //yay
 let cube = new Cube()
