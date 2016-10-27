@@ -4,7 +4,6 @@
  * @return HTMLnodeElement                                                 *
  * ======================================================================= *
  **/
-
 class DomManipulator {
     constructor() {}
     id(id) {
@@ -13,7 +12,7 @@ class DomManipulator {
     el(el) {
         return document.querySelector(el)
     }
-    class(el) {
+    class (el) {
         return document.getElementsByClassName(elClass)
     }
     tag(el) {
@@ -24,7 +23,6 @@ class DomManipulator {
     }
 }
 let $ = new DomManipulator();
-
 
 //canvas options
 const windowHalfX = window.innerWidth / 2;
@@ -42,19 +40,9 @@ var camera,
     renderer,
     object;
 
-
-
-
-
-
 class Cube {
 
-
-    switchInteruptor(pos) {
-
-
-    }
-
+    switchInteruptor(pos) {}
 
     loadModel() {
 
@@ -79,12 +67,10 @@ class Cube {
         //final constructor
         const loader = new THREE.OBJLoader(manager);
 
-
         // =======================================================================//
         // dom events for component ofs the cube,  components are model.children  //
         // =======================================================================//
         let model = loader.load('dist/src/models3D/model.obj', (model) => {
-
 
             //insert loaded model
             model.position.y = 0;
@@ -95,16 +81,15 @@ class Cube {
 
             //enable library for easy event listener
             let domEvents = new THREEx.DomEvents(camera, renderer.domElement);
-
             //bind our components
             model.children.forEach(function(mesh, index) {
                 domEvents.addEventListener(mesh, 'click', (event) => {
 
                     //debug
-                    console.info(event.target.name, event.target.id);
+                    console.log(event.target.name, event.target.id);
 
                     switch (event.target.id) {
-                        case 12:
+                        case 26:
                             // ===================//
                             // Switch Interruptor //
                             // ==================//
@@ -123,23 +108,18 @@ class Cube {
                 }, false);
             });
 
-
             //send new model to the Cube Class
             this.group = model;
 
         }, onProgress, onError);
 
-
     }
-
-
 
     constructor() {
 
         // this container will be injected to the dom with our canvas
         container = document.createElement('div');
         document.body.appendChild(container);
-
 
         // ======================//
         // Init Three.js Canvas //
@@ -149,7 +129,7 @@ class Cube {
             //antialias : better shape
             antialias: true,
             //transparent background
-            alpha: true,
+            alpha: true
         });
         //set size
         renderer.setPixelRatio(window.devicePixelRatio);
@@ -161,8 +141,6 @@ class Cube {
         //dom events handlers
         window.addEventListener('resize', this.onWindowResize, false)
         //document.addEventListener('mousemove', this.onDocumentMouseMove, false);
-
-
 
         // =======================================================================//
         // Lights and camera                                                      //
