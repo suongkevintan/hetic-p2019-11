@@ -79,8 +79,7 @@ class Cube {
         // =======================================================================//
         // dom events for component ofs the cube,  components are model.children  //
         // =======================================================================//
-        let model = loader.load('dist/model3D/model.obj', (model) => {
-
+        let model = loader.load('dist/models3D/model.obj', (model) => {
 
             //insert loaded model
             model.position.y = 0;

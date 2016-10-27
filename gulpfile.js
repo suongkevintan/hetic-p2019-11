@@ -93,4 +93,12 @@ gulp.task('dev', ['browserSync', 'sass', 'lint'], function() {
     // Other watchers
 });
 
-gulp.task('build', ['imagemin', 'style', 'scripts', 'vendor']);
+gulp.task("importModels", function() {
+
+    return gulp
+        .src("./app/src/models3D/*.obj")
+        .pipe(gulp.dest("./app/dist/models3D"));
+
+});
+
+gulp.task('build', ['importModels','imagemin', 'style', 'scripts', 'vendor']);
