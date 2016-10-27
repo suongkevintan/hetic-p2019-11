@@ -99,14 +99,14 @@ class Cube {
                     console.info(event.target.name, event.target.id);
 
                     switch (event.target.id) {
-                        case 12:
+                        case 26:
                             // ===================//
                             // Switch Interruptor //
                             // ==================//
                             let x_pos = mesh.position.x || 0
 
                             if (x_pos === 0)
-                                mesh.position.x = 40
+                                mesh.position.x = 39.5
                             else
                                 mesh.position.x = 0
 
