@@ -8,9 +8,7 @@
   },
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "jquery": "^3.1.1"
-  },
+  "dependencies": {},
   "devDependencies": {
     "autoprefixer": "^6.5.1",
     "babel-cli": "^6.18.0",

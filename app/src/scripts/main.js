@@ -96,7 +96,7 @@ class Cube {
                             let x_pos = mesh.position.x || 0
 
                             if (x_pos === 0)
-                                mesh.position.x = 40
+                                mesh.position.x = 39.5
                             else
                                 mesh.position.x = 0
 
