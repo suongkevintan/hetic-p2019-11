@@ -86,13 +86,6 @@ gulp.task('imagemin', function() {
         .pipe(gulp.dest('app/dist/img'))
 })
 
-gulp.task('dev', ['browserSync', 'sass', 'lint'], function() {
-    gulp.watch('app/sass/**/*.scss', ['sass']);
-    gulp.watch('app/*.html', browserSync.reload);
-    gulp.watch('app/js/**/*.js', ['scripts']);
-    // Other watchers
-});
-
 gulp.task("importModels", function() {
 
     return gulp
@@ -102,3 +95,10 @@ gulp.task("importModels", function() {
 });
 
 gulp.task('build', ['importModels','imagemin', 'style', 'scripts', 'vendor']);
+
+gulp.task('dev', ['browserSync', 'sass', 'lint'], function() {
+    gulp.watch('app/sass/**/*.scss', ['sass']);
+    gulp.watch('app/*.html', browserSync.reload);
+    gulp.watch('app/js/**/*.js', ['scripts']);
+    // Other watchers
+});

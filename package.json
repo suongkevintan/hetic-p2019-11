@@ -17,7 +17,8 @@
     "gulp-rename": "^1.2.2",
     "gulp-sass": "^2.3.2",
     "gulp-strip-debug": "^1.1.0",
-    "gulp-uglify": "^2.0.0"
+    "gulp-uglify": "^2.0.0",
+    "jshint": "^2.9.4"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
