@@ -1,0 +1,42 @@
+// Style for the Home Page
+.menu{
+  position: relative;
+  padding: 2rem 2.5rem;
+  &__button{
+    float: left;
+    margin-top: 1.25rem;
+    opacity: 0.5;
+    img{
+      width: 6rem;
+    }
+  }
+  &__calltoaction{
+    float: right;
+    width: 20rem;
+    border: 1.5px solid $button-color;
+    border-radius: 5px;
+    padding: 1rem 1rem 0.75rem 1.75rem;
+    svg{
+      width: 1.9rem;
+      height: auto;
+    }
+    &-logo{
+      fill: black;
+    }
+    p{
+      display: inline-block;
+      text-transform: uppercase;
+      font-family: "Source Sans Pro",Arial,sans-serif;
+      font-size: 1.75rem;
+      font-weight: 100;
+      margin: 0;
+      margin-top: -0.2rem;
+      margin-left: .6rem;
+      padding: 0;
+      vertical-align: top;
+      span{
+        font-weight: 600;
+      }
+    }
+  }
+}

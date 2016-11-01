@@ -1,0 +1,50 @@
+body {
+  margin: 0;
+  background-color: #fefefe;
+}
+
+.clear {
+  clear: both;
+}
+
+.menu {
+  position: relative;
+  padding: 2rem 2.5rem;
+}
+.menu__button {
+  float: left;
+  margin-top: 1.25rem;
+  opacity: 0.5;
+}
+.menu__button img {
+  width: 6rem;
+}
+.menu__calltoaction {
+  float: right;
+  width: 20rem;
+  border: 1.5px solid grey;
+  border-radius: 5px;
+  padding: 1rem 1rem 0.75rem 1.75rem;
+}
+.menu__calltoaction svg {
+  width: 1.9rem;
+  height: auto;
+}
+.menu__calltoaction-logo {
+  fill: black;
+}
+.menu__calltoaction p {
+  display: inline-block;
+  text-transform: uppercase;
+  font-family: "Source Sans Pro",Arial,sans-serif;
+  font-size: 1.75rem;
+  font-weight: 100;
+  margin: 0;
+  margin-top: -0.2rem;
+  margin-left: .6rem;
+  padding: 0;
+  vertical-align: top;
+}
+.menu__calltoaction p span {
+  font-weight: 600;
+}
