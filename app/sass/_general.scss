@@ -1,11 +1,16 @@
 $background-color : #fefefe;
+$text-color : #181818;
 $primary-color : #9ED54C;
+$secondary-color : #2F9BC2;
 $button-color : grey;
-
+$font-family-title : "Montserrat",Arial,sans-serif;
+$font-family-body : "Source Sans Pro",Arial,sans-serif;
 
 body{
+  position: relative;
   margin: 0;
   background-color: $background-color;
+  padding: 2.5rem 3.5rem 0rem 3.5rem;
 }
 
 .clear{
