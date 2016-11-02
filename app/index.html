@@ -8,15 +8,20 @@
 
 <body>
 
-    <div id="container"></div>
+  <svg width=800 height=800>
+	<circle cx="0" transform='translate(100,100)' cy="0" r="90" fill="#222" />
+	<circle cx="0" class='translate' cy="0" transform='translate(100,100)' r="71" fill="#444" />
+	<circle id='circle' cx="0" transform='translate(100,100) rotate(90)' cy="0" r="80" stroke-dashoffset='953' fill="none" />
+	<text id='text' x="67" y="123">90</text>
+</svg>
 
-    <!-- <script src="http://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha256-/SIrNqv8h6QGKDuNoLGA4iret+kyesCkHGzVUUV0shc=" crossorigin="anonymous"></script> -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r79/three.js"></script>
+    <script src="http://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha256-/SIrNqv8h6QGKDuNoLGA4iret+kyesCkHGzVUUV0shc=" crossorigin="anonymous"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r79/three.js"></script> -->
     <!--build:js js/main.min.js -->
-    <script src="dist/vendor/OBJLoader.js"></script>
+    <!-- <script src="dist/vendor/OBJLoader.js"></script>
     <script src="dist/vendor/threex.domevents.js"></script>
     <script src="dist/vendor/threex.cubecamera.js"></script>
-    <script src="dist/vendor/OrbitControls.js"></script>
+    <script src="dist/vendor/OrbitControls.js"></script> -->
     <script src="dist/js/all.js"></script>
     <!-- endbuild -->
 </body>
