@@ -1,6 +1,6 @@
 // Style for the Home Page
 .menu{
-  &__button{
+  &--button{
     float: left;
     opacity: .5;
     margin-top: 1.25rem;
@@ -8,7 +8,7 @@
       width: 6rem;
     }
   }
-  &__calltoaction{
+  &--calltoaction{
     float: right;
     width: 20rem;
     padding: 1rem 1rem .75rem 1.75rem;
@@ -40,7 +40,7 @@
   }
 }
 
-.text-wrapper{
+.textWrapper{
   width: 100%;
   color: $text-color;
   font-family: $font-family-title;
@@ -70,7 +70,7 @@
       font-weight: 400;
     }
   }
-  &__button{
+  &--button{
     width: 50vw;
     text-transform: uppercase;
     font-family: $font-family-body;
@@ -86,7 +86,7 @@
   }
 }
 
-.image-container{
+.imageContainer{
   position: absolute;
   z-index: 1;
   width: 100%;

@@ -29,6 +29,28 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
+	"\/app\/images\/185-825-wind-turbine-398497_1b.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 81254,
+		"inputAbbreviatedPath": "\/app\/images\/185-825-wind-turbine-398497_1b.jpg",
+		"outputAbbreviatedPath": "\/app\/images\/185-825-wind-turbine-398497_1b.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/app\/images\/Boucheron-SG-SerpentBoheme.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 135519,
+		"inputAbbreviatedPath": "\/app\/images\/Boucheron-SG-SerpentBoheme.jpg",
+		"outputAbbreviatedPath": "\/app\/images\/Boucheron-SG-SerpentBoheme.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
 	"\/app\/images\/hand_fidget_photo.png": {
 		"fileType": 32768,
 		"ignore": 0,
