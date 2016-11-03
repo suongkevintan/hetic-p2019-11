@@ -6,6 +6,7 @@ var babel = require('gulp-babel');
 var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
 var jshint = require('gulp-jshint');
+var webpack = require('webpack-stream');
 var stripDebug = require('gulp-strip-debug');
 var rename = require('gulp-rename');
 var browserSync = require('browser-sync');
@@ -20,10 +21,15 @@ gulp.task('lint', function() {
             console.error('' + error);
         })
 });
-
+gulp.task('webpack', function() {
+  return gulp.src('.app/js/main.js')
+    .pipe(webpack(require('./webpack.config.js')))
+    .pipe(gulp.dest('app/dist/'));
+});
 // Concatenate & Minify JS
-gulp.task('scripts', function() {
-    return gulp.src('app/js/*.js')
+gulp.task('scripts' ,function() {
+
+    return gulp.src('app/js/**/*.js')
         .pipe(babel({
             presets: ['es2015']
         }))
