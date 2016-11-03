@@ -12,7 +12,7 @@ module.exports = {
         app: ["./app/js/main.js"]
     },
     output: {
-        path: path.resolve(__dirname , "./app/dist"),
+        path: path.resolve(__dirname , "./app/dist/js"),
         filename: "bundle.js"
     },
     module: {
