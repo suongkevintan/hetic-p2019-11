@@ -1,3 +1,4 @@
+
 export class Cube {
     switchInteruptor(pos) {}
 
@@ -304,12 +305,16 @@ export class Cube {
         let scene = new THREE.Scene()
         this.scene = scene
 
-        let renderer = new THREE.WebGLRenderer({
+        let renderer = Detector.webgl? new THREE.WebGLRenderer({
             //antialias : better shape
             antialias: true,
             //transparent background
             alpha: true
-        });
+        }): new THREE.CanvasRenderer();
+
+        if(Detector.isMobile){
+          //alert('mobile')
+        }
         this.renderer = renderer
         //set size
         renderer.setPixelRatio(window.devicePixelRatio);
