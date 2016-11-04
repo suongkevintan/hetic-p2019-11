@@ -105,6 +105,6 @@ gulp.task('build', ['importModels','imagemin', 'style', 'scripts', 'vendor']);
 gulp.task('dev', ['browserSync', 'sass', 'lint'], function() {
     gulp.watch('app/sass/**/*.scss', ['sass']);
     gulp.watch('app/*.html', browserSync.reload);
-    gulp.watch('app/js/**/*.js', ['scripts']);
+    gulp.watch('app/js/**/*.js', ['scripts', 'webpack']);
     // Other watchers
 });
