@@ -22,7 +22,7 @@ gulp.task('lint', function() {
         })
 });
 gulp.task('webpack', function() {
-  return gulp.src('.app/js/main.js')
+  return gulp.src('./app/js/main.js')
     .pipe(webpack(require('./webpack.config.js')))
     .pipe(gulp.dest('app/dist/js/'));
 });

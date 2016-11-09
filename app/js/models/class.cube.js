@@ -1,4 +1,3 @@
-
 export class Cube {
     switchInteruptor(pos) {}
 
@@ -18,6 +17,15 @@ export class Cube {
                     break;
                 case 42:
                     texture.material.color = themeSelected.colorSet.cube
+                    break;
+                //need a glow
+                case 49:
+                    texture.material.color = {
+                        r: 255 / 255,
+                        g: 255 / 255,
+                        b: 255 / 255,
+
+                    }
                     break;
                 case 19:
                 case 22:
@@ -39,6 +47,35 @@ export class Cube {
                     //to remove
                     texture.material.color = themeSelected.colorSet.cube
 
+            }
+
+
+
+            // =======================================================================//
+            // RESET ANCHOR POINT :: WORK IN progress                                 //
+            // =======================================================================//
+
+            if (texture.geometry.boundingSphere) {
+                //  let mesh2 = cubeBase.children.filter((m) => m.id === 36);
+
+                let objMesh = texture;
+                let geom = texture.geometry;
+                geom.vertices = [];
+                geom.vertices.push(texture.geometry.boundingSphere.center);
+
+                objMesh.centroid = new THREE.Vector3();
+                for (let i = 0, l = geom.vertices.length; i < l; i++) {
+                    for (let i = 0, l = geom.vertices.length; i < l; i++) {
+                        objMesh.centroid.add(geom.vertices[i].clone());
+                    }
+                    objMesh.centroid.divideScalar(geom.vertices.length);
+                    let offset = objMesh.centroid.clone();
+
+                    objMesh.geometry.applyMatrix(new THREE.Matrix4().makeTranslation(-offset.x, -offset.y, -offset.z));
+
+                    objMesh.position.copy(objMesh.centroid);
+
+                }
             }
         })
     }
@@ -88,24 +125,29 @@ export class Cube {
                 domEvents.addEventListener(mesh, 'click', (event) => {
 
                     //debug
-                    console.info(event.target.name, event.target.id, event.target);
+                    console.info(event.target.name, event.target.id, mesh);
 
                     switch (event.target.id) {
                         case 32:
                             // ===================//
                             // Switch Interruptor //
                             // ==================//
-                            let x_pos = mesh.position.x || 0
-
-                            if (x_pos === 0)
-                                mesh.position.x = 39.5
-                            else
-                                mesh.position.x = 0
-
-                            mesh.rotateY(Math.PI);
+                            mesh.rotation.x += Math.PI;
+                            mesh.rotation.z += Math.PI;
                             break;
-                        default:
+                        case 41:
+                        case 38:
+                        case 37:
+                        case 39:
+                        case 40:
+                            // ====================//
+                            // Press button bubble //
+                            // ===================//
 
+                             mesh.position.y = 5
+                            break;
+                        case 19 :
+                        mesh.rotation.x += Math.PI / 4;
                     }
                 }, false);
             });
@@ -294,7 +336,6 @@ export class Cube {
         ]
         this.activeTheme = this.themes[0];
 
-
         // this container will be injected to the dom with our canvas
         this.container = document.createElement('div');
         document.body.appendChild(this.container);
@@ -305,15 +346,17 @@ export class Cube {
         let scene = new THREE.Scene()
         this.scene = scene
 
-        let renderer = Detector.webgl? new THREE.WebGLRenderer({
-            //antialias : better shape
-            antialias: true,
-            //transparent background
-            alpha: true
-        }): new THREE.CanvasRenderer();
+        let renderer = Detector.webgl
+            ? new THREE.WebGLRenderer({
+                //antialias : better shape
+                antialias: false,
+                //transparent background
+                alpha: true
+            })
+            : new THREE.CanvasRenderer();
 
-        if(Detector.isMobile){
-          //alert('mobile')
+        if (Detector.isMobile) {
+            //alert('mobile')
         }
         this.renderer = renderer
         //set size
@@ -323,8 +366,7 @@ export class Cube {
         //ITS ALIIIIIIIIIVE
         this.container.appendChild(this.renderer.domElement);
 
-        //dom events handlers
-        window.addEventListener('resize', this.onWindowResize, false)
+
 
         // =======================================================================//
         // Lights and this.camera                                                      //
@@ -358,6 +400,9 @@ export class Cube {
         this.animate()
         this.loadModel();
         console.debug(this);
+
+        //dom events handlers
+        window.addEventListener('resize', this.onWindowResize, false)
     }
 
     onWindowResize() {
