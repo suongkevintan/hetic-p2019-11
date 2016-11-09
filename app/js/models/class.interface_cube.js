@@ -53,28 +53,32 @@ export class InterfaceCube {
                 this.onMouseUp = bind(this.onMouseUp, this);
                 this.onMouseDown = bind(this.onMouseDown, this);
                 this.updateSlider = bind(this.updateSlider, this);
-                this.$circle = this.$context.find(".circle");
-                this.$innerCircle = this.$context.find(".inner-circle");
-                this.$knob = this.$context.find(".knob");
-                this.$progress = this.$context.find(".progress");
-                this.ctx = this.$progress.get(0).getContext("2d");
-                circleOffset = this.$circle.offset();
+                this.$circle = this.$context.querySelector(".circle");
+                this.$innerCircle = this.$context.querySelector(".inner-circle");
+                this.$knob = this.$context.querySelector(".knob");
+                this.$progress = this.$context.querySelector(".progress");
+                this.ctx = this.$progress.getContext("2d");
+
+
+                circleOffset = this.$circle.getBoundingClientRect();
                 this.elementPosition = {
                     x: circleOffset.left,
                     y: circleOffset.top
                 };
-                this.centerX = this.$progress.width() / 2;
-                this.centerY = this.$progress.height() / 2;
-                this.canvasSize = this.$progress.width();
+                window.getComputedStyle(this.$progress)
+
+                this.centerX = window.getComputedStyle(this.$progress).width / 2;
+                this.centerY = window.getComputedStyle(this.$progress).height  / 2;
+                this.canvasSize =   this.centerX  *2 ;
                 this.addEventListeners();
                 this.updateSlider();
                 return;
             }
 
             Slider.prototype.addEventListeners = function() {
-                this.$context.on("mousedown", this.onMouseDown);
-                this.$context.on("mousemove", this.onMouseMove);
-                $("body").on("mouseup", this.onMouseUp);
+                this.$context.addEventListener("mousedown", this.onMouseDown);
+                this.$context.addEventListener("mousemove", this.onMouseMove);
+                document.body.addEventListener("mouseup", this.onMouseUp);
             };
 
             Slider.prototype.updateSlider = function() {
@@ -86,15 +90,17 @@ export class InterfaceCube {
             Slider.prototype.setPosition = function() {
                 this.x = Math.round(this.radius * Math.sin(this.target * Math.PI / 180)) + this.radius - this.knobRadius + 4;
                 this.y = Math.round(this.radius * -Math.cos(this.target * Math.PI / 180)) + this.radius - this.knobRadius + 4;
-                this.$knob.css({
-                    left: this.x,
-                    top: this.y
-                });
+                // this.$knob.css({
+                //     left: this.x,
+                //     top: this.y
+                // });
+                this.$knob.style.left = this.x;
+                this.$knob.style.top = this.y;
             };
 
             Slider.prototype.drawArc = function() {
-                this.$progress.get(0).width = this.canvasSize;
-                this.$progress.get(0).height = this.canvasSize;
+                this.$progress.width = this.canvasSize;
+                this.$progress.height = this.canvasSize;
                 this.ctx.save();
                 this.ctx.translate(this.centerX, this.centerY - this.radius);
                 this.ctx.rotate(-90 * Math.PI / 180);
@@ -107,7 +113,7 @@ export class InterfaceCube {
             };
 
             Slider.prototype.setMousePosition = function(event) {
-                var atan, diff, target, val;
+                let atan, diff, target, val;
                 this.mPos = {
                     x: event.pageX - this.elementPosition.x,
                     y: event.pageY - this.elementPosition.y
@@ -117,20 +123,28 @@ export class InterfaceCube {
                 diff = Math.abs(target - this.target);
                 if (diff < this.maxDiff && target < this.constraint) {
                     this.target = target;
-                    val = {
-                        type: "sliderchange",
-                        value: this.target
-                    };
-                    this.$context.trigger(val);
+                    // val = {
+                    //     type: "sliderchange",
+                    //     value: this.target
+                    // };
+                    // this.$context.trigger(val);
+                    if (window.CustomEvent) {
+              var getPercentage = new CustomEvent('sliderchange', {detail: {value: this.target}});
+            } else {
+              var getPercentage = document.createEvent('CustomEvent');
+              getPercentage.initCustomEvent('sliderchange', true, true, {value: this.target});
+            }
+
+            this.$context.dispatchEvent(getPercentage);
                 }
             };
 
             Slider.prototype.getBackground = function() {
-                var dividerEvery, i, img, j, ref, steps;
+                let dividerEvery, i, img, j, ref, steps;
                 steps = 60;
                 dividerEvery = 15;
-                this.$progress.get(0).height = this.canvasSize;
-                this.$progress.get(0).width = this.canvasSize;
+                this.$progress.height = this.canvasSize;
+                this.$progress.width = this.canvasSize;
                 this.ctx.save();
                 this.ctx.translate(this.centerX, this.centerY);
                 for (i = j = 0, ref = steps; j <= ref; i = j += 1) {
@@ -173,90 +187,86 @@ export class InterfaceCube {
 
         })();
 
-        this.$slider = $(".radial-slider");
+        this.$slider = document.querySelector(".radial-slider");
 
-        this.$value = $(".value");
+        this.$value =  document.querySelector(".value");
 
         slider = new Slider(this.$slider);
 
         // Note
         /*
-        * Number stick = 241
         * Number little diamond = 482
         * Number of circle selector = 6
         */
 
-        window.stick = 0;
-        window.sticksColored = 0;
+        let stick = 0;
+        let sticksColored = 0;
+        const allStick = document.querySelectorAll('#stick_circle g');
 
-        this.$slider.on("sliderchange", (function(_this) {
+        this.$slider.addEventListener("sliderchange", (function(_this) {
 
 
             return function(event) {
-                _this.$value.html(Math.round(event.value));
-                let degree = Math.ceil(event.value);
+                console.log(event);
+                _this.$value.innerHTML = Math.round(event.detail.value);
+                let degree = Math.ceil(event.detail.value);
 
                 let pourcentageAngle = (degree / 360) * 100;
-                let exactPosition = Math.ceil((241 * pourcentageAngle) / 100);
-                let pourcentageAngleBefore = (window.stick / 360) * 100;
-                let exactPositionBefore = Math.floor((241 * pourcentageAngleBefore) / 100);
-
-                const allStick = document.querySelectorAll('#stick_circle g');
+                let exactPosition = Math.ceil((allStick.length * pourcentageAngle) / 100);
+                let pourcentageAngleBefore = (stick / 360) * 100;
+                let exactPositionBefore = Math.floor((allStick.length * pourcentageAngleBefore) / 100);
 
                 if (exactPosition > exactPositionBefore ) {
                   for(let i = exactPositionBefore; i < exactPosition;i++) {
-                    let y = i - 1;
                     allStick[i].classList.add('select');
-                    console.log(exactPosition, 'j\'avance');
+                    //javance
                   }
                 }
 
                 if (exactPositionBefore > exactPosition ) {
-                  for(let i = window.sticksColored; i > exactPosition;i--) {
-                    let y = i - 1;
+                  for(let i = sticksColored; i > exactPosition;i--) {
                     allStick[i].classList.remove('select');
-                    console.log(exactPositionBefore, 'je recule');
+                    //je recule
                   }
                 }
 
                 // Color Selector
                 switch (true) {
                   case (degree < 45):
-                    $('#Selector g:first-child').addClass('select');
-                    $('#Selector g:nth-child(2)').removeClass('select');
+                    document.querySelector('#Selector g:first-child').classList.add('select');
+                    document.querySelector('#Selector g:nth-child(2)').classList.remove('select');
                     break;
                   case (degree >= 45 && degree <= 135):
-                    $('#Selector g:first-child').removeClass('select');
-                    $('#Selector g:nth-child(2)').addClass('select');
-                    $('#Selector g:nth-child(3)').removeClass('select');
+                    document.querySelector('#Selector g:first-child').classList.remove('select');
+                    document.querySelector('#Selector g:nth-child(2)').classList.add('select');
+                    document.querySelector('#Selector g:nth-child(3)').classList.remove('select');
                     break;
                   case (degree >= 135 && degree <= 180):
-                    $('#Selector g:nth-child(2)').removeClass('select');
-                    $('#Selector g:nth-child(3)').addClass('select');
-                    $('#Selector g:nth-child(4)').removeClass('select');
+                    document.querySelector('#Selector g:nth-child(2)').classList.remove('select');
+                    document.querySelector('#Selector g:nth-child(3)').classList.add('select');
+                    document.querySelector('#Selector g:nth-child(4)').classList.remove('select');
                     break;
                   case (degree >= 180 && degree <= 225):
-                    $('#Selector g:nth-child(3)').removeClass('select');
-                    $('#Selector g:nth-child(4)').addClass('select');
-                    $('#Selector g:nth-child(5)').removeClass('select');
+                    document.querySelector('#Selector g:nth-child(3)').classList.remove('select');
+                    document.querySelector('#Selector g:nth-child(4)').classList.add('select');
+                    document.querySelector('#Selector g:nth-child(5)').classList.remove('select');
                     break;
                   case (degree >= 225 && degree <= 315):
-                    $('#Selector g:nth-child(4)').removeClass('select');
-                    $('#Selector g:nth-child(5)').addClass('select');
-                    $('#Selector g:nth-child(6)').removeClass('select');
+                    document.querySelector('#Selector g:nth-child(4)').classList.remove('select');
+                    document.querySelector('#Selector g:nth-child(5)').classList.add('select');
+                    document.querySelector('#Selector g:nth-child(6)').classList.remove('select');
                     break;
                   case (degree >= 315 && degree < 357):
-                    $('#Selector g:nth-child(5)').removeClass('select');
-                    $('#Selector g:nth-child(6)').addClass('select');
+                    document.querySelector('#Selector g:nth-child(5)').classList.remove('select');
+                    document.querySelector('#Selector g:nth-child(6)').classList.add('select');
                     break;
                   case (degree > 358):
-                    $('#Selector g:first-child').addClass('select');
-                    $('#Selector g:nth-child(6)').removeClass('select');
+                    document.querySelector('#Selector g:first-child').classList.add('select');
+                    document.querySelector('#Selector g:nth-child(6)').classList.remove('select');
                     break;
                 }
-                  window.sticksColored = document.querySelectorAll('#stick_circle g.select').length;
-                  console.log(window.sticksColored);
-                  window.stick = degree;
+                  sticksColored = document.querySelectorAll('#stick_circle g.select').length;
+                  stick = degree;
             };
 
         })(this));
