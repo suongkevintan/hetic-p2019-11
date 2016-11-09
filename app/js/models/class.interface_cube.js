@@ -207,7 +207,6 @@ export class InterfaceCube {
 
 
             return function(event) {
-                console.log(event);
                 _this.$value.innerHTML = Math.round(event.detail.value);
                 let degree = Math.ceil(event.detail.value);
 
@@ -217,14 +216,14 @@ export class InterfaceCube {
                 let exactPositionBefore = Math.floor((allStick.length * pourcentageAngleBefore) / 100);
 
                 if (exactPosition > exactPositionBefore ) {
-                  for(let i = exactPositionBefore; i < exactPosition;i++) {
+                  for(let i = exactPositionBefore ; i < exactPosition;i++) {
                     allStick[i].classList.add('select');
                     //javance
                   }
                 }
 
                 if (exactPositionBefore > exactPosition ) {
-                  for(let i = sticksColored; i > exactPosition;i--) {
+                  for(let i = sticksColored - 1; i > exactPosition;i--) {
                     allStick[i].classList.remove('select');
                     //je recule
                   }
