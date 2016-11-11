@@ -19,6 +19,7 @@ __1. Get the repository and install the dependencies and devDependencies__
 ```sh
 $ git clone https://github.com/FrostOne/hetic-p2019-11
 $ cd hetic-p2019-11
+$ git checkout dev
 $ npm install -d
 ```
 
