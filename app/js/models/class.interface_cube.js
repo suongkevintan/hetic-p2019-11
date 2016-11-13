@@ -196,6 +196,7 @@ export class InterfaceCube {
         // Note
         /*
         * Number little diamond = 482
+        * Number of stick = 241
         * Number of circle selector = 6
         */
 
@@ -205,9 +206,10 @@ export class InterfaceCube {
 
         this.$slider.addEventListener("sliderchange", (function(_this) {
 
-
             return function(event) {
+
                 _this.$value.innerHTML = Math.round(event.detail.value);
+
                 let degree = Math.ceil(event.detail.value);
 
                 let pourcentageAngle = (degree / 360) * 100;
@@ -217,7 +219,44 @@ export class InterfaceCube {
 
                 if (exactPosition > exactPositionBefore ) {
                   for(let i = exactPositionBefore ; i < exactPosition;i++) {
-                    allStick[i].classList.add('select');
+
+                    let youngerBrother = i - 1;
+                    let olderBrother = i + 1;
+                    let reset = document.querySelector('.before');
+                    let reset2 = document.querySelector('.next');
+
+
+                    if (i > 1 ) {
+                      console.log(youngerBrother,i,olderBrother);
+                      console.log(allStick[youngerBrother]);
+                      console.log(allStick[i]);
+                      console.log(allStick[olderBrother]);
+                      console.log(reset);
+
+                      // if(reset) {
+                      //   reset.classList.remove('.before');
+                      //   console.log(reset);
+                      // }
+                      // if(reset2) {
+                      //   reset.classList.remove('.next');
+                      //   console.log(reset2);
+                      // }
+
+
+                      allStick[youngerBrother].classList.remove('select');
+                      allStick[youngerBrother].classList.remove('next');
+                      allStick[youngerBrother].classList.add('before');
+
+                      allStick[i].classList.remove('before');
+                      allStick[i].classList.remove('next');
+                      allStick[i].classList.add('select');
+
+                      allStick[olderBrother].classList.remove('select');
+                      allStick[olderBrother].classList.remove('before');
+                      allStick[olderBrother].classList.add('next');
+
+                    }
+
                     //javance
                   }
                 }
@@ -225,6 +264,7 @@ export class InterfaceCube {
                 if (exactPositionBefore > exactPosition ) {
                   for(let i = sticksColored - 1; i > exactPosition;i--) {
                     allStick[i].classList.remove('select');
+
                     //je recule
                   }
                 }

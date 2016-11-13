@@ -14,9 +14,17 @@
     fill: red;
 }
 
+.next {
+  fill: green;
+}
+
+.before {
+  fill: blue;
+}
+
 .anim_svg  {
     @include first(1) {
-        fill: red;
+        fill: blue;
     }
     @include last(1) {
         fill: red;
