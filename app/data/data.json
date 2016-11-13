@@ -6,6 +6,12 @@
       "secondname": "Brother",
       "intro-sentence": "How the road started spinning ?"
       },
+      "images": {
+      "MacLachlan": "fidget1",
+      "BrightIdeas": "fidget2",
+      "stormTheGate": "fidget3",
+      "duo": "fidget4"
+      },
     "description": "At the beginning there were ideas, floating in two creative minds.The Mac Lachlan brothers, Matthew and Mark always loved to create inventions, in order to create innovative products. They calling themselves as “creative inventors”.",
     "story-part1": {
       "one": "However, it was hard for them to sort their ideas, by utility for their potential client and the originality to bring products that doesn’t already exist. That is the reason why they created Antsy Labs, to provide their inventions, and start project on Kickstarter. They launched five campaign on the famous crowdfunding websites including:",
@@ -19,6 +25,75 @@
     },
     "story-part3": {
       "one": "Antsy labs, then learned from their success and mistakes, even though letting down failures was hearthbreaking."
+    }
+  }
+    "story2": {
+    "title": {
+      "date": "FEB 2016",
+      "firstname": "Cube Idea",
+      "secondname": "Fidget",
+      "intro-sentence": "The flip that switched on the light"
+      },
+      "images": {
+      "prototype": "fidget5",
+      "faces": "fidget6",
+      "notes": "fidget7",
+      "test": "fidget8"
+      },
+    "description": "A lot of people love to fidget. What is it? It is an irresistible desire to touch all kind of objects, make them clapping or turning in your hand. It apply to all sort of item, like pen you pop or depop, ring you make turning, moving joystick or even moving gears from locks!",
+    "story-part1": {
+      "one": "The Antsy labs team are part of that people, and so they know how fidgeters are perceived by their friends or collegue. They testified that they can’t stand still on their sits, no matter what they do, at work while brainstorming or even at phone! People close to them perceived fidgeting as a distraction or a mania.",
+      "two": "They worked on the idea of the “Fidget Cube” since 2012 and it come from this need, to have something that help them not only focusing, but also proving to others that fidgeting is not a distraction that only bother others, but a way to work better."
+    },
+    "story-part2": {
+      "one": "Before they decided to start the kickstarter campaign, they knew it was a risked bet, people around them couldn’t understand why they made this product. One of their previous campaign was less risky, lot of people know they want a Duet to charge their Apple product, but Fidget Cube, have to fill a need less common. However, after trying « Trio », that was similiar to duo, and less original, « Fidget Cube » can bring something new, for Antsy Labs, and for Kickstarter campaigns.",
+      "two": "They tried to find out what kind of object or texture they can put on the cube for touching, and after hours of hard brainstorming and fidgeting, “Fidget Cube” was born, and preparation begins! "
+    }
+  }
+  "story3": {
+    "title": {
+      "date": "FEB 2016",
+      "firstname": "Cube campaign",
+      "secondname": "Fidget",
+      "intro-sentence": "The funds glides to kickstarter"
+      },
+      "images": {
+      "example": "fidget9",
+      "campaign": "fidget10",
+      "color": "fidget11",
+      "presenting": "fidget12"
+      },
+    "description": "The idea found, Antsy lab team launch the Fidget Cube august 30th 2016 and the campaign will stop october 20th 2016. They learnt a lot from their others project, and know how to listen, communicate and be honest with their funders and buyers. And now they are going to apply it to their new campaign.",
+    "story-part1": {
+      "one": "The main difference with their others project was their video presenting the “Fidget Cube”. Its aspect was made to be more like a commercial but also funnier than the videos presenting “Trio”, “Duet” and “Storm the Gate”. In those, we simply see text and the product, but not their face, or storytelling about it.",
+      "two": "This time the video tell their own story, how they love fidgeting everywhere with various things ( especially bubblewrap), and how they want it to be perceived more as a way to focus than a bothering thing for co-workers. Matthew McLachlan was the one in charge of the video, and their wives helped filming the rooftop part."
+    },
+    "story-part2": {
+      "one": "Their communication were on social network such as Antsy Labs’ Facebook page and youtube channel. The video got quickly viral on social network, helped by pages sharing it such as “NowThis Future”. All fidgeters were tagged by their friends, and talked about the “Fidget Cube” around them. The video even reached 25 millions view within 48 hours!",
+      "two": "The Antsy Lab team felt impressed on how viral the video was, and are pretty proud of their success, beyond all their kickstarters project.The kickstarter project should have brought at least 500 000 $ but the project brought over 6.4 millions dollars!"
+    }
+  }
+  "story4": {
+    "title": {
+      "date": "FEB 2016",
+      "firstname": "comes to us",
+      "secondname": "Fidget cube",
+      "intro-sentence": "The Fidget Cube rolls slowly to our desk"
+      },
+      "images": {
+      "construction": "fidget13",
+      "end": "fidget14",
+      "stock": "fidget15",
+      "packaging": "fidget16"
+      },
+    "description": "Now that the kickstarter campaign ended, the antsy lab team still communicate their joy and thanks for their community on their project page. They celebrated with funny GIF and pics of their ending project celebration.",
+    "story-part1": {
+      "one": "At this time, Antsy labs package the fidget cube in their boxes, to send to funders, that will get it first hand. They kept all funders in touch of the manufacturing progress, believing that a good communication start with honesty and transparency. Pictures of the product, ready to be send are shared with all funders.",
+      "two": "That’s the reason why they update constantly their funders’ emailing channel and actualities in Kickstarter. The Fidget Family needs to be informed of how the project is going, and they know it. Some informations are exclusively for the funders, even on Kickstarter actuality."
+    },
+    "story-part2": {
+      "one": "The funds were used to pay the production of the fidget cube, but they also participated to finance the project, with 5 000$ of their own! They make the product manufactured all around the world, to deserve all their client. Some investors called Antsy labs to invest the Fidget Cube, but for now, they wish the cube to be 100% their.",
+      "two": "Their top priority was also to produce a top quality fidget cube, even if it can take more time to deliver. The amount of work, due to the high number of clients and of course of products to craft, is new for Antsy labs, used to less massive projects, and they face off the difficulties to bring the fidget cube to life, and making it roll to our desk!"
     }
   }
 }
