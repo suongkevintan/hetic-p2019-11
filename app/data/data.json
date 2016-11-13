@@ -1,0 +1,24 @@
+{
+  "story1": {
+    "title": {
+      "date": "FEB 2016",
+      "firstname": "MacLachlan",
+      "secondname": "Brother",
+      "intro-sentence": "How the road started spinning ?"
+      },
+    "description": "At the beginning there were ideas, floating in two creative minds.The Mac Lachlan brothers, Matthew and Mark always loved to create inventions, in order to create innovative products. They calling themselves as “creative inventors”.",
+    "story-part1": {
+      "one": "However, it was hard for them to sort their ideas, by utility for their potential client and the originality to bring products that doesn’t already exist. That is the reason why they created Antsy Labs, to provide their inventions, and start project on Kickstarter. They launched five campaign on the famous crowdfunding websites including:",
+      "two": "Their first campaign, in 2012, was not a success. Even though it raised 14 970$, Bright ideas, didn’ reached the goal of 25 000$. It was a book, presenting inventors that launched campaign on Kickstarter, and how they create their products."
+    },
+    "story-part2": {
+      "one": "After handfuls of prototypes, we've tweaked every last detail to arrive at the Fidget Cube you see today. We've got a number of working units, but in order to make enough for you to have one as well, we need to place a substantial minimum order for the first production run of Fidget Cube. That's why we're offering Fidget Cube to this awesome community before anyone else.",
+      "two": "“Storm the gate” is a handcrafted board game, where you have to push your pieces into the opponent, realesed in 2013. It had raised 10 180 $ instead of the 6 000 $ required. It was their first successful campaign, and also the start of the great adventure.",
+      "three": "“Duet”, their next campaign was a hub to charge your Apple watch and iPhone together, it was created to make Apple watch user easier and and was a success aswell reaching 51 026$ instead of the initial 25 000$.",
+      "four": "”Trio ” was their last campaign before the fidget cube. It was also a hub, but to charge three device, such as a tablet, a smartphone and a watch. The campaign was not a success, it didnt reached 25 000$ as planned."
+    },
+    "story-part3": {
+      "one": "Antsy labs, then learned from their success and mistakes, even though letting down failures was hearthbreaking."
+    }
+  }
+}

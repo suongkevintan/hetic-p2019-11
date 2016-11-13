@@ -9,6 +9,9 @@ var jshint = require('gulp-jshint');
 var stripDebug = require('gulp-strip-debug');
 var rename = require('gulp-rename');
 var browserSync = require('browser-sync');
+var handlebars = require('gulp-handlebars');
+var wrap = require('gulp-wrap');
+var declare = require('gulp-declare');
 var imagemin = require('gulp-imagemin');
 
 // Lint Task
@@ -38,10 +41,26 @@ gulp.task('scripts', function() {
         }))
 });
 
+// Compile our Handlebar
+gulp.task('templates', function() {
+    gulp.src('app/templates/*.hbs')
+        .pipe(handlebars())
+        .pipe(wrap('Handlebars.template(<%= contents %>)'))
+        .pipe(declare({
+            namespace: 'MyApp.templates',
+            noRedeclare: true, // Avoid duplicate declarations
+        }))
+        .pipe(concat('templates.js'))
+        .pipe(gulp.dest('app/dist/js/'))
+        .pipe(browserSync.reload({
+            stream: true
+        }))
+});
+
 gulp.task('vendor', function() {
     return gulp.src('app/vendor/*.js')
-      .pipe(uglify())
-      .pipe(gulp.dest('app/dist/vendor'))
+        .pipe(uglify())
+        .pipe(gulp.dest('app/dist/vendor'))
 });
 
 gulp.task('style', function() {
@@ -94,11 +113,12 @@ gulp.task("importModels", function() {
 
 });
 
-gulp.task('build', ['importModels','imagemin', 'style', 'scripts', 'vendor']);
+gulp.task('build', ['importModels', 'imagemin', 'style', 'scripts', 'templates', 'vendor']);
 
 gulp.task('dev', ['browserSync', 'sass', 'lint'], function() {
     gulp.watch('app/sass/**/*.scss', ['sass']);
     gulp.watch('app/*.html', browserSync.reload);
     gulp.watch('app/js/**/*.js', ['scripts']);
-    // Other watchers
+    gulp.watch('app/templates/*.hbs', ['templates'])
+        // Other watchers
 });
