@@ -18,13 +18,12 @@ export class Cube {
                 case 42:
                     texture.material.color = themeSelected.colorSet.cube
                     break;
-                //need a glow
+                    //need a glow
                 case 49:
                     texture.material.color = {
                         r: 255 / 255,
                         g: 255 / 255,
-                        b: 255 / 255,
-
+                        b: 255 / 255
                     }
                     break;
                 case 19:
@@ -48,8 +47,6 @@ export class Cube {
                     texture.material.color = themeSelected.colorSet.cube
 
             }
-
-
 
             // =======================================================================//
             // RESET ANCHOR POINT :: WORK IN progress                                 //
@@ -143,11 +140,11 @@ export class Cube {
                             // ====================//
                             // Press button bubble //
                             // ===================//
-
-                             mesh.position.y = 5
+                            mesh.position.y = 5
                             break;
-                        case 19 :
-                        mesh.rotation.x += Math.PI / 4;
+                        case 28:
+                            //mesh.rotation.x += Math.PI / 2;
+                            mesh.rotateY += Math.PI / 2;
                     }
                 }, false);
             });
@@ -366,8 +363,6 @@ export class Cube {
         //ITS ALIIIIIIIIIVE
         this.container.appendChild(this.renderer.domElement);
 
-
-
         // =======================================================================//
         // Lights and this.camera                                                      //
         // =======================================================================//
@@ -420,8 +415,13 @@ export class Cube {
     render() {
         //we need to work on theses ones
         var color = new THREE.Color(0xffffff);
-        //this.scene.background = new THREE.Color(0x55556d);
-
         this.renderer.render(this.scene, this.camera);
+        //  let mesh2 = cubeBase.children.filter((m) => m.id === 36);
+        if (this.group) {
+            this.group.children.filter((m) => m.id === 28)[0].rotateY(Math.PI / 20);
+            this.group.children.filter((m) => m.id === 19)[0].rotateX(Math.PI / 20);
+            this.group.children.filter((m) => m.id === 22)[0].rotateX(Math.PI / 20);
+            this.group.children.filter((m) => m.id === 25)[0].rotateX(Math.PI / 20);
+        }
     }
 }
