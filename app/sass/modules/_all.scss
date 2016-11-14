@@ -1,0 +1,22 @@
+$font-bodyText : "Source Sans Pro", Arial, sans-serif;
+$font-title : "Montserrat", Arial, sans-serif;
+
+body{
+  background-color: $background-color;
+  font-family: $font-title;
+  margin: 0;
+  position: relative;
+  height: 100vh;
+}
+strong{
+  font-weight: 400!important;
+}
+a{
+  text-decoration: none;
+}
+.unselectable {
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}

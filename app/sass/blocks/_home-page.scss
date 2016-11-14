@@ -1,0 +1,107 @@
+// Style for the container section
+// .container
+.container{
+  padding: 10em 0em 0em 5em;
+  @media only screen and (min-device-width : 375px) and (max-device-width : 667px) and (orientation : portrait) {
+    padding: 2.5rem 2rem;
+  }
+}
+.container__texteContainer{
+  width: 35em;
+  @media only screen and (min-device-width : 375px) and (max-device-width : 667px) and (orientation : portrait) {
+    width: 100%;
+  }
+}
+.container__texteContainer--subtitle{
+  text-transform: uppercase;
+  font-family: $font-title;
+  font-size: 1.5rem;
+  font-weight: lighter;
+  margin-left: .25em;
+  @media only screen and (min-device-width : 375px) and (max-device-width : 667px) and (orientation : portrait) {
+    font-size: 1.35em;
+    margin-left: 0.25em;
+  }
+}
+.container__texteContainer--headtitle{
+  text-transform: uppercase;
+  font-family: $font-title;
+  font-size: 3.5em;
+  @media only screen and (min-device-width : 375px) and (max-device-width : 667px) and (orientation : portrait) {
+    font-size: 2em;
+    margin-left: 0.15em;
+  }
+}
+.container__texteContainer--bodyText{
+  width: 100%;
+  font-family: $font-bodyText;
+  font-size: 1.25em;
+  font-weight: lighter;
+  line-height: 1.4;
+  margin-top: 1em;
+  margin-left: .25em;
+  padding-bottom: 1.25em;
+  @media only screen and (min-device-width : 375px) and (max-device-width : 667px) and (orientation : portrait) {
+    font-size: 1em;
+  }
+}
+.container__button{
+  width: 50%;
+  background-color: $background-color;
+  color: $active-text-button;
+  text-transform: uppercase;
+  font-family: $font-title;
+  font-size: .75em;
+  font-weight: 300;
+  text-align: center;
+  letter-spacing: .3px;
+  margin-left: .25em;
+  padding: 1.5em 0em 1.5em 0em;
+  border: 1px solid grey;
+  border-radius: 5px;
+  transition: all .3s;
+  @media only screen and (min-device-width : 375px) and (max-device-width : 667px) and (orientation : portrait) {
+    width: 90%;
+  }
+  &:hover{
+    border: 1px solid $secondary-color;
+    cursor: pointer;
+    .container__button--text{
+      color: $secondary-color;
+    }
+  }
+  &:active{
+    background-color: $active-background-button;
+    .container__button--text{
+      color: $active-text-button;
+    }
+  }
+}
+.container__button--text{
+  transition: all .3s;
+  color: #181818;
+}
+.container__imageContext{
+  position: absolute;
+  z-index: -2;
+  width: 53em;
+  height: 40em;
+  overflow: hidden;
+  right: 3em;
+  bottom: 0;
+  @media only screen and (min-device-width : 375px) and (max-device-width : 667px) and (orientation : portrait) {
+    width: 10%;
+    vertical-align: bottom;
+  }
+}
+.container__imageContext--image{
+  height: auto;
+}
+
+// Style for the particular section
+#particles-js{
+  position: absolute;
+  z-index: -3;
+  width: 100%;
+  top: 0;
+}

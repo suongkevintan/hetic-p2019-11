@@ -1,0 +1,92 @@
+.containerContact{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  top: 0;
+}
+.memberContainer__signature--drawn{
+  width: 100%;
+  svg{
+    width: 80%;
+  }
+}
+
+.signature--kevin{
+  stroke:black;
+  stroke-width:6!important;
+  stroke-dashoffset: 1880;
+  stroke-dasharray: 2204;
+  animation: dash 1s ease-in-out 0s normal running 1 forwards;
+}
+
+@keyframes dash{
+  0%{
+    stroke-dasharray: 2204;
+  }
+  100%{
+    stroke-dasharray: 5000;
+  }
+}
+
+.containerContact__memberContainer{
+  display: flex;
+  position: relative;
+  flex-grow: 1;
+  justify-content: center;
+  align-items: center;
+  &:hover{
+    .memberContainer__image{
+      opacity: 0.35;
+    }
+  }
+}
+.memberContainer__signature{
+  width: 100%;
+  text-align: center;
+}
+.memberContainer__signature--name{
+  text-transform: uppercase;
+  font-family: $font-title,Arial,sans-serif;
+  font-size: 1.1em;
+  font-weight: 100;
+  margin-top: 1.15em;
+}
+.memberContainer__signature--role{
+  color: #181818;
+  font-family: $font-title,Arial,sans-serif;
+  font-size: .8em;
+  font-weight: 100;
+  font-style: italic;
+  margin-top: .50em;
+  opacity: 0.5;
+}
+.memberContainer__signature--rs{
+  width: 100%;
+  margin-top: 1em;
+  svg{
+    width: 1.25em;
+    margin-left: .5rem;
+    fill: grey;
+    &:hover{
+      fill:#181818;
+    }
+  }
+}
+
+
+
+.memberContainer__image{
+  overflow: hidden;
+  z-index: -1;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: all .2s;
+  img{
+    transform: translateX(-9rem) scale(1);
+    animation: scale 7s linear 0s alternate running infinite forwards;
+  }
+}
