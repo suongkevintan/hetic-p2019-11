@@ -90,12 +90,19 @@
   right: 3em;
   bottom: 0;
   @media only screen and (min-device-width : 375px) and (max-device-width : 667px) and (orientation : portrait) {
-    width: 10%;
+    width: 100%;
     vertical-align: bottom;
+    right: 0;
+    left: 0;
+    height: 18rem;
   }
 }
 .container__imageContext--image{
   height: auto;
+  @media only screen and (min-device-width : 375px) and (max-device-width : 667px) and (orientation : portrait) {
+    width: 100%;
+    bottom: 0;
+  }
 }
 
 // Style for the particular section
@@ -104,4 +111,7 @@
   z-index: -3;
   width: 100%;
   top: 0;
+  @media only screen and (min-device-width : 375px) and (max-device-width : 667px) and (orientation : portrait) {
+    height: 100%;
+  }
 }
