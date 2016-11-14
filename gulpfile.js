@@ -98,15 +98,14 @@ gulp.task('browserSync', function() {
 
 // Compress imgs
 gulp.task('imagemin', function() {
-    return gulp.src('app/src/img/*')
+    return gulp.src('app/images/*')
         .pipe(imagemin({
             progressive: true
         }))
-        .pipe(gulp.dest('app/dist/img'))
+        .pipe(gulp.dest('app/dist/images'))
 })
 
 gulp.task("importModels", function() {
-
     return gulp
         .src("./app/src/models3D/*.obj")
         .pipe(gulp.dest("./app/dist/models3D"));

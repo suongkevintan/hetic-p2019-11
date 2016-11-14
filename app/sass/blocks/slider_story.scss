@@ -14,7 +14,10 @@
         position: absolute;
         width:40%;
         height:100%;
+      }
 
+      .img_slider1 {
+        background:url(MacLachlan.jpg);
       }
 
       .arrow--left {
@@ -55,12 +58,11 @@
   #container_story {
     width: 60%;
     height: 100vh;
-    overflow-x: auto;
-    overflow-y: hidden;
+    overflow: auto;
 
       .story {
         display:flex;
-        width: 200%;
+        width: 800%;
         height: 100vh;
 
           .story_intro {
