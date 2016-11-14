@@ -3,16 +3,24 @@
 // ==================================//
 
 Loader.loadData('data/data.json', function(data) {
-  data = JSON.parse(data);
-  const s = data;
+    data = JSON.parse(data);
+    const s = data;
 
-  function launch() {
+    function launch() {
 
-    const story = MyApp.templates.story(s);
+        const story = MyApp.templates.story(s);
 
-    document.querySelector('#story').innerHTML = (story);
+        document.querySelector('#story').innerHTML = (story);
 
-  }
+        document.querySelector("#container_story").addEventListener('mousewheel', (e) => {
 
-  launch();
+            document.querySelector("#container_story").scrollLeft -= (e.deltaX * 20);
+            document.querySelector("#container_story").scrollRight -= (e.deltaX * 20);
+            document.querySelector("#container_story").scrollTop = 0;
+        });
+
+
+    }
+
+    launch();
 });
