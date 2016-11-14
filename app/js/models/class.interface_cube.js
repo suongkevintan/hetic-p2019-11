@@ -1,6 +1,12 @@
 export class InterfaceCube {
-     DetectPosSlider() {
-        var Slider, j, lastTime, len, slider, vendor, vendors,
+    DetectPosSlider() {
+        var Slider,
+            j,
+            lastTime,
+            len,
+            slider,
+            vendor,
+            vendors,
             bind = function(fn, me) {
                 return function() {
                     return fn.apply(me, arguments);
@@ -59,7 +65,6 @@ export class InterfaceCube {
                 this.$progress = this.$context.querySelector(".progress");
                 this.ctx = this.$progress.getContext("2d");
 
-
                 circleOffset = this.$circle.getBoundingClientRect();
                 this.elementPosition = {
                     x: circleOffset.left,
@@ -68,8 +73,8 @@ export class InterfaceCube {
                 window.getComputedStyle(this.$progress)
 
                 this.centerX = window.getComputedStyle(this.$progress).width / 2;
-                this.centerY = window.getComputedStyle(this.$progress).height  / 2;
-                this.canvasSize =   this.centerX  *2 ;
+                this.centerY = window.getComputedStyle(this.$progress).height / 2;
+                this.canvasSize = this.centerX * 2;
                 this.addEventListeners();
                 this.updateSlider();
                 return;
@@ -113,7 +118,10 @@ export class InterfaceCube {
             };
 
             Slider.prototype.setMousePosition = function(event) {
-                let atan, diff, target, val;
+                let atan,
+                    diff,
+                    target,
+                    val;
                 this.mPos = {
                     x: event.pageX - this.elementPosition.x,
                     y: event.pageY - this.elementPosition.y
@@ -129,18 +137,27 @@ export class InterfaceCube {
                     // };
                     // this.$context.trigger(val);
                     if (window.CustomEvent) {
-              var getPercentage = new CustomEvent('sliderchange', {detail: {value: this.target}});
-            } else {
-              var getPercentage = document.createEvent('CustomEvent');
-              getPercentage.initCustomEvent('sliderchange', true, true, {value: this.target});
-            }
+                        var getPercentage = new CustomEvent('sliderchange', {
+                            detail: {
+                                value: this.target
+                            }
+                        });
+                    } else {
+                        var getPercentage = document.createEvent('CustomEvent');
+                        getPercentage.initCustomEvent('sliderchange', true, true, {value: this.target});
+                    }
 
-            this.$context.dispatchEvent(getPercentage);
+                    this.$context.dispatchEvent(getPercentage);
                 }
             };
 
             Slider.prototype.getBackground = function() {
-                let dividerEvery, i, img, j, ref, steps;
+                let dividerEvery,
+                    i,
+                    img,
+                    j,
+                    ref,
+                    steps;
                 steps = 60;
                 dividerEvery = 15;
                 this.$progress.height = this.canvasSize;
@@ -189,14 +206,13 @@ export class InterfaceCube {
 
         this.$slider = document.querySelector(".radial-slider");
 
-        this.$value =  document.querySelector(".value");
+        this.$value = document.querySelector(".value");
 
         slider = new Slider(this.$slider);
 
         // Note
         /*
         * Number little diamond = 482
-        * Number of stick = 241
         * Number of circle selector = 6
         */
 
@@ -207,9 +223,7 @@ export class InterfaceCube {
         this.$slider.addEventListener("sliderchange", (function(_this) {
 
             return function(event) {
-
                 _this.$value.innerHTML = Math.round(event.detail.value);
-
                 let degree = Math.ceil(event.detail.value);
 
                 let pourcentageAngle = (degree / 360) * 100;
@@ -217,95 +231,33 @@ export class InterfaceCube {
                 let pourcentageAngleBefore = (stick / 360) * 100;
                 let exactPositionBefore = Math.floor((allStick.length * pourcentageAngleBefore) / 100);
 
-                if (exactPosition > exactPositionBefore ) {
-                  for(let i = exactPositionBefore ; i < exactPosition;i++) {
+                let before = document.querySelector('.before')
+                let after = document.querySelector('.after')
+                let select = document.querySelector('.select')
 
-                    let youngerBrother = i - 1;
-                    let olderBrother = i + 1;
-                    let reset = document.querySelector('.before');
-                    let reset2 = document.querySelector('.next');
-
-
-                    if (i > 1 ) {
-                      console.log(youngerBrother,i,olderBrother);
-                      console.log(allStick[youngerBrother]);
-                      console.log(allStick[i]);
-                      console.log(allStick[olderBrother]);
-                      console.log(reset);
-
-                      // if(reset) {
-                      //   reset.classList.remove('.before');
-                      //   console.log(reset);
-                      // }
-                      // if(reset2) {
-                      //   reset.classList.remove('.next');
-                      //   console.log(reset2);
-                      // }
+                if (before)
+                    before.className.baseVal = "";
+                if (after)
+                    after.className.baseVal = "";
+                if (select)
+                    select.className.baseVal= "";
 
 
-                      allStick[youngerBrother].classList.remove('select');
-                      allStick[youngerBrother].classList.remove('next');
-                      allStick[youngerBrother].classList.add('before');
+                if (exactPosition > exactPositionBefore) {
+                    allStick[exactPosition - 1].classList.add('select');
 
-                      allStick[i].classList.remove('before');
-                      allStick[i].classList.remove('next');
-                      allStick[i].classList.add('select');
-
-                      allStick[olderBrother].classList.remove('select');
-                      allStick[olderBrother].classList.remove('before');
-                      allStick[olderBrother].classList.add('next');
-
+                    let youngerBrother = exactPosition - 2;
+                    let olderBrother = exactPosition ;
+                    if (allStick[youngerBrother]) {
+                       allStick[youngerBrother].classList.add('before');
                     }
-
-                    //javance
-                  }
+                    if (allStick[olderBrother]) {
+                       allStick[olderBrother].classList.add('after');
+                    }
                 }
 
-                if (exactPositionBefore > exactPosition ) {
-                  for(let i = sticksColored - 1; i > exactPosition;i--) {
-                    allStick[i].classList.remove('select');
 
-                    //je recule
-                  }
-                }
-
-                // Color Selector
-                switch (true) {
-                  case (degree < 45):
-                    document.querySelector('#Selector g:first-child').classList.add('select');
-                    document.querySelector('#Selector g:nth-child(2)').classList.remove('select');
-                    break;
-                  case (degree >= 45 && degree <= 135):
-                    document.querySelector('#Selector g:first-child').classList.remove('select');
-                    document.querySelector('#Selector g:nth-child(2)').classList.add('select');
-                    document.querySelector('#Selector g:nth-child(3)').classList.remove('select');
-                    break;
-                  case (degree >= 135 && degree <= 180):
-                    document.querySelector('#Selector g:nth-child(2)').classList.remove('select');
-                    document.querySelector('#Selector g:nth-child(3)').classList.add('select');
-                    document.querySelector('#Selector g:nth-child(4)').classList.remove('select');
-                    break;
-                  case (degree >= 180 && degree <= 225):
-                    document.querySelector('#Selector g:nth-child(3)').classList.remove('select');
-                    document.querySelector('#Selector g:nth-child(4)').classList.add('select');
-                    document.querySelector('#Selector g:nth-child(5)').classList.remove('select');
-                    break;
-                  case (degree >= 225 && degree <= 315):
-                    document.querySelector('#Selector g:nth-child(4)').classList.remove('select');
-                    document.querySelector('#Selector g:nth-child(5)').classList.add('select');
-                    document.querySelector('#Selector g:nth-child(6)').classList.remove('select');
-                    break;
-                  case (degree >= 315 && degree < 357):
-                    document.querySelector('#Selector g:nth-child(5)').classList.remove('select');
-                    document.querySelector('#Selector g:nth-child(6)').classList.add('select');
-                    break;
-                  case (degree > 358):
-                    document.querySelector('#Selector g:first-child').classList.add('select');
-                    document.querySelector('#Selector g:nth-child(6)').classList.remove('select');
-                    break;
-                }
-                  sticksColored = document.querySelectorAll('#stick_circle g.select').length;
-                  stick = degree;
+                stick = degree;
             };
 
         })(this));
@@ -326,7 +278,9 @@ export class InterfaceCube {
 
         if (!this.requestAnimationFrame) {
             this.requestAnimationFrame = function(callback, element) {
-                var currTime, id, timeToCall;
+                var currTime,
+                    id,
+                    timeToCall;
                 currTime = new Date().getTime();
                 timeToCall = Math.max(0, 16 - (currTime - lastTime));
                 id = this.setTimeout((function() {

@@ -1,11 +1,9 @@
 import {DomManipulator} from './models/class.dommanipulator.js'
-// import {Cube} from './models/class.cube.js'
 import {InterfaceCube} from './models/class.interface_cube.js'
 
-window.selec = new DomManipulator();
-Detector.isMobile = navigator.userAgent.match(/(iPhone|iPod|iPad|Android|BlackBerry)/);
+window.$ = new DomManipulator();
 // window.cube = new Cube();
-window.DetectPosSlider = new InterfaceCube();
+let DetectPosSlider = new InterfaceCube();
 DetectPosSlider.DetectPosSlider();
 
 function MsgConsole() {
