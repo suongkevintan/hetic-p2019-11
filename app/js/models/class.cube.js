@@ -1,5 +1,7 @@
+import {CubeThemes} from './cube-assets/cube-themes.js'
+
+
 export class Cube {
-    switchInteruptor(pos) {}
 
     setTheme(cubeBase, themeSelected) {
         cubeBase.children.forEach((texture, index) => {
@@ -46,33 +48,6 @@ export class Cube {
                     //to remove
                     texture.material.color = themeSelected.colorSet.cube
 
-            }
-
-            // =======================================================================//
-            // RESET ANCHOR POINT :: WORK IN progress                                 //
-            // =======================================================================//
-
-            if (texture.geometry.boundingSphere) {
-                //  let mesh2 = cubeBase.children.filter((m) => m.id === 36);
-
-                let objMesh = texture;
-                let geom = texture.geometry;
-                geom.vertices = [];
-                geom.vertices.push(texture.geometry.boundingSphere.center);
-
-                objMesh.centroid = new THREE.Vector3();
-                for (let i = 0, l = geom.vertices.length; i < l; i++) {
-                    for (let i = 0, l = geom.vertices.length; i < l; i++) {
-                        objMesh.centroid.add(geom.vertices[i].clone());
-                    }
-                    objMesh.centroid.divideScalar(geom.vertices.length);
-                    let offset = objMesh.centroid.clone();
-
-                    objMesh.geometry.applyMatrix(new THREE.Matrix4().makeTranslation(-offset.x, -offset.y, -offset.z));
-
-                    objMesh.position.copy(objMesh.centroid);
-
-                }
             }
         })
     }
@@ -156,181 +131,7 @@ export class Cube {
     }
 
     constructor() {
-        this.container
-        this.themes = [
-            {
-                name: "retro",
-                colorSet: {
-                    cube: {
-                        r: 127 / 255,
-                        g: 131 / 255,
-                        b: 139 / 255
-                    },
-                    mainColor: {
-                        r: 41 / 255,
-                        g: 41 / 255,
-                        b: 40 / 255
-                    },
-                    lightColor: {
-                        r: 56 / 255,
-                        g: 56 / 255,
-                        b: 56 / 255
-                    }
-                }
-            }, {
-                name: "dice",
-                colorSet: {
-                    cube: {
-                        r: 246 / 255,
-                        g: 249 / 255,
-                        b: 251 / 255
-                    },
-                    mainColor: {
-                        r: 41 / 255,
-                        g: 41 / 255,
-                        b: 40 / 255
-                    },
-                    lightColor: {
-                        r: 56 / 255,
-                        g: 56 / 255,
-                        b: 56 / 255
-                    }
-                }
-            }, {
-                name: "aqua",
-                colorSet: {
-                    cube: {
-                        r: 246 / 255,
-                        g: 249 / 255,
-                        b: 251 / 255
-                    },
-                    mainColor: {
-                        r: 65 / 255,
-                        g: 184 / 255,
-                        b: 226 / 255
-                    },
-                    lightColor: {
-                        r: 56 / 255,
-                        g: 56 / 255,
-                        b: 56 / 255
-                    }
-                }
-            }, {
-                name: "berry",
-                colorSet: {
-                    cube: {
-                        r: 246 / 255,
-                        g: 249 / 255,
-                        b: 251 / 255
-                    },
-                    mainColor: {
-                        r: 232 / 255,
-                        g: 166 / 255,
-                        b: 65 / 255
-                    },
-                    lightColor: {
-                        r: 56 / 255,
-                        g: 56 / 255,
-                        b: 56 / 255
-                    }
-                }
-            }, {
-                name: "sunset",
-                colorSet: {
-                    cube: {
-                        r: 246 / 255,
-                        g: 249 / 255,
-                        b: 251 / 255
-                    },
-                    mainColor: {
-                        r: 232 / 255,
-                        g: 30 / 255,
-                        b: 158 / 255
-                    },
-                    lightColor: {
-                        r: 56 / 255,
-                        g: 56 / 255,
-                        b: 56 / 255
-                    }
-                }
-            }, {
-                name: "fresh",
-                colorSet: {
-                    cube: {
-                        r: 246 / 255,
-                        g: 249 / 255,
-                        b: 251 / 255
-                    },
-                    mainColor: {
-                        r: 187 / 255,
-                        g: 234 / 255,
-                        b: 110 / 255
-                    },
-                    lightColor: {
-                        r: 56 / 255,
-                        g: 56 / 255,
-                        b: 56 / 255
-                    }
-                }
-            }, {
-                name: "graphite",
-                colorSet: {
-                    cube: {
-                        r: 45 / 255,
-                        g: 55 / 255,
-                        b: 64 / 255
-                    },
-                    mainColor: {
-                        r: 0 / 255,
-                        g: 0 / 255,
-                        b: 0 / 255
-                    },
-                    lightColor: {
-                        r: 41 / 255,
-                        g: 41 / 255,
-                        b: 40 / 255
-                    }
-                }
-            }, {
-                name: "midnight",
-                colorSet: {
-                    cube: {
-                        r: 16 / 255,
-                        g: 20 / 255,
-                        b: 24 / 255
-                    },
-                    mainColor: {
-                        r: 41 / 255,
-                        g: 41 / 255,
-                        b: 40 / 255
-                    },
-                    lightColor: {
-                        r: 41 / 255,
-                        g: 41 / 255,
-                        b: 40 / 255
-                    }
-                }
-            }, {
-                name: "kickstarter edition",
-                colorSet: {
-                    cube: {
-                        r: 16 / 255,
-                        g: 20 / 255,
-                        b: 24 / 255
-                    },
-                    mainColor: {
-                        r: 187 / 255,
-                        g: 234 / 255,
-                        b: 110 / 255
-                    },
-                    lightColor: {
-                        r: 41 / 255,
-                        g: 41 / 255,
-                        b: 40 / 255
-                    }
-                }
-            }
-        ]
+        this.themes = new CubeThemes(),
         this.activeTheme = this.themes[0];
 
         // this container will be injected to the dom with our canvas

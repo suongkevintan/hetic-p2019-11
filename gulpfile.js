@@ -27,7 +27,8 @@ gulp.task('scripts', function() {
     return gulp.src('app/js/**/*.js').pipe(babel({presets: ['es2015']})).pipe(concat('all.js')).pipe(gulp.dest('app/dist/js')). // file for dev
     pipe(rename('all.min.js')). // rename file
     pipe(stripDebug()). // remove console.log alert etc..
-    pipe(uglify()).pipe(gulp.dest('app/dist/js')). // file for prod
+    pipe(uglify()).
+    pipe(gulp.dest('app/dist/js')). // file for prod
     pipe(browserSync.reload({stream: true}))
 });
 
@@ -98,7 +99,7 @@ gulp.task('build', [
                         }
                     }
                 ]
-            
+
         }
 
     })).pipe(gulp.dest('app/dist/js/'));

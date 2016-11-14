@@ -4,7 +4,7 @@
  */
 
 const Detector = {
-
+	isMobile : navigator.userAgent.match(/(iPhone|iPod|iPad|Android|BlackBerry)/),
 	canvas: !! window.CanvasRenderingContext2D,
 	webgl: ( function () {
 
