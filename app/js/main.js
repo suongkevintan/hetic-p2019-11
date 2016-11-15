@@ -1,8 +1,10 @@
 import {DomManipulator} from './models/class.dommanipulator.js'
+import {Fidget} from './fidget.js'
 import {InterfaceCube} from './models/class.interface_cube.js'
 
 window.$ = new DomManipulator();
-// window.cube = new Cube();
+window.Fidget = new Fidget();
+
 let DetectPosSlider = new InterfaceCube();
 DetectPosSlider.DetectPosSlider();
 
@@ -21,4 +23,4 @@ function MsgConsole() {
         i = 1;
     }
 }
-MsgConsole();
+//MsgConsole();

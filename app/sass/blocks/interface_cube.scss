@@ -1,13 +1,15 @@
 @import "../family";
+$sliderSize : 400px;
 
 #slider {
     position: absolute;
-    width: 400px;
-    height: 400px;
+    width: $sliderSize;
+    height: $sliderSize;
     left: 50%;
     top: 50%;
     margin-top: -250px;
     margin-left: -200px;
+    transform: scale(1.5);
 }
 
 .select {
@@ -63,13 +65,13 @@
 
 .radial-slider {
     position: absolute;
-    width: 400px;
-    height: 400px;
+    width: $sliderSize;
+    height: $sliderSize;
     // border: 1px solid transparent;
     top: 50%;
-    margin-top: -200px;
+    margin-top: -#{$sliderSize / 2};
     left: 50%;
-    margin-left: -200px;
+    margin-left: -#{$sliderSize / 2};
     -webkit-touch-callout: none;
     -webkit-user-drag: none;
     -webkit-user-select: none;
@@ -77,12 +79,14 @@
 
 .radial-slider .circle {
     position: relative;
+    transform: scale(1.5);
+
     width: 300px;
     height: 300px;
     left: 50%;
     top: 50%;
-    margin-left: -150px;
-    margin-top: -150px;
+    margin-left: -145px;
+    margin-top: -120px;
     border-radius: 300px;
     cursor: pointer;
     -webkit-touch-callout: none;
@@ -94,6 +98,8 @@
     position: absolute;
     width: 280px;
     height: 280px;
+    transform: scale(1.5);
+
     top: 50%;
     left: 50%;
     margin-left: -140px;
@@ -112,6 +118,7 @@
     left: 140px;
     width: 30px;
     height: 30px;
+    transform: scale(1);
     text-align: center;
     border-radius: 20px;
     cursor: pointer;
@@ -126,8 +133,10 @@
     position: absolute;
     top: 0;
     left: 0;
-    width: 400px;
-    height: 400px;
+    transform: scale(1.5);
+
+    width: -#{$sliderSize / 2};;
+    height: #{$sliderSize / 2};;
     -webkit-touch-callout: none;
     -webkit-user-drag: none;
     -user-select: none;

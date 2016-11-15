@@ -93,12 +93,9 @@ export class InterfaceCube {
             };
 
             Slider.prototype.setPosition = function() {
-                this.x = Math.round(this.radius * Math.sin(this.target * Math.PI / 180)) + this.radius - this.knobRadius + 4;
-                this.y = Math.round(this.radius * -Math.cos(this.target * Math.PI / 180)) + this.radius - this.knobRadius + 4;
-                // this.$knob.css({
-                //     left: this.x,
-                //     top: this.y
-                // });
+                this.x = Math.round(this.radius * Math.sin(this.target * Math.PI / 180)) + this.radius - this.knobRadius + 0;
+                this.y = Math.round(this.radius * -Math.cos(this.target * Math.PI / 180)) + this.radius - this.knobRadius + 0;
+
                 this.$knob.style.left = this.x;
                 this.$knob.style.top = this.y;
             };
@@ -240,23 +237,58 @@ export class InterfaceCube {
                 if (after)
                     after.className.baseVal = "";
                 if (select)
-                    select.className.baseVal= "";
-
+                    select.className.baseVal = "";
 
                 if (exactPosition > exactPositionBefore) {
                     allStick[exactPosition - 1].classList.add('select');
 
                     let youngerBrother = exactPosition - 2;
-                    let olderBrother = exactPosition ;
+                    let olderBrother = exactPosition;
                     if (allStick[youngerBrother]) {
-                       allStick[youngerBrother].classList.add('before');
+                        allStick[youngerBrother].classList.add('before');
                     }
                     if (allStick[olderBrother]) {
-                       allStick[olderBrother].classList.add('after');
+                        allStick[olderBrother].classList.add('after');
                     }
                 }
 
-
+                // Color Selector
+                switch (true) {
+                    case(degree < 45):
+                        document.querySelector('#Selector g:first-child').classList.add('select');
+                        document.querySelector('#Selector g:nth-child(2)').classList.remove('select');
+                        break;
+                    case(degree >= 45 && degree <= 135):
+                        document.querySelector('#Selector g:first-child').classList.remove('select');
+                        document.querySelector('#Selector g:nth-child(2)').classList.add('select');
+                        document.querySelector('#Selector g:nth-child(3)').classList.remove('select');
+                        break;
+                    case(degree >= 135 && degree <= 180):
+                        document.querySelector('#Selector g:nth-child(2)').classList.remove('select');
+                        document.querySelector('#Selector g:nth-child(3)').classList.add('select');
+                        document.querySelector('#Selector g:nth-child(4)').classList.remove('select');
+                        break;
+                    case(degree >= 180 && degree <= 225):
+                        document.querySelector('#Selector g:nth-child(3)').classList.remove('select');
+                        document.querySelector('#Selector g:nth-child(4)').classList.add('select');
+                        document.querySelector('#Selector g:nth-child(5)').classList.remove('select');
+                        break;
+                    case(degree >= 225 && degree <= 315):
+                        document.querySelector('#Selector g:nth-child(4)').classList.remove('select');
+                        document.querySelector('#Selector g:nth-child(5)').classList.add('select');
+                        document.querySelector('#Selector g:nth-child(6)').classList.remove('select');
+                        break;
+                    case(degree >= 315 && degree < 357):
+                        document.querySelector('#Selector g:nth-child(5)').classList.remove('select');
+                        document.querySelector('#Selector g:nth-child(6)').classList.add('select');
+                        break;
+                    case(degree > 358):
+                        document.querySelector('#Selector g:first-child').classList.add('select');
+                        document.querySelector('#Selector g:nth-child(6)').classList.remove('select');
+                        break;
+                }
+                sticksColored = document.querySelectorAll('#stick_circle g.select').length;
+                stick = degree;
                 stick = degree;
             };
 
