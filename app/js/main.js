@@ -1,5 +1,5 @@
 import {DomManipulator} from './models/class.dommanipulator.js'
-import {Cube} from './models/class.cube.js'
+import {Fidget} from './fidget.js'
 
 window.$ = new DomManipulator();
-window.cube = new Cube()
+window.Fidget = new Fidget();

@@ -87,7 +87,6 @@ export class Cube {
 
             //debug
             window.model = model;
-
             //enable library for easy event listener
             let domEvents = new THREEx.DomEvents(this.camera, this.renderer.domElement);
 
@@ -195,10 +194,9 @@ export class Cube {
         // =======================================================================//
         this.animate()
         this.loadModel();
-        console.debug(this);
 
         //dom events handlers
-        window.addEventListener('resize', this.onWindowResize, false)
+        window.addEventListener('resize', () => this.onWindowResize(), false)
     }
 
     onWindowResize() {
@@ -208,7 +206,6 @@ export class Cube {
     }
 
     animate() {
-        //fiou dat bind && canvas animation
         window.requestAnimationFrame(this.animate.bind(this));
         this.render();
     }
@@ -220,9 +217,9 @@ export class Cube {
         //  let mesh2 = cubeBase.children.filter((m) => m.id === 36);
         if (this.group) {
             this.group.children.filter((m) => m.id === 28)[0].rotateY(Math.PI / 20);
-            this.group.children.filter((m) => m.id === 19)[0].rotateX(Math.PI / 20);
-            this.group.children.filter((m) => m.id === 22)[0].rotateX(Math.PI / 20);
-            this.group.children.filter((m) => m.id === 25)[0].rotateX(Math.PI / 20);
+            this.group.children.filter((m) => m.id === 26)[0].rotateX(Math.PI / 20);
+            this.group.children.filter((m) => m.id === 23)[0].rotateX(Math.PI / 20);
+            this.group.children.filter((m) => m.id === 20)[0].rotateX(Math.PI / 20);
         }
     }
 }
