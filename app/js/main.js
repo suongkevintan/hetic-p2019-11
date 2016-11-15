@@ -5,14 +5,12 @@
 import {loadData} from './loader-data.js'
 
 let data = new loadData('data/data.json', () => {
-        data = data.responseText;
-        data = JSON.parse(data);
-        const story = MyApp.templates.story(data);
-        document.querySelector('#story').innerHTML = (story);
-        launch();
-    }
-
-);
+    data = data.responseText;
+    data = JSON.parse(data);
+    const story = MyApp.templates.story(data);
+    document.querySelector('#story').innerHTML = (story);
+    launch();
+});
 
 
 function launch() {
@@ -33,6 +31,12 @@ function launch() {
             var sourcePicture = elem.getAttribute('data-src');
             document.querySelector(".revealMenu__imageContainer--picture").setAttribute("src", sourcePicture);
         });
+    });
+    
+    document.querySelector("#container_story").addEventListener('mousewheel', (e) => {
+        document.querySelector("#container_story").scrollLeft -= (e.deltaX * 20);
+        document.querySelector("#container_story").scrollRight -= (e.deltaX * 20);
+        document.querySelector("#container_story").scrollTop = 0;
     });
 
 }
