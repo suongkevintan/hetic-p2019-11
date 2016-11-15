@@ -1,12 +1,9 @@
 import {DomManipulator} from './models/class.dommanipulator.js'
 import {Fidget} from './fidget.js'
-import {InterfaceCube} from './models/class.interface_cube.js'
 
 window.$ = new DomManipulator();
 window.Fidget = new Fidget();
 
-let DetectPosSlider = new InterfaceCube();
-DetectPosSlider.DetectPosSlider();
 
 function MsgConsole() {
     if (!window.console) {
