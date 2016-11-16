@@ -1,19 +1,12 @@
-@import "_var.scss";
-@import "_general.scss";
-@import "_home-page.scss";
-@import "blocks/slider_story";
-@import "blocks/contact";
-@import "modules/all";
-// @import "blocks/menu";
-
-
-
 // Modules and Variables
+@import "_var";
+@import "_general";
 @import "modules/colors";
 @import "modules/animations";
-
+@import "modules/all";
+@import "_home-page.scss";
 // Partials
 @import "blocks/reset";
 @import "blocks/menu";
-
-// @import "slider/slide";
+@import "blocks/slider_story";
+@import "blocks/contact";

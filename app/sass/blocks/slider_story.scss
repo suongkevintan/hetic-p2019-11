@@ -8,7 +8,6 @@
     #container_slider--story {
         width: 40%;
         height: 100vh;
-        background: blue;
         overflow: hidden;
 
         .img {
@@ -115,7 +114,7 @@
             border-radius: 20px;
             opacity: 0.3;
             cursor: pointer;
-            z-index: 999;
+            z-index: 10;
         }
 
         #s1:hover,
@@ -182,11 +181,86 @@
             transition: all 0.3s ease-in-out;
         }
 
-        .slide img {
-            width: 25%;
-            height: auto;
-            float: left;
+        .hide_slider {
+          display: none;
+          transition: ease 2s;
         }
+
+        .slide1-img1 {
+          @include image('../images/chap1/1.jpg');
+          @include slide;
+
+        }
+        .slide1-img2 {
+          @include image('../images/chap1/2.jpg');
+          @include slide;
+        }
+        .slide1-img3 {
+          @include image('../images/chap1/3.jpg');
+          @include slide;
+        }
+        .slide1-img4 {
+          @include image('../images/chap1/4.jpg');
+          @include slide;
+        }
+
+        // Slider 2
+        .slide2-img1 {
+          @include image('../images/chap2/5.jpg');
+          @include slide;
+
+        }
+        .slide2-img2 {
+          @include image('../images/chap2/6.jpg');
+          @include slide;
+        }
+        .slide2-img3 {
+          @include image('../images/chap2/7.jpg');
+          @include slide;
+        }
+        .slide2-img4 {
+          @include image('../images/chap2/8.jpg');
+          @include slide;
+        }
+
+        // Slider 3
+        .slide3-img1 {
+          @include image('../images/chap3/9.jpg');
+          @include slide;
+
+        }
+        .slide3-img2 {
+          @include image('../images/chap3/10.jpg');
+          @include slide;
+        }
+        .slide3-img3 {
+          @include image('../images/chap3/11.jpg');
+          @include slide;
+        }
+        .slide3-img4 {
+          @include image('../images/chap3/12.jpg');
+          @include slide;
+        }
+
+        // Slider 4
+        .slide4-img1 {
+          @include image('../images/chap4/13.jpg');
+          @include slide;
+
+        }
+        .slide4-img2 {
+          @include image('../images/chap4/14.jpg');
+          @include slide;
+        }
+        .slide4-img3 {
+          @include image('../images/chap4/15.jpg');
+          @include slide;
+        }
+        .slide4-img4 {
+          @include image('../images/chap4/16.jpg');
+          @include slide;
+        }
+
     }
 
     #container_story {
@@ -197,7 +271,7 @@
         .story {
             display: flex;
             width: 800%;
-            height: 100vh;
+            height: 97vh;
 
             .story_intro {
                 display: flex;

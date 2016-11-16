@@ -45,5 +45,4 @@ function launchStoryMode() {
     //Gecko
     containerInvertScroll.addEventListener('DOMMouseScroll', () => new scrollHorizontal(window.event, containerInvertScroll))
 
-
 }

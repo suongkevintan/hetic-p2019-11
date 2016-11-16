@@ -90,10 +90,10 @@ gulp.task('browserSync', function() {
 // Compress imgs
 gulp.task('imagemin', function() {
      gulp.src('app/images/*').pipe(imagemin({progressive: true})).pipe(gulp.dest('app/dist/images'))
-     gulp.src('app/images/chap1/*').pipe(imagemin({progressive: true})).pipe(gulp.dest('app/dist/images'))
-     gulp.src('app/images/chap2/*').pipe(gulp.dest('app/dist/images'))
-     gulp.src('app/images/chap3/*').pipe(imagemin({progressive: true})).pipe(gulp.dest('app/dist/images'))
-     gulp.src('app/images/chap4/*').pipe(imagemin({progressive: true})).pipe(gulp.dest('app/dist/images'))
+     gulp.src('app/images/chap1/*').pipe(imagemin({progressive: true})).pipe(gulp.dest('app/dist/images/chap1'))
+     gulp.src('app/images/chap2/*').pipe(gulp.dest('app/dist/images/chap2'))
+     gulp.src('app/images/chap3/*').pipe(imagemin({progressive: true})).pipe(gulp.dest('app/dist/images/chap3'))
+     gulp.src('app/images/chap4/*').pipe(imagemin({progressive: true})).pipe(gulp.dest('app/dist/images/chap4'))
 })
 
 gulp.task("importModels", function() {
@@ -143,5 +143,6 @@ gulp.task('dev', [
     gulp.watch('app/sass/**/*.scss', ['sass']);
     gulp.watch('app/*.html', browserSync.reload);
     gulp.watch('app/js/**/*.js', ['scripts', 'webpack']);
+    gulp.watch('app/templates/*.hbs', ['templates'])
     // Other watchers
 });

@@ -1,0 +1,10 @@
+@mixin slide {
+  background-size:cover;
+  width: 25%;
+  height: 100vh;
+  float: left;
+  transition: ease 1s;
+}
+@mixin image($path) {
+  background:url($path) no-repeat center;
+}
