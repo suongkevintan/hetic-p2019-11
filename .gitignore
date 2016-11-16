@@ -2,5 +2,3 @@ node_modules
 dist/
 **/.DS_Store
 *.obj
-
-app/sass/blocks/slider_story.scss
