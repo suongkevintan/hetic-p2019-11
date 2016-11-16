@@ -89,9 +89,11 @@ gulp.task('browserSync', function() {
 
 // Compress imgs
 gulp.task('imagemin', function() {
-    return gulp.src('app/src/img/*').pipe(imagemin({
-        progressive: true
-    })).pipe(gulp.dest('app/dist/img'))
+     gulp.src('app/images/*').pipe(imagemin({progressive: true})).pipe(gulp.dest('app/dist/images'))
+     gulp.src('app/images/chap1/*').pipe(imagemin({progressive: true})).pipe(gulp.dest('app/dist/images'))
+     gulp.src('app/images/chap2/*').pipe(gulp.dest('app/dist/images'))
+     gulp.src('app/images/chap3/*').pipe(imagemin({progressive: true})).pipe(gulp.dest('app/dist/images'))
+     gulp.src('app/images/chap4/*').pipe(imagemin({progressive: true})).pipe(gulp.dest('app/dist/images'))
 })
 
 gulp.task("importModels", function() {
