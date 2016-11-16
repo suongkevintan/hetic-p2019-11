@@ -73,7 +73,10 @@ function launch() {
 
          document.querySelector("#container_story").scrollLeft -= (delta * 30);
 
-        console.log(event.deltaX, event.deltaY, event.deltaFactor);
+        console.log(event.deltaX, event.deltaY);
+        // let scrollPercent = 100 * $('#about').scrollTop() / ($(document).height() - $('#about').height());
+        // let scrollPercent = 100 * document.querySelector('.story').scrollLeft / (document.querySelector(document).client  )
+        // console.log(scrollPercent,'%');
 
     });
     document.querySelector("#container_story").addEventListener('DOMMouseScroll', function(event){
@@ -104,7 +107,7 @@ function launch() {
     if ( orgEvent.wheelDeltaX !== undefined ) { deltaX = -1*orgEvent.wheelDeltaX/120; }
 
     // Add event and delta to the front of the arguments
-    console.log(orgEvent)
+    // console.log(orgEvent)
     args.unshift(event, delta, deltaX, deltaY);
     event.preventDefault();
 
