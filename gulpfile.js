@@ -103,7 +103,7 @@ gulp.task("importModels", function() {
 });
 
 gulp.task('build', [
-    'importModels', 'templates', 'imagemin', 'style', 'scripts', 'vendor'
+    'importModels', 'templates', 'imagemin', 'style', 'scripts', 'vendor','importFonts'
 ], function() {
     var path = require('path');
     var root = path.resolve(__dirname);
@@ -145,4 +145,10 @@ gulp.task('dev', [
     gulp.watch('app/js/**/*.js', ['scripts', 'webpack']);
     gulp.watch('app/templates/*.hbs', ['templates'])
     // Other watchers
+});
+
+gulp.task("importFonts", function() {
+  return gulp
+  .src("./app/fonts/*")
+  .pipe(gulp.dest("./app/dist/fonts/"));
 });
