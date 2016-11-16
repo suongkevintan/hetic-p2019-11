@@ -149,6 +149,6 @@ gulp.task('dev', [
 
 gulp.task("importFonts", function() {
   return gulp
-  .src("./app/fonts/*")
-  .pipe(gulp.dest("./app/dist/fonts/"));
+  .src("./app/font/*")
+  .pipe(gulp.dest("./app/dist/font/"));
 });
