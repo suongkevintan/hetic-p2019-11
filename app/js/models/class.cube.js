@@ -57,6 +57,8 @@ export class Cube {
             for (let coord in positionSelected[props]) {
                 cubeBase[props][coord] = positionSelected[props][coord];
             }
+
+          //this.activeTheme = positionSelected;
         }
     }
     loadModel() {
@@ -138,6 +140,7 @@ export class Cube {
     }
 
     constructor() {
+        window.Cube = this
         this.themes = new CubeThemes(),
         this.positions = new CubePositions(),
         this.activeTheme = this.themes[0];

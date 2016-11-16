@@ -254,37 +254,49 @@ export class InterfaceCube {
 
                 // Color Selector
                 switch (true) {
-                    case(degree < 45):
+                    case(degree <= 45):
                         document.querySelector('#Selector g:first-child').classList.add('select');
                         document.querySelector('#Selector g:nth-child(2)').classList.remove('select');
+                        Cube.setPosition(Cube.group, Cube.positions[0])
                         break;
-                    case(degree >= 45 && degree <= 135):
+                    case(degree > 45 && degree <= 135):
                         document.querySelector('#Selector g:first-child').classList.remove('select');
                         document.querySelector('#Selector g:nth-child(2)').classList.add('select');
                         document.querySelector('#Selector g:nth-child(3)').classList.remove('select');
+                        Cube.setPosition(Cube.group, Cube.positions[1])
+
                         break;
-                    case(degree >= 135 && degree <= 180):
+                    case(degree > 135 && degree <= 180):
                         document.querySelector('#Selector g:nth-child(2)').classList.remove('select');
                         document.querySelector('#Selector g:nth-child(3)').classList.add('select');
                         document.querySelector('#Selector g:nth-child(4)').classList.remove('select');
+                        Cube.setPosition(Cube.group, Cube.positions[2])
+
                         break;
-                    case(degree >= 180 && degree <= 225):
+                    case(degree > 180 && degree <= 225):
                         document.querySelector('#Selector g:nth-child(3)').classList.remove('select');
                         document.querySelector('#Selector g:nth-child(4)').classList.add('select');
                         document.querySelector('#Selector g:nth-child(5)').classList.remove('select');
+                        Cube.setPosition(Cube.group, Cube.positions[3])
+
                         break;
-                    case(degree >= 225 && degree <= 315):
+                    case(degree > 225 && degree <= 315):
                         document.querySelector('#Selector g:nth-child(4)').classList.remove('select');
                         document.querySelector('#Selector g:nth-child(5)').classList.add('select');
                         document.querySelector('#Selector g:nth-child(6)').classList.remove('select');
+                        Cube.setPosition(Cube.group, Cube.positions[4])
+
                         break;
-                    case(degree >= 315 && degree < 357):
+                    case(degree > 315 && degree < 357):
                         document.querySelector('#Selector g:nth-child(5)').classList.remove('select');
                         document.querySelector('#Selector g:nth-child(6)').classList.add('select');
+                        Cube.setPosition(Cube.group, Cube.positions[0])
+
                         break;
                     case(degree > 358):
                         document.querySelector('#Selector g:first-child').classList.add('select');
                         document.querySelector('#Selector g:nth-child(6)').classList.remove('select');
+
                         break;
                 }
                 sticksColored = document.querySelectorAll('#stick_circle g.select').length;

@@ -3,19 +3,22 @@ export class CubePositions {
         this.list = [
             {
                 rotation: {
-                    x: 4.5,
-                    y: 0
+                    x: 4.75,
+                    y: -4.7
                 },
                 position: {
-                    x: -10,
-                    y: 0
+                    x: 0,
+                    y: -5
                 }
             }, {
                 rotation: {
-                    y: 1.5
+                  x: -4.5,
+                  y: -4.7
                 },
                 position: {
-                    x: 0
+                    x: 0,
+                  //  y : 50,
+                  //  z: -100
                 }
             }, {
                 rotation: {
@@ -49,7 +52,9 @@ export class CubePositions {
                 rotation: {},
                 position: {}
             }
-        ]return this.list;
+        ];
+
+        return this.list;
     }
 
 }
