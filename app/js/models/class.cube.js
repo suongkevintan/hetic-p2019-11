@@ -1,5 +1,5 @@
 import {CubeThemes} from './cube-assets/cube-themes.js'
-
+import {CubePositions} from './cube-assets/cube-positions.js'
 
 export class Cube {
 
@@ -52,6 +52,14 @@ export class Cube {
         })
     }
 
+    setPosition(cubeBase, positionSelected) {
+        for (let coord in positionSelected) {
+            console.log(coord);
+            cubeBase.rotation[coord] = positionSelected[coord];
+        }
+
+        return console.log(cubeBase.rotation);
+    }
     loadModel() {
 
         // =======================================================================//
@@ -64,7 +72,7 @@ export class Cube {
         //manager.onProgress = (item, loaded, total) => console.log(item, loaded, total);
         const onProgress = function(xhr) {
             if (xhr.lengthComputable) {
-                var percentComplete = xhr.loaded / xhr.total * 100;
+                let percentComplete = xhr.loaded / xhr.total * 100;
                 //console.log(Math.round(percentComplete, 2) + '% downloaded');
             }
         };
@@ -80,11 +88,11 @@ export class Cube {
         // =======================================================================//
         let model = loader.load('dist/models3D/model.obj', (model) => {
 
-            //insert loaded model
             model.position.y = -90;
-            model.position.x =-20;
+            model.position.x = -20;
             this.scene.add(model);
             this.setTheme(model, this.activeTheme)
+            this.setPosition(model, this.activePosition)
 
             //debug
             window.model = model;
@@ -132,7 +140,9 @@ export class Cube {
 
     constructor() {
         this.themes = new CubeThemes(),
+        this.positions = new CubePositions(),
         this.activeTheme = this.themes[0];
+        this.activePosition = this.positions[0];
 
         // this container will be injected to the dom with our canvas
         this.container = document.createElement('div');
@@ -178,7 +188,7 @@ export class Cube {
         directionalLight.position.set(1, 1, 0);
         this.scene.add(directionalLight);
 
-        var light = new THREE.HemisphereLight(0xffffbb, 0x080820, 0.5);
+        let light = new THREE.HemisphereLight(0xffffbb, 0x080820, 0.5);
         //this.scene.add(light);
 
         let camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 2000);
@@ -214,14 +224,14 @@ export class Cube {
 
     render() {
         //we need to work on theses ones
-        var color = new THREE.Color(0xffffff);
+        let color = new THREE.Color(0xffffff);
         this.renderer.render(this.scene, this.camera);
         //  let mesh2 = cubeBase.children.filter((m) => m.id === 36);
         if (this.group) {
-          //  this.group.children.filter((m) => m.id === 28)[0].rotateY(Math.PI / 20);
-          //  this.group.children.filter((m) => m.id === 26)[0].rotateX(Math.PI / 20);
-          //  this.group.children.filter((m) => m.id === 23)[0].rotateX(Math.PI / 20);
-          //  this.group.children.filter((m) => m.id === 20)[0].rotateX(Math.PI / 20);
+            //  this.group.children.filter((m) => m.id === 28)[0].rotateY(Math.PI / 20);
+            //  this.group.children.filter((m) => m.id === 26)[0].rotateX(Math.PI / 20);
+            //  this.group.children.filter((m) => m.id === 23)[0].rotateX(Math.PI / 20);
+            //  this.group.children.filter((m) => m.id === 20)[0].rotateX(Math.PI / 20);
         }
     }
 }
