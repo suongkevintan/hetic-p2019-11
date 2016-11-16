@@ -4,26 +4,30 @@ export class CubePositions {
             {
                 rotation: {
                     x: 4.75,
-                    y: -4.7
+                    y: -4.7,
+                    z: 0
                 },
                 position: {
                     x: 0,
-                    y: -5
+                    y: -5,
+                    z: 0
                 }
             }, {
                 rotation: {
-                  x: -4.5,
-                  y: -4.7
+                    x: 0,
+                    y: 1.5,
+                    z: 0
                 },
                 position: {
                     x: 0,
-                  //  y : 50,
-                  //  z: -100
+                    y: -90,
+                    z: -90
                 }
             }, {
                 rotation: {
                     y: 0,
-                    x: 1.5
+                    x: 1.5,
+                    z: 0
                 },
                 position: {
                     x: -17.5,
@@ -33,25 +37,27 @@ export class CubePositions {
             }, {
                 rotation: {
                     y: 4.75,
-                    x: 12.5
+                    x: 12.5,
+                    z: 0
                 },
                 position: {
                     x: -5,
                     y: -90,
                     z: -50
-
                 }
             }, {
-                rotation: {
-                    y: -9.5
-                },
-                position: {
-                    x: 10
-                }
-            }, {
-                rotation: {},
-                position: {}
+              rotation: {
+                  x: 0,
+                  y: 0,
+                  z: 0
+              },
+              position: {
+                  x: -20,
+                  y: -90,
+                  z: -50
+              }
             }
+
         ];
 
         return this.list;
