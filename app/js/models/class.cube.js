@@ -53,12 +53,11 @@ export class Cube {
     }
 
     setPosition(cubeBase, positionSelected) {
-        for (let coord in positionSelected) {
-            console.log(coord);
-            cubeBase.rotation[coord] = positionSelected[coord];
+        for (let props in positionSelected) {
+            for (let coord in positionSelected[props]) {
+                cubeBase[props][coord] = positionSelected[props][coord];
+            }
         }
-
-        return console.log(cubeBase.rotation);
     }
     loadModel() {
 
