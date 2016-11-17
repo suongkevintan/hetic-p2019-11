@@ -172,6 +172,7 @@ export class Cube {
         //set size
         renderer.setPixelRatio(window.devicePixelRatio);
         renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.domElement.id = "three";
 
         //ITS ALIIIIIIIIIVE
         this.container.appendChild(this.renderer.domElement);
@@ -232,7 +233,7 @@ export class Cube {
         if (this.group) {
             //  this.group.children.filter((m) => m.id === 28)[0].rotateY(Math.PI / 20);
             //  this.group.children.filter((m) => m.id === 26)[0].rotateX(Math.PI / 20);
-            //  this.group.children.filter((m) => m.id === 23)[0].rotateX(Math.PI / 20);
+             this.group.children.filter((m) => m.id === 25)[0].rotateX(Math.PI / 20);
             //  this.group.children.filter((m) => m.id === 20)[0].rotateX(Math.PI / 20);
         }
     }

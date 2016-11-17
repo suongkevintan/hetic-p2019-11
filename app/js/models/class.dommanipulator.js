@@ -13,13 +13,13 @@ export class DomManipulator {
     el(el) {
         return document.querySelector(el)
     }
-    class (el) {
+    class (elClass) {
         return document.getElementsByClassName(elClass)
     }
-    tag(el) {
+    tag(tag) {
         return document.getElementsByTagName(tag)
     }
-    all(el) {
-        return document.querySelectorAll(el)
+    all(els) {
+        return document.querySelectorAll(els)
     }
 }

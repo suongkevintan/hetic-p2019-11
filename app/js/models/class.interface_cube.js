@@ -1,4 +1,8 @@
 export class InterfaceCube {
+  constructor(){
+  }
+
+
     DetectPosSlider() {
         var Slider,
             j,

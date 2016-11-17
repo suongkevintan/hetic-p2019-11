@@ -46,16 +46,16 @@ export class CubePositions {
                     z: -50
                 }
             }, {
-              rotation: {
-                  x: 0,
-                  y: 0,
-                  z: 0
-              },
-              position: {
-                  x: -20,
-                  y: -90,
-                  z: -50
-              }
+                rotation: {
+                    x: 0,
+                    y: 0,
+                    z: 0
+                },
+                position: {
+                    x: -20,
+                    y: -90,
+                    z: -50
+                }
             }
 
         ];
