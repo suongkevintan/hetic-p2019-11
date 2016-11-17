@@ -4,11 +4,17 @@
   display: flex;
   flex-direction: row;
   top: 0;
+  flex-wrap: wrap;
+  justify-content: space-around;
 }
 .memberContainer__signature--drawn{
   width: 100%;
   svg{
     width: 80%;
+    @media only screen and (min-device-width : 375px) and (max-device-width : 667px) and (orientation : portrait) {
+      padding-top: 3em;
+      width: 68%;
+    }
   }
 }
 
@@ -33,13 +39,19 @@
   display: flex;
   position: relative;
   flex-grow: 1;
-  width: 20%;
+  min-width: 20%;
+  max-width: 15em;
   justify-content: center;
   align-items: center;
   &:hover{
     .memberContainer__image{
       opacity: 0.35;
     }
+  }
+  @media only screen and (min-device-width : 375px) and (max-device-width : 667px) and (orientation : portrait) {
+    display: block;
+    width: 100%;
+    max-width: 100%;
   }
 }
 .memberContainer__signature{
@@ -73,7 +85,12 @@
       fill:#181818;
     }
   }
+  @media only screen and (min-device-width : 375px) and (max-device-width : 667px) and (orientation : portrait) {
+    padding-bottom: 2em;
+  }
 }
+
+
 
 
 
@@ -87,6 +104,7 @@
   opacity: 0;
   transition: all .2s;
   img{
+    min-width: 100%;
     transform: translateX(-9rem) scale(1);
     animation: scale 7s linear 0s alternate running infinite forwards;
   }
