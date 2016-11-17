@@ -1,0 +1,8 @@
+@keyframes scale{
+  from{
+    transform: translateX(-9rem) scale(1);
+  }
+  to{
+    transform: translateX(-9rem) scale(1.15);
+  }
+}
