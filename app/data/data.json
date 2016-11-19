@@ -95,5 +95,20 @@
             "one": "The funds were used to pay the production of the fidget cube, but they also participated to finance the project, with 5 000$ of their own! They make the product manufactured all around the world, to deserve all their client. Some investors called Antsy labs to invest the Fidget Cube, but for now, they wish the cube to be 100% their.",
             "two": "Their top priority was also to produce a top quality fidget cube, even if it can take more time to deliver. The amount of work, due to the high number of clients and of course of products to craft, is new for Antsy labs, used to less massive projects, and they face off the difficulties to bring the fidget cube to life, and making it roll to our desk!"
         }
+    },
+    "home": {
+      "subtitle": "Say Hello To The",
+      "headtitle": "Magic Zen Cube",
+      "text": "An unusually addicting, high-quality desk toy designed to help you focus. Fuck bitch get money. What’s gucci my killa, what’s louis my nigga.",
+      "buttontext": "Meet the fidget cube"
+    },
+    "images": {
+      "hand_photo": "hand_fidget_photo"
+    },
+    "video": {
+      "idvideo": "dQw4w9WgXcQ",
+      "type": {
+          "youtube": "https://www.youtube.com/watch?v="
+      }
     }
 }

@@ -1,12 +1,11 @@
 // Modules and Variables
-@import "_font_import";
+@import "font/_font_import";
 @import "_var";
 @import "_general";
-@import "modules/colors";
 @import "modules/animations";
 @import "modules/all";
-@import "_home-page.scss";
 // Partials
+@import "blocks/_home-page";
 @import "blocks/reset";
 @import "blocks/menu";
 @import "blocks/slider_story";
