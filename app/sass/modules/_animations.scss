@@ -1,0 +1,23 @@
+@keyframes scale{
+  from{
+    transform: translateX(-9rem) scale(1);
+  }
+  to{
+    transform: translateX(-9rem) scale(1.15);
+  }
+}
+
+.hide_story {
+  display: none;
+  transition: opacity 2s ease;
+}
+
+.hide_home {
+  display: none;
+  transition: opacity 2s ease;
+}
+
+.hide_contact {
+  display: none;
+  transition: opacity 2s ease;
+}

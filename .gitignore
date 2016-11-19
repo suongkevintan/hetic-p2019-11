@@ -4,3 +4,4 @@ dist/
 *.obj
 app/fonts/
 app/images/
+bower_components

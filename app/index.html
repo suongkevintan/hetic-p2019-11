@@ -1,0 +1,71 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Fidget Cube</title>
+    <meta name="description" content="Fidget Cube is a desk toy for anyone who likes to fidget.">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" href="favicon.png" />
+    <link rel="stylesheet" href="dist/css/style.css">
+</head>
+
+<body>
+    <div class="container-menu_story">
+        <div class="menu">
+            <div class="menu__button unselectable">
+                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/" x="0px" y="0px" width="25px" height="30px" viewBox="0 0 19 9" style="enable-background:new 0 0 19 9;"
+                    xml:space="preserve"><rect class="menu__button-lineFirst" width="19" height="2"/><rect class="menu__button-lineSecond" y="7" width="19" height="2"/></svg>
+            </div>
+            <div class="menu__logo">
+                <a href="home-page.html"><img src="dist/images/fidget_logo.svg" alt="Logo du Fidget Cube"></a>
+            </div>
+            <div class="menu__buttonBuy unselectable">
+                <svg class="menu__buttonBuy--logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M97.9 49.5c0 49.2-.7 49.9-50.5 49.8-6.5 0-13.1.2-19.6-.1C12.6 98.5 3.1 89.9 2.6 75c-.7-16.8-.9-33.8 0-50.6C3.4 10 12 1.4 26.8.9 40.9.4 55.1.6 69.3.8 89 1 97.5 9.7 97.9 29.9c.2 6.6 0 13.1 0 19.6zm-10.7 1.3c.4-20.4-16.4-38.5-36.2-39-19.5-.5-37.4 17.1-37.9 37.5-.5 20.1 16.6 38.5 36.4 39.1 19.5.5 37.4-17.2 37.7-37.6z"/></svg>
+                <a href="https://www.kickstarter.com/projects/antsylabs/fidget-cube-a-vinyl-desk-toy">
+                    <p class="menu__buttonBuy--text">Buy The <span class="menu__buttonBuy--textBold">Fidget Cube</span></p>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="revealMenu">
+        <div class="revealMenu__list">
+            <a class="revealMenu__list--link home" data-src="dist/images/emilia-clarke-1.jpg" href="#">HOME</a>
+            <a class="revealMenu__list--link story" data-src="dist/images/emilia-clarke-1.jpg" href="#">STORY</a>
+            <a class="revealMenu__list--link credit" data-src="dist/images/emilia-clarke-2.jpg" href="#">CREDIT</a>
+            <a class="revealMenu__list--link kickstarter" data-src="dist/images/emilia-clarke-3.jpg" href="#">KICKSTARTER PROJECT</a>
+            <a class="revealMenu__list--link antsylab" data-src="dist/images/emilia-clarke-4.jpg" href="#">ANTSYLABS</a>
+        </div>
+        <div class="revealMenu__image">
+            <div class="revealMenu__imageContainer">
+                <img class="revealMenu__imageContainer--picture" src="dist/images/emilia-clarke-1.jpg" alt="">
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Particule part -->
+    <div id="particles-js"></div>
+    <!-- Particule part -->
+
+    <!-- Particule part -->
+    <div id="home"></div>
+    <!-- Particule part -->
+
+    <!-- Story Part -->
+    <div id="story" class="hide_story"></div>
+    <!-- Story Part -->
+
+    <!-- Contact page -->
+    <div id="contact" class="hide_contact"></div>
+    <!-- Contact page -->
+    <!--[if lt IE 8]>
+      <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+    <script src="dist/vendor/particles.min.js"></script>
+    <script src="vendor/handlebars.min.js"></script>
+    <script src="dist/js/templates.js"></script>
+    <script src="dist/js/bundle.js"></script>
+</body>
+
+</html>

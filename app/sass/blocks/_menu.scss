@@ -1,9 +1,14 @@
+.container-menu_story {
+  position: fixed;
+  width: 100%;
+  z-index: 1001;
+}
 // Style for the menu section
 .menu{
   display: flex;
   padding: 1rem 2rem;
   justify-content: space-between;
-  background-color: $background-color;
+  // background-color: $background-color;
   @media only screen and (min-device-width : 375px) and (max-device-width : 667px) and (orientation : portrait) {
     padding: 1rem 2rem;
   }
@@ -118,7 +123,7 @@
   transform: translateX(-2em);
   transition: all .3s;
   &.active{
-    z-index: 3;
+    z-index: 1000;
     opacity: 1;
     background-color: rgba(255,255,255,1);
     transform: translateX(0em)
