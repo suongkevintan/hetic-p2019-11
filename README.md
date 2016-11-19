@@ -25,7 +25,7 @@ $ npm install -d
 
 __2. Get the cube Model and import into the projet__
 
-- Get the cube model [here](https://mega.nz/#!adEzHKBb!ZYsav8C1OOiFG9Il6_0x_Ao84m9lT4LigKLZqtAGOag)
+- Get the cube model [here](https://mega.nz/#!nJUHwCob!GOyKQfDZ_tRwSAk37onWiJnVr3E6OUs6u6OE_Qc-sbU)
 - copy it at `./app/src/models3D/model.obj``
 ```sh
 $ gulp importModels
