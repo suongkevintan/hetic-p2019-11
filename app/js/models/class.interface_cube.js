@@ -300,7 +300,7 @@ export class InterfaceCube {
                     case(degree > 358):
                         document.querySelector('#Selector g:first-child').classList.add('select');
                         document.querySelector('#Selector g:nth-child(6)').classList.remove('select');
-                        Cube.setPosition(Cube.group, Cube.positions[0])
+                        Cube.setPosition(Cube.group, Cube.positions[6])
 
                         break;
                 }

@@ -12,48 +12,52 @@ export class Cube {
             return
 
         cubeBase.children.forEach((texture, index) => {
-
-            switch (texture.id) {
-                case 28:
+            switch (texture.name) {
+                case "roll_sphere":
                     //sphere + reflections
                     let cubeCamera = new window.THREEx.CubeCamera(texture);
                     this.scene.add(cubeCamera.object3d);
                     texture.material.envMap = cubeCamera.textureCube;
                     cubeCamera.update(this.renderer, this.scene);
                     break;
-                case 30:
+                case "gilde":
                     texture.material.color = themeSelected.colorSet.lightColor
                     break;
-                case 42:
+                case "Cube":
                     texture.material.color = themeSelected.colorSet.cube
                     break;
                     //need a glow
-                case 49:
+                case "breathe_1":
                     texture.material.color = {
                         r: 255 / 255,
                         g: 255 / 255,
                         b: 255 / 255
                     }
                     break;
-                case 19:
-                case 22:
-                case 25:
-                case 29:
-                case 31:
-                case 32:
-                case 35:
-                case 36:
-                case 37:
-                case 38:
-                case 39:
-                case 40:
-                case 41:
+                    //typo spoted
+                case "cyllindre2":
+                case "cylindre1_1":
+                case "flip":
+                case "spin_1":
+                case "spin3":
+                case "roll1":
+                case "roll3":
+                case "rollmiddle":
+
+                case "cylindre3_1":
+                case "cylindre4_1":
+                case "cylindre_middle_1":
+
                     texture.material.color = themeSelected.colorSet.mainColor
                     break;
 
                 default:
                     //to remove
-                    texture.material.color = themeSelected.colorSet.cube
+                    texture.material.color = {
+                        r: 255 / 255,
+                        g: 0 / 255,
+                        b: 0 / 255
+                    }
 
             }
         })
@@ -63,7 +67,7 @@ export class Cube {
     }
 
     setPosition(cubeBase, positionSelected, force) {
-
+        console.log(this.positions.indexOf(positionSelected));
         // dont render if no changes
         if (this.activePosition === positionSelected && !force)
             return
@@ -109,10 +113,8 @@ export class Cube {
             //debug
             window.model = model;
 
-
             // model.position.x = 35.379 *1;
             // model.position.y = 18.538 * -1
-
 
             //enable library for easy event listener
             const domEvents = new THREEx.DomEvents(this.camera, this.renderer.domElement);
@@ -218,7 +220,7 @@ export class Cube {
 
         const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 2000);
         this.camera = camera
-        this.camera.position.z = 500;
+        this.camera.position.z = 750;
         this.camera.position.x = 0;
         this.camera.position.y = 0;
         this.camera = camera;
@@ -253,7 +255,7 @@ export class Cube {
         this.renderer.render(this.scene, this.camera);
         //  let mesh2 = cubeBase.children.filter((m) => m.id === 36);
         if (this.group) {
-            //this.group.rotation.y += 0.02
+            //this.group.rotation.x += 0.06
         }
     }
 }
