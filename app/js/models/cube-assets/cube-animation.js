@@ -61,8 +61,8 @@ export class CubeAnimation {
                                 }
                                 else if(key ==='position'){
                                   console.log('p+');
-                                  c[key][prop] += 100;
-                                  s[key][prop] += 100
+                                  c[key][prop] += 1;
+                                  s[key][prop] += 1
                                 }
 
                                 this.end = false;
@@ -76,8 +76,8 @@ export class CubeAnimation {
                               }
                               else if(key ==='position'){
                                 console.log('p-');
-                                c[key][prop] -= 100;
-                                s[key][prop] -= 100
+                                c[key][prop] -= 1;
+                                s[key][prop] -= 1
                               }
 
 
