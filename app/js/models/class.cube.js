@@ -6,6 +6,8 @@ import {Detector} from './class.detector.js'
 export class Cube {
 
     setTheme(cubeBase, themeSelected, force) {
+
+        // dont render if no changes
         if (this.activeTheme === themeSelected && force !== true)
             return
 
@@ -56,38 +58,42 @@ export class Cube {
             }
         })
 
+        //update cube theme
         this.activeTheme = themeSelected
     }
 
     setPosition(cubeBase, positionSelected, force) {
+
+        // dont render if no changes
         if (this.activePosition === positionSelected && !force)
             return
-        let beginPosition = this.activePosition;
-        let animation = new CubeAnimation("animatePositionChange", {
+
+        const beginPosition = this.activePosition;
+        const animation = new CubeAnimation("animatePositionChange", {
             beginPosition: beginPosition,
             positionSelected: positionSelected
         });
 
+        //update cube position
         this.activePosition = positionSelected;
     }
+
     loadModel() {
 
         // =======================================================================//
         // .obj loader from threejs with his native method (onProgress, onerror)  //
         // =======================================================================//
 
-        let manager = new THREE.LoadingManager();
+        const manager = new THREE.LoadingManager();
 
         // on progress
-        //manager.onProgress = (item, loaded, total) => console.log(item, loaded, total);
         const onProgress = function(xhr) {
             if (xhr.lengthComputable) {
-                let percentComplete = xhr.loaded / xhr.total * 100;
+                const percentComplete = xhr.loaded / xhr.total * 100;
                 //console.log(Math.round(percentComplete, 2) + '% downloaded');
             }
         };
-
-        // on error
+        // on error callback
         const onError = function(xhr) {};
 
         //final constructor
@@ -102,10 +108,14 @@ export class Cube {
 
             //debug
             window.model = model;
+
+
             // model.position.x = 35.379 *1;
             // model.position.y = 18.538 * -1
+
+
             //enable library for easy event listener
-            let domEvents = new THREEx.DomEvents(this.camera, this.renderer.domElement);
+            const domEvents = new THREEx.DomEvents(this.camera, this.renderer.domElement);
 
             //bind our components
             model.children.forEach((mesh, index) => {
@@ -143,7 +153,7 @@ export class Cube {
             //send new model to the Cube Class
             this.group = model;
 
-            this.setTheme(model, this.activeTheme,true)
+            this.setTheme(model, this.activeTheme, true)
             this.setPosition(model, this.activePosition, false)
 
         }, onProgress, onError);
@@ -168,7 +178,7 @@ export class Cube {
         // =====================//
         let scene = new THREE.Scene()
         this.scene = scene
-        let renderer = window.Detector.webgl
+        const renderer = window.Detector.webgl
             ? new THREE.WebGLRenderer({
                 //antialias : better shape
                 antialias: false,
@@ -203,10 +213,10 @@ export class Cube {
         directionalLight.position.set(1, 1, 0);
         this.scene.add(directionalLight);
 
-        let light = new THREE.HemisphereLight(0xffffbb, 0x080820, 0.5);
+        const light = new THREE.HemisphereLight(0xffffbb, 0x080820, 0.5);
         //this.scene.add(light);
 
-        let camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 2000);
+        const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 2000);
         this.camera = camera
         this.camera.position.z = 500;
         this.camera.position.x = 0;
@@ -214,7 +224,7 @@ export class Cube {
         this.camera = camera;
 
         //orbit controls for debug
-        let controls = new THREE.OrbitControls(this.camera, this.renderer.domElement);
+        const controls = new THREE.OrbitControls(this.camera, this.renderer.domElement);
 
         // =======================================================================//
         // Let's get stared  (ha!)                                                //
@@ -239,12 +249,11 @@ export class Cube {
 
     render() {
         //we need to work on theses ones
-        let color = new THREE.Color(0xffffff);
+        const color = new THREE.Color(0xffffff);
         this.renderer.render(this.scene, this.camera);
         //  let mesh2 = cubeBase.children.filter((m) => m.id === 36);
         if (this.group) {
             //this.group.rotation.y += 0.02
-            //     this.group.children.filter((m) => m.id === 65)[0].rotateX(Math.PI / 20);
         }
     }
 }

@@ -1,28 +1,20 @@
 export class CubeAnimation {
     constructor(method, args) {
         this.args = args
+        //custom method call via parameters
         this[method]()
-        this.active = true;
-        this.end = false;
 
-        window.stop = () => {
-            let animation = this.animation;
-            window.cancelAnimationFrame(animation);
-        }
+        this.end = false;
     }
 
     animatePositionChange() {
-        //this.state = (JSON.parse(JSON.stringify(this.args.beginPosition)));
         this.state = this.args.beginPosition;
+
+        //catch in variables to stop it later
         this.animation = window.requestAnimationFrame(this.animatePositionChange.bind(this));
         window.animation = this.animation;
 
         return this.renderPosition()
-    }
-
-    animate(callback, options) {
-        window.requestAnimationFrame(this.animate.bind(this));
-        callback(options);
     }
 
     renderPosition(move) {
@@ -31,14 +23,12 @@ export class CubeAnimation {
             console.log("delete aniamtion");
             let animation = this.animation;
             window.cancelAnimationFrame(animation);
-
             return
         } else {
 
-            //  console.clear();
-            let b = this.args.beginPosition;
+        //    let b = this.args.beginPosition;
             let c = Cube.group;
-            let t = this.args.positionSelected;
+            const t = this.args.positionSelected;
             let s = this.state
 
             // console.debug("begin ", b)
@@ -81,7 +71,6 @@ export class CubeAnimation {
                             }
                             if (key === 'rotation')
                                 s[key][prop] = parseFloat(parseFloat(s[key][prop]).toFixed(1))
-
                         }
                     }
                 }
@@ -89,16 +78,16 @@ export class CubeAnimation {
 
             console.log(s);
             if ((t.rotation.x === s.rotation.x && t.rotation.y === s.rotation.y && t.rotation.z === s.rotation.z)
-             // && (t.position.x === s.position.x && t.position.y === s.position.y && t.position.z === s.position.z)
-           ) {
+            // && (t.position.x === s.position.x && t.position.y === s.position.y && t.position.z === s.position.z)
+            ) {
                 this.end = true
 
                 console.log(s);
                 console.log(t);
-            } else
-                console.log('pas fini');
-
+            } else {
+                // still rendering position
             }
+        }
 
     }
 }
