@@ -1,5 +1,6 @@
 import {CubeThemes} from './cube-assets/cube-themes.js'
 import {CubePositions} from './cube-assets/cube-positions.js'
+import {CubeAnimation} from './cube-assets/cube-animation.js'
 
 export class Cube {
 
@@ -50,16 +51,23 @@ export class Cube {
 
             }
         })
+
+        this.activeTheme = themeSelected
     }
 
     setPosition(cubeBase, positionSelected) {
-        for (let props in positionSelected) {
-            for (let coord in positionSelected[props]) {
-                cubeBase[props][coord] = positionSelected[props][coord];
-            }
+    if(this.activePosition === positionSelected)
+        return
+        let beginPosition = this.activePosition;
+        // for (let props in positionSelected) {
+        //     for (let coord in positionSelected[props]) {
+        //         cubeBase[props][coord] = positionSelected[props][coord];
+        //     }
 
-          //this.activeTheme = positionSelected;
-        }
+        //}
+        let test = new CubeAnimation("animatePositionChange" ,{ beginPosition : beginPosition, positionSelected:positionSelected});
+        this.activePosition = positionSelected;
+
     }
     loadModel() {
 
@@ -92,8 +100,6 @@ export class Cube {
             model.position.y = -90;
             model.position.x = -20;
             this.scene.add(model);
-            this.setTheme(model, this.activeTheme)
-            this.setPosition(model, this.activePosition)
 
             //debug
             window.model = model;
@@ -135,6 +141,9 @@ export class Cube {
 
             //send new model to the Cube Class
             this.group = model;
+
+            this.setTheme(model, this.activeTheme)
+            this.setPosition(model, this.activePosition)
 
         }, onProgress, onError);
     }
@@ -210,6 +219,7 @@ export class Cube {
         this.animate()
         this.loadModel();
 
+
         //dom events handlers
         window.addEventListener('resize', () => this.onWindowResize(), false)
     }
@@ -233,7 +243,7 @@ export class Cube {
         if (this.group) {
             //  this.group.children.filter((m) => m.id === 28)[0].rotateY(Math.PI / 20);
             //  this.group.children.filter((m) => m.id === 26)[0].rotateX(Math.PI / 20);
-             this.group.children.filter((m) => m.id === 25)[0].rotateX(Math.PI / 20);
+            //this.group.children.filter((m) => m.id === 25)[0].rotateX(Math.PI / 20);
             //  this.group.children.filter((m) => m.id === 20)[0].rotateX(Math.PI / 20);
         }
     }

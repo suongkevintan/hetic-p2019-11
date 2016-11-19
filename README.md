@@ -5,7 +5,7 @@
 - Kévin Tan  -- [@FrostOne](https://github.com/FrostOne)
 - Corentin Marzin  -- [@CMarzin](https://github.com/CMarzin)
 - Michael Zaccardi
-- Adiren Zaganelli -- [@adrienZ](https://github.com/adrienZ)
+- Adrien Zaganelli -- [@adrienZ](https://github.com/adrienZ)
 - Emmanuel Naïm -- [@NaiemHapar](https://github.com/NaiemHapar)
 
 >__The [Fidget cube](https://www.kickstarter.com/projects/antsylabs/fidget-cube-a-vinyl-desk-toy) is an unusually addicting, high-quality desk toy designed to help you focus. Fidget at work, in class, and at home in style.__
@@ -38,10 +38,10 @@ $ gulp build && gulp dev
 ```
 
 ### Features and Tech stacks:
-  - webGl/Three.js
-  - Svg/circular slider
-  - Sass/es6
-  - [Gulp]/Webpack
+  - webGL & Three.js
+  - Svg & circular slider
+  - Sass & es6
+  - Gulp & Webpack
   - Flexbox
 
 ### Todos
