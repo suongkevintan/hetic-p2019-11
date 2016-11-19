@@ -19,12 +19,10 @@ export class Fidget {
             Object.keys(colorObj).forEach(function(rgb) {
                 colorObj[rgb] = colorObj[rgb] * 255;
             });
-
             const color = `rgb( ${colorObj.r}, ${colorObj.g}, ${colorObj.b}  )`;
             domString += (`<li>
-                                <a href="#" class="cubeUi__themes--item" data-index="${index}">
-                                    <div class="round" style="background:${color}"></div>
-                                      <span>${theme.name}</span>
+                                <a href="#" class="cubeUi__themes--item " data-index="${index}">
+                                    <div class="round" style="background:${color}"></div><span>${theme.name}</span>
                                 </a>
                           </li>`)
 
@@ -32,11 +30,19 @@ export class Fidget {
         })
 
         $.el('.cubeUi__themes--list').innerHTML += domNode.join('');
-        [].forEach.call($.class ('cubeUi__themes--item'), (themeBtn) => {
+        const items = $.class('cubeUi__themes--item');
+
+        [].forEach.call(items, (themeBtn) => {
             themeBtn.addEventListener('click', (e) => {
+                //ui change
                 e.preventDefault()
+                let active = document.querySelector('.cubeUi__themes--item.active')
+                if(active) active.classList.remove('active')
+                themeBtn.classList.add('active')
+
+                //call cube method
                 const index = themeBtn.getAttribute('data-index');
-                let cube = this.cube;
+                const cube = this.cube;
                 cube.setTheme(cube.group, cube.themes[index]);
             })
         })
