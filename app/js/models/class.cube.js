@@ -80,6 +80,7 @@ export class Cube {
 
         //update cube position
         this.activePosition = positionSelected;
+        document.getElementsByClassName('cubeUi__face--name')[0].innerHTML = positionSelected.name
     }
 
     loadModel() {
@@ -128,7 +129,7 @@ export class Cube {
                     console.info(event.target.name, event.target.id, mesh);
 
                     switch (event.target.id) {
-                        case 32:
+                        case 45:
                             // ===================//
                             // Switch Interruptor //
                             // ==================//

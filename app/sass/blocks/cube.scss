@@ -54,7 +54,16 @@ body{
 .cubeUi__face{
   text-align:center;
   margin:auto;
+  text-transform:uppercase;
+  z-index: -10000;
+  opacity:0.04;
+  position: absolute;
+  width: 100%;
+  letter-spacing:-1rem;
+  font-size:15rem;
+  font-family:sans-serif
 }
+
 
 
 
