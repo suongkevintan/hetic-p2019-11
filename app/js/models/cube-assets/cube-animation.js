@@ -10,7 +10,7 @@ export class CubeAnimation {
             return console.debug('cannot overide animation')
 
         this[method]()
-        console.info(this.id ' init animation');
+        console.info(this.id + ' init animation');
         this.end = false;
     }
 
@@ -83,6 +83,7 @@ export class CubeAnimation {
 
                                 this.end = false;
                             }
+                            if(key === 'rotation')
                             s[key][prop] = parseFloat(parseFloat(s[key][prop]).toFixed(1))
                         }
                     }
@@ -95,7 +96,8 @@ export class CubeAnimation {
 
             } else {
                 // still rendering position
-                this.calls++ if (this.calls > 14) {
+                this.calls++;
+                if (this.calls > 14) {
                     if (s.rotation.x === 3 && s.rotation.y === 0.1)
                         console.infos("stop animation to fix");
                     this.end = true;
