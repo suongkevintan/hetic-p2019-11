@@ -3,13 +3,15 @@ import {interfaceBuilder} from './models/class.interface-builder.js'
 
 export class Fidget {
     constructor() {
-      this.cube = new Cube()
+        this.cube = new Cube()
         this.interfaceBuilder = new interfaceBuilder(window.Detector.isMobile)
         this.renderThemes();
     }
 
     renderThemes() {
-
+        const showLabel = (window.Detector.isMobile)
+            ? "showLabel"
+            : ""
         const domNode = this.cube.themes.map((theme, index) => {
             let domString = '';
             let colorObj = (JSON.parse(JSON.stringify(theme.colorSet.mainColor)));
@@ -19,7 +21,7 @@ export class Fidget {
             const color = `rgb( ${colorObj.r}, ${colorObj.g}, ${colorObj.b}  )`;
             domString += (`<li>
                                 <a href="#" class="cubeUi__themes--item " data-index="${index}">
-                                    <div class="round" style="background:${color}"></div><span>${theme.name}</span>
+                                    <div class="round" style="background:${color}"></div><span class="${showLabel}">${theme.name}</span>
                                 </a>
                           </li>`)
 

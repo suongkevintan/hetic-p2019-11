@@ -67,6 +67,8 @@ $sliderSize : 400px;
     position: absolute;
     width: $sliderSize;
     height: $sliderSize;
+    pointer-events: auto;
+
     // border: 1px solid transparent;
     top: 50%;
     margin-top: -#{$sliderSize / 2};
@@ -115,6 +117,7 @@ $sliderSize : 400px;
 .radial-slider .knob {
     position: absolute;
     top: -10px;
+
     left: 140px;
     width: 30px;
     height: 30px;

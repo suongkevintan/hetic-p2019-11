@@ -4,11 +4,12 @@ import {InterfaceCube} from './class.interface_cube.js'
 export class interfaceBuilder {
     constructor(isMobile) {
         isMobile = Detector.isMobile;
-        if (isMobile === null) {
+        if (isMobile === null)
             this.loadSlider();
-        }
+        else
+            this.loadSliderMobile();
 
-    }
+        }
 
     loadSlider() {
         let data = new loadData('data/slider.json', () => {
@@ -23,8 +24,21 @@ export class interfaceBuilder {
             document.body.appendChild(this.container);
             //BIND DOM
             Fidget.interface = new InterfaceCube();
-
         });
+    }
+    loadSliderMobile() {
+        // let data = new loadData(null, () => {
+        //
+            const slider = MyApp.templates.slider_mobile();
+
+            //DESKTOP SLIDER
+            this.container = document.createElement('div');
+            this.container.className = "cubeUI--mobile";
+            this.container.innerHTML = slider;
+            document.body.appendChild(this.container);
+        //     //BIND DOM
+        //     Fidget.interface = new InterfaceCube();
+        // });
 
     }
 

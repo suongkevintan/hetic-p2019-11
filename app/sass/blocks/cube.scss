@@ -5,6 +5,19 @@ body{
 }
 .cubeUI{
   //z-index:-1;
+  pointer-events: none;
+
+}
+.cubeUI--mobile{
+  //z-index:-1;
+  pointer-events: none;
+  position: absolute;
+  bottom: 200px;
+  transform: scale(2);
+  left:35%;
+  //right: 0;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 #three{
@@ -117,5 +130,8 @@ body{
     display:inline-block;
     text-decoration:none;
     margin-left: 0.5rem;
+    &.showLabel{
+      opacity : 1!important;
+    }
   }
 }
