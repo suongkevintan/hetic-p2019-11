@@ -30,9 +30,9 @@ let data = new loadData('data/data.json', () => {
     const story   = MyApp.templates.story(data);
     const contact = MyApp.templates.contact(data);
     // Insert information in DOM
-    $.el('#home').innerHTML = (home);
-    $.el('#story').innerHTML = (story);
-    $.el('#contact').innerHTML = (contact);
+    $.el('#container_page--home').innerHTML = (home);
+    $.el('#container_page--story').innerHTML = (story);
+    $.el('#container_page--contact').innerHTML = (contact);
     // launchScrollConverter();
 });
 

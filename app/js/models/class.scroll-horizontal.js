@@ -44,8 +44,12 @@ export class scrollHorizontal {
         domNode.scrollLeft -= (delta * 30);
 
         // Percentage scroll to change sliders
+        console.log(document.querySelector('.story').clientWidth);
+
         let scrollPercent = 100 * document.querySelector('#container_story').scrollLeft / (document.documentElement.clientWidth - document.querySelector('.story').clientWidth);
         scrollPercent = Math.round(-scrollPercent);
+
+        console.log(scrollPercent);
 
         const slider1 = document.querySelector('.slider1');
         const slider2 = document.querySelector('.slider2');

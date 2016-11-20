@@ -24,25 +24,25 @@ export class AnimationInterface {
 
     // menu show page
     const home = $.el('.home');
-    const story = $.el('.story');
+    const story = $.el('.story_page');
     const credit = $.el('.credit');
 
     home.addEventListener('click', () => {
-      $.el('#home').classList.remove('hide_home');
-      $.el('#story').classList.add('hide_story');
-      $.el('#contact').classList.add('hide_contact');
+      $.el('#container_page--home').classList.remove('hide_home');
+      $.el('#container_page--story').classList.add('hide_story');
+      $.el('#container_page--contact').classList.add('hide_contact');
     });
 
     story.addEventListener('click', () => {
-      $.el('#story').classList.remove('hide_story');
-      $.el('#home').classList.add('hide_home');
-      $.el('#contact').classList.add('hide_contact');
+      $.el('#container_page--story').classList.remove('hide_story');
+      $.el('#container_page--home').classList.add('hide_home');
+      $.el('#container_page--contact').classList.add('hide_contact');
     });
 
     credit.addEventListener('click', () => {
-      $.el('#contact').classList.remove('hide_contact');
-      $.el('#home').classList.add('hide_home');
-      $.el('#story').classList.add('hide_story');
+      $.el('#container_page--contact').classList.remove('hide_contact');
+      $.el('#container_page--home').classList.add('hide_home');
+      $.el('#container_page--story').classList.add('hide_story');
     });
 
   }
