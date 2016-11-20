@@ -67,7 +67,6 @@ export class Cube {
     }
 
     setPosition(cubeBase, positionSelected, force) {
-        console.log(this.positions.indexOf(positionSelected));
         // dont render if no changes
         if (this.activePosition === positionSelected && !force)
             return
@@ -171,6 +170,8 @@ export class Cube {
         this.activeTheme = this.themes[0];
         this.activePosition = this.positions[0];
 
+
+        window.cubeAnimationState = false
         // this container will be injected to the dom with our canvas
         this.container = document.createElement('div');
         document.body.appendChild(this.container);

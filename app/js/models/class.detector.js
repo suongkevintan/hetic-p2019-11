@@ -36,7 +36,9 @@ export class Detector {
 
                 if (!this.webgl) {
 
-                    element.innerHTML = window.WebGLRenderingContext ? ['Your graphics card does not seem to support <a href="http://khronos.org/webgl/wiki/Getting_a_WebGL_Implementation" style="color:#000">WebGL</a>.<br />', 'Find out how to get it <a href="http://get.webgl.org/" style="color:#000">here</a>.'].join('\n') : ['Your browser does not seem to support <a href="http://khronos.org/webgl/wiki/Getting_a_WebGL_Implementation" style="color:#000">WebGL</a>.<br/>', 'Find out how to get it <a href="http://get.webgl.org/" style="color:#000">here</a>.'].join('\n');
+                    element.innerHTML = window.WebGLRenderingContext
+                        ? ['Your graphics card does not seem to support <a href="http://khronos.org/webgl/wiki/Getting_a_WebGL_Implementation" style="color:#000">WebGL</a>.<br />', 'Find out how to get it <a href="http://get.webgl.org/" style="color:#000">here</a>.'].join('\n')
+                        : ['Your browser does not seem to support <a href="http://khronos.org/webgl/wiki/Getting_a_WebGL_Implementation" style="color:#000">WebGL</a>.<br/>', 'Find out how to get it <a href="http://get.webgl.org/" style="color:#000">here</a>.'].join('\n');
 
                 }
 
@@ -52,12 +54,12 @@ export class Detector {
 
                 parameters = parameters || {};
 
-                parent = parameters.parent !== undefined ?
-                    parameters.parent :
-                    document.body;
-                id = parameters.id !== undefined ?
-                    parameters.id :
-                    'oldie';
+                parent = parameters.parent !== undefined
+                    ? parameters.parent
+                    : document.body;
+                id = parameters.id !== undefined
+                    ? parameters.id
+                    : 'oldie';
 
                 element = Detector.getWebGLErrorMessage();
                 element.id = id;
@@ -68,21 +70,13 @@ export class Detector {
 
         };
 
-          navigator.vibrate = navigator.vibrate = navigator.vibrate || navigator.webkitVibrate || navigator.mozVibrate || navigator.msVibrate
+        navigator.vibrate = navigator.vibrate = navigator.vibrate || navigator.webkitVibrate || navigator.mozVibrate || navigator.msVibrate
 
-          if (	navigator.vibrate && features.isMobile) {
+        if (navigator.vibrate && features.isMobile)
             features.vibrate = true;
-            // vibration API supported
-            alert('vibrate')
-          //  navigator.vibrate([500, 300, 100]);
-
-          }
-          else {
+        else
             features.vibrate = false;
 
-            console.log('no vibrate');
-          }
-
-          return features;
+        return features;
     }
 }
