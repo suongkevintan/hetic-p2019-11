@@ -166,70 +166,21 @@ export class Cube {
         this.enableVibration = window.Detector.vibrate;
 
         window.Cube = this
-        this.themes = new CubeThemes(),
-        this.positions = new CubePositions(),
-        this.activeTheme = this.themes[0];
-        this.activePosition = this.positions[0];
+        this.themes = new CubeThemes()
+        this.activeTheme = this.themes[0]
 
+        this.positions = new CubePositions()
+        this.activePosition = this.positions[0]
 
         window.cubeAnimationState = false
-        // this container will be injected to the dom with our canvas
-        this.container = document.createElement('div');
-        document.body.appendChild(this.container);
 
-        // ======================//
-        // Init Three.js Canvas //
-        // =====================//
-        let scene = new THREE.Scene()
-        this.scene = scene
-        const renderer = window.Detector.webgl
-            ? new THREE.WebGLRenderer({
-                //antialias : better shape
-                antialias: false,
-                //transparent background
-                alpha: true
-            })
-            : new THREE.CanvasRenderer();
+        this.renderScene()
+        this.setLights()
+        this.setCamera();
 
-        if (Detector.isMobile) {
-            //alert('mobile')
-        }
-        this.renderer = renderer
-        //set size
-        renderer.setPixelRatio(window.devicePixelRatio);
-        renderer.setSize(window.innerWidth, window.innerHeight);
-        renderer.domElement.id = "three";
-
-        //ITS ALIIIIIIIIIVE
-        this.container.appendChild(this.renderer.domElement);
-
-        // =======================================================================//
-        // Lights and this.camera                                                      //
-        // =======================================================================//
-
-        var directionalLight = new THREE.DirectionalLight(0xffffff, 1);
-        directionalLight.position.set(0, 0, 1);
-        this.scene.add(directionalLight);
-        var directionalLight = new THREE.DirectionalLight(0xffffff, 1);
-        directionalLight.position.set(-1, 0, -1);
-        this.scene.add(directionalLight);
-        var directionalLight = new THREE.DirectionalLight(0xffffff, 1);
-        directionalLight.position.set(1, 1, 0);
-        this.scene.add(directionalLight);
-
-        const light = new THREE.HemisphereLight(0xffffbb, 0x080820, 0.5);
-        //this.scene.add(light);
-
-        const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 2000);
-        this.camera = camera
-        this.camera.position.z = 750;
-        this.camera.position.x = 0;
-        this.camera.position.y = 0;
-        this.camera = camera;
-
-        //orbit controls for debug
-        const controls = new THREE.OrbitControls(this.camera, this.renderer.domElement);
-
+        if (window.Detector.isMobile){
+            const controls = new THREE.OrbitControls(this.camera, this.renderer.domElement);
+          }
         // =======================================================================//
         // Let's get stared  (ha!)                                                //
         // =======================================================================//
@@ -253,11 +204,71 @@ export class Cube {
 
     render() {
         //we need to work on theses ones
-        const color = new THREE.Color(0xffffff);
+        // const color = new THREE.Color(0xffffff);
         this.renderer.render(this.scene, this.camera);
         //  let mesh2 = cubeBase.children.filter((m) => m.id === 36);
         if (this.group) {
             //this.group.rotation.x += 0.06
         }
     }
+
+    setLights() {
+        // =======================================================================//
+        // Lights and this.camera                                                      //
+        // =======================================================================//
+
+        var directionalLight = new THREE.DirectionalLight(0xffffff, 1);
+        directionalLight.position.set(0, 0, 1);
+        this.scene.add(directionalLight);
+        var directionalLight = new THREE.DirectionalLight(0xffffff, 1);
+        directionalLight.position.set(-1, 0, -1);
+        this.scene.add(directionalLight);
+        var directionalLight = new THREE.DirectionalLight(0xffffff, 1);
+        directionalLight.position.set(1, 1, 0);
+        this.scene.add(directionalLight);
+
+        const light = new THREE.HemisphereLight(0xffffbb, 0x080820, 0.5);
+        //this.scene.add(light);
+
+    }
+
+    setCamera() {
+        const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 2000);
+        this.camera = camera
+        this.camera.position.z = 750;
+        this.camera.position.x = 0;
+        this.camera.position.y = 0;
+        this.camera = camera;
+    }
+
+    renderScene() {
+        // this container will be injected to the dom with our canvas
+        this.container = document.createElement('div');
+        document.body.appendChild(this.container);
+
+        // ======================//
+        // Init Three.js Canvas //
+        // =====================//
+        let scene = new THREE.Scene()
+        this.scene = scene
+
+        const renderer = window.Detector.webgl
+            ? new THREE.WebGLRenderer({
+                //antialias : better shape
+                antialias: false,
+                //transparent background
+                alpha: true
+            })
+            : new THREE.CanvasRenderer();
+
+        this.renderer = renderer
+        //set size
+        renderer.setPixelRatio(window.devicePixelRatio);
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.domElement.id = "three";
+
+        //ITS ALIIIIIIIIIVE
+        this.container.appendChild(this.renderer.domElement);
+    }
+
 }

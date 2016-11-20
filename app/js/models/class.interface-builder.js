@@ -29,13 +29,15 @@ export class interfaceBuilder {
     loadSliderMobile() {
         // let data = new loadData(null, () => {
         //
-            const slider = MyApp.templates.slider_mobile();
+      
 
-            //DESKTOP SLIDER
-            this.container = document.createElement('div');
-            this.container.className = "cubeUI--mobile";
-            this.container.innerHTML = slider;
-            document.body.appendChild(this.container);
+        const slider = MyApp.templates.slider_mobile();
+
+        //DESKTOP SLIDER
+        this.container = document.createElement('div');
+        this.container.className = "cubeUI--mobile";
+        this.container.innerHTML = slider;
+        document.body.appendChild(this.container);
         //     //BIND DOM
         //     Fidget.interface = new InterfaceCube();
         // });
