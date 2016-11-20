@@ -80,7 +80,6 @@ export class Cube {
 
         //update cube position
         this.activePosition = positionSelected;
-        document.getElementsByClassName('cubeUi__face--name')[0].innerHTML = positionSelected.name
     }
 
     loadModel() {
