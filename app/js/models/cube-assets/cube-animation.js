@@ -23,7 +23,7 @@ export class CubeAnimation {
             console.log("delete aniamtion");
             let animation = this.animation;
             window.cancelAnimationFrame(animation);
-            return document.getElementsByClassName('cubeUi__face--name')[0].innerHTML = positionSelected.name
+            return document.getElementsByClassName('cubeUi__face--name')[0].innerHTML = this.args.positionSelected.name
 
         } else {
 
