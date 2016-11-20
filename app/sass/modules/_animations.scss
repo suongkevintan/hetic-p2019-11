@@ -7,59 +7,23 @@
         transform: translateX(-9rem) scale(1.15);
     }
 }
-@mixin hide_page {
-    display: none;
-    transition: 2s ease;
-}
+
 
 #container_page--home {
-    &.hide_story {
-        @include hide_page;
-    }
-
-    &.hide_home {
-        @include hide_page;
-    }
-
-    &.hide_contact {
-        @include hide_page;
-    }
+    @include hide_page;
 }
 
 #container_page--story {
-    &.hide_story {
-        @include hide_page;
-    }
-
-    &.hide_home {
-        @include hide_page;
-    }
-
-    &.hide_contact {
-        @include hide_page;
-    }
+    @include hide_page;
 }
 
 #container_page--contact {
-    &.hide_story {
-        @include hide_page;
-    }
-
-    &.hide_home {
-        @include hide_page;
-    }
-
-    &.hide_contact {
-        @include hide_page;
-    }
+    @include hide_page;
 }
-@keyframes fade {
-    0%,
-    100% {
-        opacity: 0;
-    }
 
-    50% {
-        opacity: 1;
-    }
+&.fadeIn {
+  @include fadeIn;
+}
+&.fadeOut {
+  @include fadeOut;
 }

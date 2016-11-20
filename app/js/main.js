@@ -33,7 +33,6 @@ let data = new loadData('data/data.json', () => {
     $.el('#container_page--home').innerHTML = (home);
     $.el('#container_page--story').innerHTML = (story);
     $.el('#container_page--contact').innerHTML = (contact);
-    // launchScrollConverter();
 });
 
 document.addEventListener('DOMNodeInserted', function() {
@@ -47,7 +46,8 @@ document.addEventListener('DOMNodeInserted', function() {
       //Webkit
       containerInvertScroll.addEventListener('mousewheel', () => new scrollHorizontal(window.event, containerInvertScroll))
       //Gecko
-      containerInvertScroll.addEventListener('DOMMouseScroll', () => new scrollHorizontal(window.event, containerInvertScroll))
+      containerInvertScroll.addEventListener('DOMMouseScroll', (event) => new scrollHorizontal(event, containerInvertScroll))
+      // containerInvertScroll.addEventListener('wheel', () => new scrollHorizontal(window.event, containerInvertScroll))
       break;
   }
 });

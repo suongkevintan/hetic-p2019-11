@@ -1,0 +1,20 @@
+{
+  "name": "Projet front",
+  "description": "",
+  "main": "gulpfile.js",
+  "authors": [
+    "CMarzin <corentinmarzin@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/FrostOne/hetic-p2019-11",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "handlebars": "~3.0.0"
+  }
+}

@@ -24,3 +24,45 @@ $active-logo-button : #181818;
 @mixin image($path) {
   background:url($path) no-repeat center;
 }
+
+@mixin button_slider--story {
+  padding: 6px;
+  background: #000000;
+  position: absolute;
+  left: 50%;
+  bottom: 25px;
+  border-radius: 20px;
+  opacity: 0.3;
+  cursor: pointer;
+  z-index: 10;
+}
+
+@mixin none {
+    display: none;
+    transition: 0.5s ease;
+}
+
+@mixin fadeIn {
+  opacity: 1;
+  transition: 0.5s linear;
+}
+
+@mixin fadeOut {
+  opacity: 0;
+  transition: 0.5s linear;
+}
+
+// Transition between pages
+@mixin hide_page {
+    &.hide_story {
+        @include none;
+    }
+
+    &.hide_home {
+        @include none;
+    }
+
+    &.hide_contact {
+        @include none;
+    }
+}
