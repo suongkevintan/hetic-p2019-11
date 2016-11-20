@@ -10,7 +10,6 @@ export class AnimationInterface {
         menu__button.querySelector('.menu__button-lineFirst').classList.toggle('active')
         menu__button.querySelector('.menu__button-lineSecond').classList.toggle('active')
         $.el('.revealMenu').classList.toggle('active')
-        $.el('.overlayScreen').classList.toggle('active')
     });
 
     //menu item hover
@@ -28,18 +27,27 @@ export class AnimationInterface {
     const credit = $.el('.credit');
 
     home.addEventListener('click', () => {
+      $.el('.revealMenu').classList.toggle('active')
+      menu__button.querySelector('.menu__button-lineFirst').classList.toggle('active')
+      menu__button.querySelector('.menu__button-lineSecond').classList.toggle('active')
       $.el('#container_page--home').classList.remove('hide_home');
       $.el('#container_page--story').classList.add('hide_story');
       $.el('#container_page--contact').classList.add('hide_contact');
     });
 
     story.addEventListener('click', () => {
+      $.el('.revealMenu').classList.toggle('active')
+      menu__button.querySelector('.menu__button-lineFirst').classList.toggle('active')
+      menu__button.querySelector('.menu__button-lineSecond').classList.toggle('active')
       $.el('#container_page--story').classList.remove('hide_story');
       $.el('#container_page--home').classList.add('hide_home');
       $.el('#container_page--contact').classList.add('hide_contact');
     });
 
     credit.addEventListener('click', () => {
+      $.el('.revealMenu').classList.toggle('active')
+      menu__button.querySelector('.menu__button-lineFirst').classList.toggle('active')
+      menu__button.querySelector('.menu__button-lineSecond').classList.toggle('active')
       $.el('#container_page--contact').classList.remove('hide_contact');
       $.el('#container_page--home').classList.add('hide_home');
       $.el('#container_page--story').classList.add('hide_story');
