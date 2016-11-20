@@ -2,10 +2,12 @@
     "name": "hetic-p2019-11",
     "description": "",
     "main": "gulpfile.js",
+    "directory": "app/components/",
     "authors": [
         "CMarzin <corentinmarzin@gmail.com>",
         "Adrien Zaganelli <adrienzaganelli@gmail.com>"
     ],
+    "componentsDirectory": "public/components",
     "license": "MIT",
     "homepage": "https://github.com/FrostOne/hetic-p2019-11",
     "ignore": [
@@ -18,4 +20,5 @@
     "dependencies": {
         "handlebars": "~3.0.0"
     }
+
 }

@@ -12,7 +12,6 @@ export class interfaceBuilder {
             // throw data in the file home/story/contact in the folder templates
             const home = MyApp.templates.test(data);
 
-            console.log(data);
 
         });
 

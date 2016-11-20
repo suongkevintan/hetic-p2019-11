@@ -50,7 +50,7 @@ gulp.task('templates', function() {
 });
 
 gulp.task('vendor', function() {
-    return gulp.src('app/vendor/*.js').pipe(uglify()).pipe(gulp.dest('app/dist/vendor'))
+    return gulp.src('app/vendor/**/*.js').pipe(uglify()).pipe(gulp.dest('app/dist/vendor'))
 });
 
 gulp.task('style', function() {
