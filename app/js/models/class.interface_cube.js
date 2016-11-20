@@ -1,5 +1,7 @@
 export class InterfaceCube {
-    constructor(){}
+    constructor(){
+      this.DetectPosSlider();
+    }
 
     DetectPosSlider() {
         var Slider,

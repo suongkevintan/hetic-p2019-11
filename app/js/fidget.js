@@ -1,15 +1,10 @@
 import {Cube} from './models/class.cube.js'
-import {InterfaceCube} from './models/class.interface_cube.js'
 import {interfaceBuilder} from './models/class.interface-builder.js'
-
 
 export class Fidget {
     constructor() {
-        this.cube = new Cube()
-        this.interfaceBuilder = new interfaceBuilder()
-          this.interfaceBuilder.loadSlider();
-        this.interface = new InterfaceCube();
-        this.interface.DetectPosSlider();
+      this.cube = new Cube()
+        this.interfaceBuilder = new interfaceBuilder(window.Detector.isMobile)
         this.renderThemes();
     }
 
@@ -32,14 +27,15 @@ export class Fidget {
         })
 
         $.el('.cubeUi__themes--list').innerHTML += domNode.join('');
-        const items = $.class('cubeUi__themes--item');
+        const items = $.class ('cubeUi__themes--item');
 
         [].forEach.call(items, (themeBtn) => {
             themeBtn.addEventListener('click', (e) => {
                 //ui change
                 e.preventDefault()
                 let active = document.querySelector('.cubeUi__themes--item.active')
-                if(active) active.classList.remove('active')
+                if (active)
+                    active.classList.remove('active')
                 themeBtn.classList.add('active')
 
                 //call cube method

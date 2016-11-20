@@ -93,8 +93,8 @@ export class Cube {
         const onProgress = function(xhr) {
             if (xhr.lengthComputable) {
                 const percentComplete = xhr.loaded / xhr.total * 100;
-                //console.log(Math.round(percentComplete, 2) + '% downloaded');
-                loaderDisplay.innerHTML = Math.round(percentComplete, 2) + "%"
+                console.log(Math.round(percentComplete, 2) + '% downloaded');
+                //loaderDisplay.innerHTML = Math.round(percentComplete, 2) + "%"
             }
         };
         // on error callback
