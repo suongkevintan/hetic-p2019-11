@@ -38,8 +38,7 @@ export class CubeAnimation {
             let animation = this.animation;
             window.cancelAnimationFrame(animation);
             document.getElementsByClassName('cubeUi__face--name')[0].innerHTML = this.args.positionSelected.name;
-            window.cubeAnimationState = false;
-
+            return window.cubeAnimationState = false;
         } else {
 
             //    let b = this.args.beginPosition;

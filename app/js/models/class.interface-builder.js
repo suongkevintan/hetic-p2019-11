@@ -12,7 +12,7 @@ export class interfaceBuilder {
         }
 
     loadSlider() {
-        let data = new loadData('data/slider.json', () => {
+        let data = new loadData('dist/data/slider.json', () => {
             data = JSON.parse(data.responseText);
             // throw data in the file home/story/contact in the folder templates
             const slider = MyApp.templates.slider(data);

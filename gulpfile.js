@@ -42,13 +42,6 @@ gulp.task('scripts', function() {
     pipe(browserSync.reload({stream: true}))
 });
 
-// Compile our Handlebar
-gulp.task('templates', function() {
-    gulp.src('app/templates/*.hbs').pipe(handlebars()).pipe(wrap('Handlebars.template(<%= contents %>)')).pipe(declare({
-        namespace: 'MyApp.templates', noRedeclare: true, // Avoid duplicate declarations
-    })).pipe(concat('templates.js')).pipe(gulp.dest('app/dist/js/')).pipe(browserSync.reload({stream: true}))
-});
-
 gulp.task('vendor', function() {
     return gulp.src('app/vendor/**/*.js').pipe(uglify()).pipe(gulp.dest('app/dist/vendor'))
 });
@@ -89,11 +82,17 @@ gulp.task("importModels", function() {
     return gulp.src("./app/src/models3D/*.obj").pipe(gulp.dest("./app/dist/models3D"));
 
 });
+gulp.task("importDatas", function() {
+
+    return gulp.src("./app/data/*.json").pipe(gulp.dest("./app/dist/data"));
+
+});
 
 gulp.task('build', [
     'importModels',
     'templates',
     'imagemin',
+    'importDatas',
     'style',
     'scripts',
     'vendor',

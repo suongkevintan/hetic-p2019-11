@@ -5,10 +5,13 @@ export class Fidget {
     constructor() {
         this.cube = new Cube()
         this.interfaceBuilder = new interfaceBuilder(window.Detector.isMobile)
-        this.renderThemes();
+        this.renderThemes(window.Detector.isMobile);
     }
 
-    renderThemes() {
+    renderThemes(isMobile) {
+        isMobile = Detector.isMobile;
+        if (isMobile)
+            return false;
         const showLabel = (window.Detector.isMobile)
             ? "showLabel"
             : ""

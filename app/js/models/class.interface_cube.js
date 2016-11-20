@@ -1,6 +1,6 @@
 export class InterfaceCube {
-    constructor(){
-      this.DetectPosSlider();
+    constructor() {
+        this.DetectPosSlider();
     }
 
     DetectPosSlider() {
@@ -218,9 +218,8 @@ export class InterfaceCube {
         */
 
         let stick = 0;
-        let sticksColored = 0;
-        const allStick = document.querySelectorAll('#stick_circle g');
-
+        const allStick = $.all('#stick_circle g');
+         let ballsState = $.id("Selector");
         this.$slider.addEventListener("sliderchange", (function(_this) {
 
             return function(event) {
@@ -259,32 +258,32 @@ export class InterfaceCube {
                 // Color Selector
                 switch (true) {
                     case(degree <= 45):
-                        document.querySelector('#Selector g:first-child').classList.add('select');
-                        document.querySelector('#Selector g:nth-child(2)').classList.remove('select');
+                        ballsState.querySelector('g:first-child').classList.add('select');
+                        ballsState.querySelector('g:nth-child(2)').classList.remove('select');
                         Cube.setPosition(Cube.group, Cube.positions[0]);
                         break;
                     case(degree > 45 && degree <= 135):
-                        document.querySelector('#Selector g:first-child').classList.remove('select');
-                        document.querySelector('#Selector g:nth-child(2)').classList.add('select');
-                        document.querySelector('#Selector g:nth-child(3)').classList.remove('select');
+                        ballsState.querySelector('g:first-child').classList.remove('select');
+                        ballsState.querySelector('g:nth-child(2)').classList.add('select');
+                        ballsState.querySelector('g:nth-child(3)').classList.remove('select');
                         Cube.setPosition(Cube.group, Cube.positions[1]);
                         break;
                     case(degree > 135 && degree <= 180):
-                        document.querySelector('#Selector g:nth-child(2)').classList.remove('select');
-                        document.querySelector('#Selector g:nth-child(3)').classList.add('select');
-                        document.querySelector('#Selector g:nth-child(4)').classList.remove('select');
+                        ballsState.querySelector('g:nth-child(2)').classList.remove('select');
+                        ballsState.querySelector('g:nth-child(3)').classList.add('select');
+                        ballsState.querySelector('g:nth-child(4)').classList.remove('select');
                         Cube.setPosition(Cube.group, Cube.positions[2]);
                         break;
                     case(degree > 180 && degree <= 225):
-                        document.querySelector('#Selector g:nth-child(3)').classList.remove('select');
-                        document.querySelector('#Selector g:nth-child(4)').classList.add('select');
-                        document.querySelector('#Selector g:nth-child(5)').classList.remove('select');
+                        ballsState.querySelector('g:nth-child(3)').classList.remove('select');
+                        ballsState.querySelector('g:nth-child(4)').classList.add('select');
+                        ballsState.querySelector('g:nth-child(5)').classList.remove('select');
                         Cube.setPosition(Cube.group, Cube.positions[3]);
                         break;
                     case(degree > 225 && degree <= 315):
-                        document.querySelector('#Selector g:nth-child(4)').classList.remove('select');
-                        document.querySelector('#Selector g:nth-child(5)').classList.add('select');
-                        document.querySelector('#Selector g:nth-child(6)').classList.remove('select');
+                        ballsState.querySelector('g:nth-child(4)').classList.remove('select');
+                        ballsState.querySelector('g:nth-child(5)').classList.add('select');
+                        ballsState.querySelector('g:nth-child(6)').classList.remove('select');
                         Cube.setPosition(Cube.group, Cube.positions[4]);
                         break;
                     case(degree > 315 && degree < 357):
@@ -293,16 +292,14 @@ export class InterfaceCube {
                         Cube.setPosition(Cube.group, Cube.positions[5]);
                         break;
                     case(degree > 358):
-                        document.querySelector('#Selector g:first-child').classList.add('select');
-                        document.querySelector('#Selector g:nth-child(6)').classList.remove('select');
+                        ballsState.querySelector('g:first-child').classList.add('select');
+                        ballsState.querySelector('g:nth-child(6)').classList.remove('select');
                         Cube.setPosition(Cube.group, Cube.positions[6]);
                         break;
                 }
-                sticksColored = document.querySelectorAll('#stick_circle g.select').length;
                 stick = degree;
-                stick = degree;
-            };
 
+            };
         })(this));
 
         lastTime = 0;
@@ -320,6 +317,7 @@ export class InterfaceCube {
         }
 
         if (!this.requestAnimationFrame) {
+
             this.requestAnimationFrame = function(callback, element) {
                 var currTime,
                     id,
@@ -339,5 +337,7 @@ export class InterfaceCube {
                 return clearTimeout(id);
             };
         }
+
     }
+
 }

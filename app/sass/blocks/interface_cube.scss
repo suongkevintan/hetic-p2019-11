@@ -1,5 +1,5 @@
 @import "../family";
-$sliderSize : 400px;
+$sliderSize: 400px;
 
 #slider {
     position: absolute;
@@ -17,14 +17,14 @@ $sliderSize : 400px;
 }
 
 .after {
-  fill: green;
+    fill: green;
 }
 
 .before {
-  fill: blue;
+    fill: blue;
 }
 
-.anim_svg  {
+.anim_svg {
     @include first(1) {
         fill: blue;
     }
@@ -67,8 +67,6 @@ $sliderSize : 400px;
     position: absolute;
     width: $sliderSize;
     height: $sliderSize;
-    pointer-events: auto;
-
     // border: 1px solid transparent;
     top: 50%;
     margin-top: -#{$sliderSize / 2};
@@ -77,12 +75,15 @@ $sliderSize : 400px;
     -webkit-touch-callout: none;
     -webkit-user-drag: none;
     -webkit-user-select: none;
+
+    &.detect {
+        pointer-events: auto;
+    }
 }
 
 .radial-slider .circle {
     position: relative;
     transform: scale(1.5);
-
     width: 300px;
     height: 300px;
     left: 50%;
@@ -101,7 +102,6 @@ $sliderSize : 400px;
     width: 280px;
     height: 280px;
     transform: scale(1.5);
-
     top: 50%;
     left: 50%;
     margin-left: -140px;
@@ -117,7 +117,7 @@ $sliderSize : 400px;
 .radial-slider .knob {
     position: absolute;
     top: -10px;
-
+    pointer-events: auto;
     left: 140px;
     width: 30px;
     height: 30px;
@@ -137,9 +137,8 @@ $sliderSize : 400px;
     top: 0;
     left: 0;
     transform: scale(1.5);
-
-    width: -#{$sliderSize / 2};;
-    height: #{$sliderSize / 2};;
+    width: -#{$sliderSize / 2};
+    height: #{$sliderSize / 2};
     -webkit-touch-callout: none;
     -webkit-user-drag: none;
     -user-select: none;
