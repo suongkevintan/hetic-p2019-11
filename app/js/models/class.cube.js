@@ -1,7 +1,7 @@
 import {CubeThemes} from './cube-assets/cube-themes.js'
 import {CubePositions} from './cube-assets/cube-positions.js'
 import {CubeAnimation} from './cube-assets/cube-animation.js'
-import {Detector} from './class.detector.js'
+import {Detector} from '../modules/detector.js'
 
 export class Cube {
 

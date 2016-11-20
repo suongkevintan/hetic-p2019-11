@@ -1,11 +1,13 @@
 import {Cube} from './models/class.cube.js'
 import {InterfaceCube} from './models/class.interface_cube.js'
+import {interfaceBuilder} from './models/class.interface-builder.js'
 
 
 export class Fidget {
     constructor() {
         this.cube = new Cube()
-
+        this.interfaceBuilder = new interfaceBuilder()
+          this.interfaceBuilder.loadSlider();
         this.interface = new InterfaceCube();
         this.interface.DetectPosSlider();
         this.renderThemes();

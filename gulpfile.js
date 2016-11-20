@@ -3,6 +3,7 @@ var sass = require('gulp-sass');
 var cssnano = require('gulp-cssnano');
 var autoprefixer = require('gulp-autoprefixer');
 var babel = require('gulp-babel');
+var handlebars = require('gulp-handlebars');
 var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
 var jshint = require('gulp-jshint');
@@ -21,6 +22,13 @@ gulp.task('lint', function() {
         console.error('' + error);
     })
 });
+// Compile our Handlebar
+gulp.task('templates', function() {
+    gulp.src('app/templates/*.hbs').pipe(handlebars()).pipe(wrap('Handlebars.template(<%= contents %>)')).pipe(declare({
+        namespace: 'MyApp.templates', noRedeclare: true, // Avoid duplicate declarations
+    })).pipe(concat('templates.js')).pipe(gulp.dest('app/dist/js/')).pipe(browserSync.reload({stream: true}))
+});
+
 gulp.task('webpack', function() {
     return gulp.src('./app/js/main.js').pipe(webpack(require('./webpack.config.js'))).pipe(gulp.dest('app/dist/js/'));
 });
@@ -28,8 +36,7 @@ gulp.task('webpack', function() {
 gulp.task('scripts', function() {
 
     return gulp.src('app/js/**/*.js').pipe(babel({presets: ['es2015']})).pipe(concat('all.js')).pipe(gulp.dest('app/dist/js')). // file for dev
-    on('error', console.error.bind(console)).
-    pipe(rename('all.min.js')). // rename file
+    on('error', console.error.bind(console)).pipe(rename('all.min.js')). // rename file
     pipe(stripDebug()). // remove console.log alert etc..
     pipe(uglify()).pipe(gulp.dest('app/dist/js')). // file for prod
     pipe(browserSync.reload({stream: true}))
