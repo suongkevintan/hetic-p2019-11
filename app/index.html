@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="dist/css/style.css">
 </head>
 
-<body>
+<body class="index-detect">
     <div class="container-menu_story">
         <div class="menu">
             <div class="menu__button unselectable">
@@ -18,11 +18,11 @@
                     xml:space="preserve"><rect class="menu__button-lineFirst" width="19" height="2"/><rect class="menu__button-lineSecond" y="7" width="19" height="2"/></svg>
             </div>
             <div class="menu__logo">
-                <a href="home-page.html"><img src="dist/images/fidget_logo.svg" alt="Logo du Fidget Cube"></a>
+                <a href="index.html"><img src="dist/images/fidget_logo.svg" alt="Logo du Fidget Cube"></a>
             </div>
             <div class="menu__buttonBuy unselectable">
                 <svg class="menu__buttonBuy--logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M97.9 49.5c0 49.2-.7 49.9-50.5 49.8-6.5 0-13.1.2-19.6-.1C12.6 98.5 3.1 89.9 2.6 75c-.7-16.8-.9-33.8 0-50.6C3.4 10 12 1.4 26.8.9 40.9.4 55.1.6 69.3.8 89 1 97.5 9.7 97.9 29.9c.2 6.6 0 13.1 0 19.6zm-10.7 1.3c.4-20.4-16.4-38.5-36.2-39-19.5-.5-37.4 17.1-37.9 37.5-.5 20.1 16.6 38.5 36.4 39.1 19.5.5 37.4-17.2 37.7-37.6z"/></svg>
-                <a href="https://www.kickstarter.com/projects/antsylabs/fidget-cube-a-vinyl-desk-toy">
+                <a href="https://www.antsylabs.com/products/fidget-cube">
                     <p class="menu__buttonBuy--text">Buy The <span class="menu__buttonBuy--textBold">Fidget Cube</span></p>
                 </a>
             </div>
@@ -62,12 +62,13 @@
     <!--[if lt IE 8]>
       <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
-    <script src="dist/vendor/particles.min.js"></script>
     <!-- HANDLEBARS CDN + LOCAL FALLBACK -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.3/handlebars.min.js"></script>
     <script defer > if(!window.Handlebars)document.write(`<script defer src="dist/vendor/libs/handlebars/handlebars.min.js"><\/script>`);</script>
-    <script src="dist/js/templates.js"></script>
-    <script src="dist/js/bundle.js"></script>
+
+    <script defer src="dist/vendor/libs/particles.min/index.js"></script>
+    <script defer src="dist/js/templates.js"></script>
+    <script defer src="dist/js/bundle.js"></script>
 
 </body>
 

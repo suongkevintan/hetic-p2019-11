@@ -1,37 +1,57 @@
 <html>
 
 <head>
-    <meta charset="UTF-8">
-    <title>Template front end</title>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Fidget Cube</title>
+    <meta name="description" content="Fidget Cube is a desk toy for anyone who likes to fidget.">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" href="favicon.png" />
     <link rel="stylesheet" href="dist/css/style.css">
 </head>
 
 <body>
 
-  <!-- <section class="cubeUi"> -->
-      <div class="cubeUi__infos">
-          <span class="cubeUi__infos--line"></span>
-          <span class="cubeUi__infos--text">MORE INFORMATIONS <img src="dist/images/icon_info.svg" alt=""></span>
-      </div>
-      <div class="cubeUi__face">
-          <p class="cubeUi__face--name">ROLL</p>
-      </div>
-      <div class="cubeUi__themes">
-          <ul class="cubeUi__themes--subtitle">CHOOSE COLOR</ul>
-          <ul class="cubeUi__themes--list"></ul>
-      </div>
-  <!-- </section> -->
+    <!-- <section class="cubeUi"> -->
+    <div class="cubeUi__infos">
+        <span class="cubeUi__infos--line"></span>
+        <span class="cubeUi__infos--text">MORE INFORMATIONS <img src="dist/images/icon_info.svg" alt=""></span>
+    </div>
+    <div class="cubeUi__face">
+        <p class="cubeUi__face--name"></p>
+    </div>
+    <div class="cubeUi__themes">
+        <ul class="cubeUi__themes--subtitle">CHOOSE COLOR</ul>
+        <ul class="cubeUi__themes--list"></ul>
+    </div>
+    <!-- </section> -->
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r79/three.js"></script>
-  <!--build:js js/main.min.js -->
-  <script src="dist/vendor/OBJLoader.js"></script>
-  <script src="dist/vendor/CanvasRenderer.js"></script>
-  <script src="dist/vendor/threex.domevents.js"></script>
-  <script src="dist/vendor/threex.cubecamera.js"></script>
-  <script src="dist/vendor/OrbitControls.js"></script>
-  <!-- <script src="dist/js/all.js"></script> -->
-  <script src="dist/js/bundle.js"></script>
-  <!-- endbuild -->
+
+    <!-- THREEJS CDN + LOCAL FALLBACK -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r79/three.min.js"></script>
+    <script defer > if(!window.THREE)document.write(`<script defer src="/dist/vendor/libs/three.min/index.js"><\/script>`);</script>
+
+    <!-- HANDLEBARS CDN + LOCAL FALLBACK -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.3/handlebars.min.js"></script>
+    <script defer > if(!window.Handlebars)document.write(`<script defer src="dist/vendor/libs/handlebars/handlebars.min.js"><\/script>`);</script>
+
+
+
+    <!--build:js js/main.min.js -->
+    <script defer src="dist/js/templates.js"></script>
+    <script defer src="dist/vendor/libs/particles.min/index.js"></script>
+
+    <!-- VENDOR -->
+    <script defer src="dist/vendor/OBJLoader.js"></script>
+    <script defer src="dist/vendor/threex.domevents.js"></script>
+    <script defer src="dist/vendor/threex.cubecamera.js"></script>
+    <script defer src="dist/vendor/OrbitControls.js"></script>
+
+    <script defer src="dist/js/bundle.js"></script>
+    <!-- endbuild -->
+
+    <!-- <script defer src="dist/vendor/CanvasRenderer.js"></script>
+    <script defer src="dist/vendor/Projector.js"></script> -->
 </body>
 
 </html>

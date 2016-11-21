@@ -151,6 +151,7 @@ export class Cube {
                 }, false);
             });
 
+            model.position.y = 100;  
             //send new model to the Cube Class
             this.group = model;
             this.setTheme(model, this.activeTheme, true)
