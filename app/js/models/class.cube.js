@@ -136,7 +136,7 @@ export class Cube {
                             break;
                         case 41:
                         case 38:
-                        case 37:
+                        case 56:
                         case 39:
                         case 40:
                             // ====================//
@@ -150,8 +150,9 @@ export class Cube {
                     }
                 }, false);
             });
+            if (window.Detector.isMobile)
+                model.position.y = 100;
 
-            model.position.y = 100;  
             //send new model to the Cube Class
             this.group = model;
             this.setTheme(model, this.activeTheme, true)
@@ -176,9 +177,9 @@ export class Cube {
         this.setLights()
         this.setCamera();
 
-        if (window.Detector.isMobile){
+        if (window.Detector.isMobile) {
             const controls = new THREE.OrbitControls(this.camera, this.renderer.domElement);
-          }
+        }
         // =======================================================================//
         // Let's get stared  (ha!)                                                //
         // =======================================================================//
