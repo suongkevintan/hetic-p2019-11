@@ -24,7 +24,7 @@ gulp.task('lint', function() {
 });
 
 gulp.task('webpack', function() {
-    return gulp.src('./app/js/main.js').pipe(webpack(require('./webpack.config.js'))).pipe(gulp.dest('app/dist/js/'));
+  return gulp.src('./app/js/main.js').pipe(webpack(require('./webpack.config.js'))).pipe(gulp.dest('app/dist/js/'));
 });
 // Concatenate & Minify JS
 gulp.task('scripts', function() {
@@ -125,9 +125,10 @@ gulp.task("importDatas", function() {
 
 });
 
-gulp.task('build', [ 'importDatas', 'importModels', 'templates', 'style', 'scripts', 'vendor','importFonts','imagemin'], function() {
+gulp.task('build', [ 'imagemin','importDatas', 'importModels', 'templates', 'style', 'scripts', 'vendor','importFonts'], function() {
     var path = require('path');
     var root = path.resolve(__dirname);
+    var webpack2 = require("webpack");
     return gulp.src('./app/js/main.js').pipe(webpack({
 
         context: __dirname,
@@ -152,8 +153,10 @@ gulp.task('build', [ 'importDatas', 'importModels', 'templates', 'style', 'scrip
                     presets: ['es2015']
                 }
             }]
-        }
-
+        },
+        plugins: [
+          new webpack2.optimize.UglifyJsPlugin({minimize: true})
+        ]
     })).pipe(gulp.dest('app/dist/js/'));
 });
 
