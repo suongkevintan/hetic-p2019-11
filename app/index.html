@@ -63,9 +63,12 @@
       <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
     <script src="dist/vendor/particles.min.js"></script>
-    <script src="vendor/handlebars.min.js"></script>
+    <!-- HANDLEBARS CDN + LOCAL FALLBACK -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.3/handlebars.min.js"></script>
+    <script defer > if(!window.Handlebars)document.write(`<script defer src="dist/vendor/libs/handlebars/handlebars.min.js"><\/script>`);</script>
     <script src="dist/js/templates.js"></script>
     <script src="dist/js/bundle.js"></script>
+
 </body>
 
 </html>

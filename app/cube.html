@@ -8,19 +8,30 @@
 
 <body>
 
-    <div id="container"></div>
+  <!-- <section class="cubeUi"> -->
+      <div class="cubeUi__infos">
+          <span class="cubeUi__infos--line"></span>
+          <span class="cubeUi__infos--text">MORE INFORMATIONS <img src="dist/images/icon_info.svg" alt=""></span>
+      </div>
+      <div class="cubeUi__face">
+          <p class="cubeUi__face--name">ROLL</p>
+      </div>
+      <div class="cubeUi__themes">
+          <ul class="cubeUi__themes--subtitle">CHOOSE COLOR</ul>
+          <ul class="cubeUi__themes--list"></ul>
+      </div>
+  <!-- </section> -->
 
-    <!-- <script src="http://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha256-/SIrNqv8h6QGKDuNoLGA4iret+kyesCkHGzVUUV0shc=" crossorigin="anonymous"></script> -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r79/three.js"></script>
-    <!--build:js js/main.min.js -->
-    <script src="dist/vendor/OBJLoader.js"></script>
-    <script src="dist/vendor/detector.js"></script>
-    <script src="dist/vendor/threex.domevents.js"></script>
-    <script src="dist/vendor/threex.cubecamera.js"></script>
-    <script src="dist/vendor/OrbitControls.js"></script>
-    <!-- <script src="dist/js/all.js"></script> -->
-    <script src="dist/js/bundle.js"></script>
-    <!-- endbuild -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r79/three.js"></script>
+  <!--build:js js/main.min.js -->
+  <script src="dist/vendor/OBJLoader.js"></script>
+  <script src="dist/vendor/CanvasRenderer.js"></script>
+  <script src="dist/vendor/threex.domevents.js"></script>
+  <script src="dist/vendor/threex.cubecamera.js"></script>
+  <script src="dist/vendor/OrbitControls.js"></script>
+  <!-- <script src="dist/js/all.js"></script> -->
+  <script src="dist/js/bundle.js"></script>
+  <!-- endbuild -->
 </body>
 
 </html>

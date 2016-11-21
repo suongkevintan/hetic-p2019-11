@@ -4,8 +4,8 @@
 ##### Main repository for the front-end developpement project of the third-year HETIC
 - Kévin Tan  -- [@FrostOne](https://github.com/FrostOne)
 - Corentin Marzin  -- [@CMarzin](https://github.com/CMarzin)
-- Michael Zaccardi
-- Adiren Zaganelli -- [@adrienZ](https://github.com/adrienZ)
+- Michael Zaccardi -- [@Michaelzaccardi](https://github.com/Michaelzaccardi)
+- Adrien Zaganelli -- [@adrienZ](https://github.com/adrienZ)
 - Emmanuel Naïm -- [@NaiemHapar](https://github.com/NaiemHapar)
 
 >__The [Fidget cube](https://www.kickstarter.com/projects/antsylabs/fidget-cube-a-vinyl-desk-toy) is an unusually addicting, high-quality desk toy designed to help you focus. Fidget at work, in class, and at home in style.__
@@ -25,7 +25,7 @@ $ npm install -d
 
 __2. Get the cube Model and import into the projet__
 
-- Get the cube model [here](https://mega.nz/#!adEzHKBb!ZYsav8C1OOiFG9Il6_0x_Ao84m9lT4LigKLZqtAGOag)
+- Get the cube model [here](https://mega.nz/#!nJUHwCob!GOyKQfDZ_tRwSAk37onWiJnVr3E6OUs6u6OE_Qc-sbU)
 - copy it at `./app/src/models3D/model.obj``
 ```sh
 $ gulp importModels
@@ -38,11 +38,12 @@ $ gulp build && gulp dev
 ```
 
 ### Features and Tech stacks:
-  - webGl/Three.js
-  - Svg/circular slider
-  - Sass/es6
-  - [Gulp]/Webpack
-  - Flexbox
+
+  - webGL & Three.js
+  - Svg & circular slider
+  - Sass & ES6
+  - Gulp & Webpack
+  - Handlebars & Flexbox
 
 ### Todos
 

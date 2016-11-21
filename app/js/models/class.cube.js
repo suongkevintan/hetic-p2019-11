@@ -1,54 +1,83 @@
 import {CubeThemes} from './cube-assets/cube-themes.js'
+import {CubePositions} from './cube-assets/cube-positions.js'
+import {CubeAnimation} from './cube-assets/cube-animation.js'
+import {Detector} from '../modules/detector.js'
 
 export class Cube {
 
-    setTheme(cubeBase, themeSelected) {
-        cubeBase.children.forEach((texture, index) => {
+    setTheme(cubeBase, themeSelected, force) {
 
-            switch (texture.id) {
-                case 28:
+        // dont render if no changes
+        if (this.activeTheme === themeSelected && force !== true)
+            return
+
+        cubeBase.children.forEach((texture, index) => {
+            switch (texture.name) {
+                case "roll_sphere":
                     //sphere + reflections
                     let cubeCamera = new window.THREEx.CubeCamera(texture);
                     this.scene.add(cubeCamera.object3d);
                     texture.material.envMap = cubeCamera.textureCube;
                     cubeCamera.update(this.renderer, this.scene);
                     break;
-                case 30:
+                case "gilde":
                     texture.material.color = themeSelected.colorSet.lightColor
                     break;
-                case 42:
+                case "Cube":
                     texture.material.color = themeSelected.colorSet.cube
                     break;
                     //need a glow
-                case 49:
+                case "breathe_1":
                     texture.material.color = {
                         r: 255 / 255,
                         g: 255 / 255,
                         b: 255 / 255
                     }
                     break;
-                case 19:
-                case 22:
-                case 25:
-                case 29:
-                case 31:
-                case 32:
-                case 35:
-                case 36:
-                case 37:
-                case 38:
-                case 39:
-                case 40:
-                case 41:
+                    //typo spoted
+                case "cyllindre2":
+                case "cylindre1_1":
+                case "flip":
+                case "spin_1":
+                case "spin3":
+                case "roll1":
+                case "roll3":
+                case "rollmiddle":
+                case "cylindre3_1":
+                case "cylindre4_1":
+                case "cylindre_middle_1":
+
                     texture.material.color = themeSelected.colorSet.mainColor
                     break;
 
                 default:
                     //to remove
-                    texture.material.color = themeSelected.colorSet.cube
+                    texture.material.color = {
+                        r: 255 / 255,
+                        g: 0 / 255,
+                        b: 0 / 255
+                    }
 
             }
         })
+
+        //update cube theme
+        this.activeTheme = themeSelected
+    }
+
+    setPosition(cubeBase, positionSelected, force) {
+        // dont render if no changes
+        if (this.activePosition === positionSelected && !force)
+            return
+
+        const beginPosition = this.activePosition;
+        const animation = new CubeAnimation("animatePositionChange", {
+            beginPosition: beginPosition,
+            positionSelected: positionSelected
+        });
+
+        //update cube position
+        this.activePosition = positionSelected;
     }
 
     loadModel() {
@@ -57,18 +86,17 @@ export class Cube {
         // .obj loader from threejs with his native method (onProgress, onerror)  //
         // =======================================================================//
 
-        let manager = new THREE.LoadingManager();
-
+        const manager = new THREE.LoadingManager();
+        let loaderDisplay = document.querySelector('.value')
         // on progress
-        manager.onProgress = (item, loaded, total) => console.log(item, loaded, total);
         const onProgress = function(xhr) {
             if (xhr.lengthComputable) {
-                var percentComplete = xhr.loaded / xhr.total * 100;
+                const percentComplete = xhr.loaded / xhr.total * 100;
                 console.log(Math.round(percentComplete, 2) + '% downloaded');
+                //loaderDisplay.innerHTML = Math.round(percentComplete, 2) + "%"
             }
         };
-
-        // on error
+        // on error callback
         const onError = function(xhr) {};
 
         //final constructor
@@ -79,15 +107,16 @@ export class Cube {
         // =======================================================================//
         let model = loader.load('dist/models3D/model.obj', (model) => {
 
-            //insert loaded model
-            model.position.y = 0;
             this.scene.add(model);
-            this.setTheme(model, this.activeTheme)
 
             //debug
             window.model = model;
+
+            // model.position.x = 35.379 *1;
+            // model.position.y = 18.538 * -1
+
             //enable library for easy event listener
-            let domEvents = new THREEx.DomEvents(this.camera, this.renderer.domElement);
+            const domEvents = new THREEx.DomEvents(this.camera, this.renderer.domElement);
 
             //bind our components
             model.children.forEach((mesh, index) => {
@@ -98,7 +127,7 @@ export class Cube {
                     console.info(event.target.name, event.target.id, mesh);
 
                     switch (event.target.id) {
-                        case 32:
+                        case 45:
                             // ===================//
                             // Switch Interruptor //
                             // ==================//
@@ -124,76 +153,36 @@ export class Cube {
 
             //send new model to the Cube Class
             this.group = model;
-
+            this.setTheme(model, this.activeTheme, true)
+            this.setPosition(model, this.activePosition, false)
         }, onProgress, onError);
     }
 
     constructor() {
-        this.themes = new CubeThemes(),
-        this.activeTheme = this.themes[0];
+        window.Detector = new Detector()
+        this.enableVibration = window.Detector.vibrate;
 
-        // this container will be injected to the dom with our canvas
-        this.container = document.createElement('div');
-        document.body.appendChild(this.container);
+        window.Cube = this
+        this.themes = new CubeThemes()
+        this.activeTheme = this.themes[0]
 
-        // ======================//
-        // Init Three.js Canvas //
-        // =====================//
-        let scene = new THREE.Scene()
-        this.scene = scene
+        this.positions = new CubePositions()
+        this.activePosition = this.positions[0]
 
-        let renderer = Detector.webgl
-            ? new THREE.WebGLRenderer({
-                //antialias : better shape
-                antialias: false,
-                //transparent background
-                alpha: true
-            })
-            : new THREE.CanvasRenderer();
+        window.cubeAnimationState = false
 
-        if (Detector.isMobile) {
-            //alert('mobile')
-        }
-        this.renderer = renderer
-        //set size
-        renderer.setPixelRatio(window.devicePixelRatio);
-        renderer.setSize(window.innerWidth, window.innerHeight);
+        this.renderScene()
+        this.setLights()
+        this.setCamera();
 
-        //ITS ALIIIIIIIIIVE
-        this.container.appendChild(this.renderer.domElement);
-
-        // =======================================================================//
-        // Lights and this.camera                                                      //
-        // =======================================================================//
-
-        var directionalLight = new THREE.DirectionalLight(0xffffff, 1);
-        directionalLight.position.set(0, 0, 1);
-        this.scene.add(directionalLight);
-        var directionalLight = new THREE.DirectionalLight(0xffffff, 1);
-        directionalLight.position.set(-1, 0, -1);
-        this.scene.add(directionalLight);
-        var directionalLight = new THREE.DirectionalLight(0xffffff, 1);
-        directionalLight.position.set(1, 1, 0);
-        this.scene.add(directionalLight);
-
-        var light = new THREE.HemisphereLight(0xffffbb, 0x080820, 0.5);
-        //this.scene.add(light);
-
-        let camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 2000);
-        this.camera = camera
-        this.camera.position.z = 350;
-        this.camera.position.x = -300;
-        this.camera = camera;
-
-        //orbit controls for debug
-        let controls = new THREE.OrbitControls(this.camera, this.renderer.domElement);
-
+        if (window.Detector.isMobile){
+            const controls = new THREE.OrbitControls(this.camera, this.renderer.domElement);
+          }
         // =======================================================================//
         // Let's get stared  (ha!)                                                //
         // =======================================================================//
         this.animate()
-        this.loadModel();
-
+        this.loadModel()
         //dom events handlers
         window.addEventListener('resize', () => this.onWindowResize(), false)
     }
@@ -211,14 +200,70 @@ export class Cube {
 
     render() {
         //we need to work on theses ones
-        var color = new THREE.Color(0xffffff);
+        // const color = new THREE.Color(0xffffff);
         this.renderer.render(this.scene, this.camera);
         //  let mesh2 = cubeBase.children.filter((m) => m.id === 36);
         if (this.group) {
-            this.group.children.filter((m) => m.id === 28)[0].rotateY(Math.PI / 20);
-            this.group.children.filter((m) => m.id === 26)[0].rotateX(Math.PI / 20);
-            this.group.children.filter((m) => m.id === 23)[0].rotateX(Math.PI / 20);
-            this.group.children.filter((m) => m.id === 20)[0].rotateX(Math.PI / 20);
+            //this.group.rotation.x += 0.06
         }
+    }
+
+    setLights() {
+        // =======================================================================//
+        // Lights and this.camera                                                      //
+        // =======================================================================//
+
+        var directionalLight = new THREE.DirectionalLight(0xffffff, 1);
+        directionalLight.position.set(0, 0, 1);
+        this.scene.add(directionalLight);
+        var directionalLight = new THREE.DirectionalLight(0xffffff, 1);
+        directionalLight.position.set(-1, 0, -1);
+        this.scene.add(directionalLight);
+        var directionalLight = new THREE.DirectionalLight(0xffffff, 1);
+        directionalLight.position.set(1, 1, 0);
+        this.scene.add(directionalLight);
+
+        const light = new THREE.HemisphereLight(0xffffbb, 0x080820, 0.5);
+        //this.scene.add(light);
+
+    }
+
+    setCamera() {
+        const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 2000);
+        this.camera = camera
+        this.camera.position.z = 750;
+        this.camera.position.x = 0;
+        this.camera.position.y = 0;
+        this.camera = camera;
+    }
+
+    renderScene() {
+        // this container will be injected to the dom with our canvas
+        this.container = document.createElement('div');
+        document.body.appendChild(this.container);
+
+        // ======================//
+        // Init Three.js Canvas //
+        // =====================//
+        let scene = new THREE.Scene()
+        this.scene = scene
+
+        const renderer = window.Detector.webgl
+            ? new THREE.WebGLRenderer({
+                //antialias : better shape
+                antialias: false,
+                //transparent background
+                alpha: true
+            })
+            : new THREE.CanvasRenderer();
+
+        this.renderer = renderer
+        //set size
+        renderer.setPixelRatio(window.devicePixelRatio);
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.domElement.id = "three";
+
+        //ITS ALIIIIIIIIIVE
+        this.container.appendChild(this.renderer.domElement);
     }
 }

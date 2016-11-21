@@ -3,6 +3,7 @@ var sass = require('gulp-sass');
 var cssnano = require('gulp-cssnano');
 var autoprefixer = require('gulp-autoprefixer');
 var babel = require('gulp-babel');
+var handlebars = require('gulp-handlebars');
 var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
 var jshint = require('gulp-jshint');
@@ -21,12 +22,12 @@ gulp.task('lint', function() {
         console.error('' + error);
     })
 });
+
 gulp.task('webpack', function() {
     return gulp.src('./app/js/main.js').pipe(webpack(require('./webpack.config.js'))).pipe(gulp.dest('app/dist/js/'));
 });
 // Concatenate & Minify JS
 gulp.task('scripts', function() {
-
     return gulp.src('app/js/**/*.js').pipe(babel({
             presets: ['es2015']
         })).pipe(concat('all.js')).pipe(gulp.dest('app/dist/js')). // file for dev
@@ -55,7 +56,23 @@ gulp.task('templates', function() {
 });
 
 gulp.task('vendor', function() {
-    return gulp.src('app/vendor/*.js').pipe(uglify()).pipe(gulp.dest('app/dist/vendor'))
+    return gulp.src('app/vendor/**/*.js').pipe(uglify()).pipe(gulp.dest('app/dist/vendor'))
+});
+
+gulp.task('style', function() {
+    return gulp.src('app/sass/*.scss'). // Gets all files ending with .scss in app/scss
+    pipe(sass.sync().on('error', sass.logError)). // avoid break script if error sass
+    pipe(autoprefixer({browsers: ['last 4 versions'], cascade: false})).pipe(cssnano()).pipe(gulp.dest('app/dist/css'))
+});
+
+gulp.task('sass', function() {
+    return gulp.src('app/sass/*.scss'). // Gets all files ending with .scss in app/scss
+    pipe(sass.sync().on('error', sass.logError)). // avoid break script if error sass
+    pipe(autoprefixer({browsers: ['last 4 versions'], cascade: false})).pipe(gulp.dest('app/dist/css')).pipe(browserSync.reload({stream: true}))
+});
+
+gulp.task('vendor', function() {
+    return gulp.src('app/vendor/**/*.js').pipe(uglify()).pipe(gulp.dest('app/dist/vendor'))
 });
 
 gulp.task('style', function() {
@@ -102,9 +119,13 @@ gulp.task("importModels", function() {
 
 });
 
-gulp.task('build', [
-    'importModels', 'templates', 'imagemin', 'style', 'scripts', 'vendor','importFonts'
-], function() {
+gulp.task("importDatas", function() {
+
+    return gulp.src("./app/data/*.json").pipe(gulp.dest("./app/dist/data"));
+
+});
+
+gulp.task('build', ['importModels', 'templates', 'style', 'scripts', 'vendor','importFonts'], function() {
     var path = require('path');
     var root = path.resolve(__dirname);
     return gulp.src('./app/js/main.js').pipe(webpack({
@@ -131,15 +152,12 @@ gulp.task('build', [
                     presets: ['es2015']
                 }
             }]
-
         }
 
     })).pipe(gulp.dest('app/dist/js/'));
 });
 
-gulp.task('dev', [
-    'browserSync', 'sass', 'lint'
-], function() {
+gulp.task('dev', ['browserSync', 'sass', 'lint'], function() {
     gulp.watch('app/sass/**/*.scss', ['sass']);
     gulp.watch('app/*.html', browserSync.reload);
     gulp.watch('app/js/**/*.js', ['scripts', 'webpack']);
@@ -148,7 +166,5 @@ gulp.task('dev', [
 });
 
 gulp.task("importFonts", function() {
-  return gulp
-  .src("./app/font/*")
-  .pipe(gulp.dest("./app/dist/font/"));
+    return gulp.src("./app/font/*").pipe(gulp.dest("./app/dist/font/"));
 });

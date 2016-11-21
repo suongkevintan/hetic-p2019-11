@@ -1,20 +1,35 @@
 {
-  "name": "Projet front",
+  "name": "hetic-p2019-11",
   "description": "",
   "main": "gulpfile.js",
+  "directory": "app/components/",
   "authors": [
-    "CMarzin <corentinmarzin@gmail.com>"
+    "CMarzin <corentinmarzin@gmail.com>",
+    "Adrien Zaganelli <adrienzaganelli@gmail.com>"
   ],
-  "license": "ISC",
+  "componentsDirectory": "public/components",
+  "license": "MIT",
   "homepage": "https://github.com/FrostOne/hetic-p2019-11",
   "ignore": [
-    "**/.*",
-    "node_modules",
-    "bower_components",
-    "test",
-    "tests"
+    "source",
+    "spec",
+    "lib",
+    "examples",
+    ".bowerrc",
+    ".gitignore",
+    ".jshintignore",
+    ".jshintrc",
+    "bower.json",
+    "gruntfile.js",
+    "package.json",
+    "README.md"
   ],
-  "dependencies": {
-    "handlebars": "~3.0.0"
+  "path": {
+    "js": "_js/",
+    "css": "_css/"
+  },
+  "devDependencies": {
+    "handlebars": "~3.0.0",
+    "three.min": "https://cdnjs.cloudflare.com/ajax/libs/three.js/r79/three.min.js"
   }
 }
