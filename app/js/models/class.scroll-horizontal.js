@@ -1,6 +1,4 @@
-import {
-    DomManipulator
-} from './class.dommanipulator.js';
+import {DomManipulator} from './class.dommanipulator.js';
 // replace some Jquery function with vanilla Javascript
 let $ = new DomManipulator();
 

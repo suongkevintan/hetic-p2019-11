@@ -1,6 +1,5 @@
 import {CubeThemes} from './cube-assets/cube-themes.js'
 
-
 export class Cube {
 
     setTheme(cubeBase, themeSelected) {

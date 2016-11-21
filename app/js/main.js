@@ -47,7 +47,6 @@ document.addEventListener('DOMNodeInserted', function() {
       containerInvertScroll.addEventListener('mousewheel', () => new scrollHorizontal(window.event, containerInvertScroll))
       //Gecko
       containerInvertScroll.addEventListener('DOMMouseScroll', (event) => new scrollHorizontal(event, containerInvertScroll))
-      // containerInvertScroll.addEventListener('wheel', () => new scrollHorizontal(window.event, containerInvertScroll))
       break;
   }
 });
