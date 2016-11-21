@@ -18,7 +18,7 @@ if ($.el('.index-detect')) {
     // ! take json data and display them  //
     // ==================================//
 
-    let data = new loadData('data/data.json', () => {
+    let data = new loadData('dist/data/data.json', () => {
         // Load data from data.json
         data = data.responseText;
         // Parse data
