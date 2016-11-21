@@ -16,7 +16,7 @@
                     <div class="slide slide1-img3" href=""></div>
                     <div class="slide slide1-img4" href=""></div>
                 </div>
-                <div class="slider2 hide_slider fadeOut">
+                <div class="slider2 hide_slider">
                     <div class="slide slide2-img1" href=""></div>
                     <div class="slide slide2-img2" href=""></div>
                     <div class="slide slide2-img3" href=""></div>
@@ -40,141 +40,47 @@
 </div>
 <div id="container_story">
     <div class="story">
-        <div class="story_intro">
-            <div class="title_story">
-                <h4>{{story1.title.date}}</h4>
-                <h1>{{story1.title.firstname}}</h1>
-                <h1>{{story1.title.secondname}}</h1>
-                <h1>{{story1.title.intro-sentence}}</h1>
+        {{#stories}}
+            <div class="story_intro">
+                <div class="title_story">
+                    <h4>{{story.date}}</h4>
+                    <h1>{{story.firstname}}</h1>
+                    <h1>{{story.secondname}}</h1>
+                    <h1>{{story.intro-sentence}}</h1>
+                </div>
+                <div class="description_story">
+                    <h3>{{story.description}}</h3>
+                </div>
+                <div class="para_story">
+                    <p>{{story.story-part1.one}}</p>
+                </div>
+                <div class="para_story">
+                    <p>{{story.story-part1.two}}</p>
+                </div>
             </div>
-            <div class="description_story">
-                <h3>{{story1.description}}</h3>
+            <div class="story_part1">
+                <div class="para_story">
+                    <p>{{story.story-part2.one}}</p>
+                </div>
+                <div class="para_story">
+                    <p>{{story.story-part2.two}}</p>
+                </div>
+                {{#if story.story-part2.three}}
+                    <div class="para_story">
+                        <p>{{story.story-part2.three}}</p>
+                    </div>
+                {{/if}}
+                {{#if story.story-part2.four}}
+                    <div class="para_story">
+                        <p>{{story.story-part2.four}}</p>
+                    </div>
+                {{/if}}
+                {{#if story.story-part3}}
+                    <div class="para_story">
+                        <p>{{story.story-part3.one}}</p>
+                    </div>
+                {{/if}}
             </div>
-            <div class="para_story">
-                <p>{{story1.story-part1.one}}</p>
-            </div>
-            <div class="para_story">
-                <p>{{story1.story-part1.two}}</p>
-            </div>
-        </div>
-        <div class="story_part1">
-            <div class="para_story">
-                <p>{{story1.story-part2.one}}</p>
-            </div>
-            <div class="para_story">
-                <p>{{story1.story-part2.two}}</p>
-            </div>
-            <div class="para_story">
-                <p>{{story1.story-part2.three}}</p>
-            </div>
-            <div class="para_story">
-                <p>{{story1.story-part2.four}}</p>
-            </div>
-            <div class="para_story">
-                <p>{{story1.story-part3.one}}</p>
-            </div>
-        </div>
-
-        <!-- Story 2 -->
-
-        <div class="story_intro story2">
-            <div class="title_story">
-                <h4>{{story2.title.date}}</h4>
-                <h1>{{story2.title.firstname}}</h1>
-                <h1>{{story2.title.secondname}}</h1>
-                <h1>{{story2.title.intro-sentence}}</h1>
-            </div>
-            <div class="description_story">
-                <h3>{{story2.description}}</h3>
-            </div>
-            <div class="para_story">
-                <p>{{story2.story-part1.one}}</p>
-            </div>
-            <div class="para_story">
-                <p>{{story2.story-part1.two}}</p>
-            </div>
-        </div>
-        <div class="story_part1 story2">
-            <div class="para_story">
-                <p>{{story2.story-part2.one}}</p>
-            </div>
-            <div class="para_story">
-                <p>{{story2.story-part2.two}}</p>
-            </div>
-            <div class="para_story">
-                <p>{{story2.story-part2.three}}</p>
-            </div>
-            <div class="para_story">
-                <p>{{story2.story-part2.four}}</p>
-            </div>
-        </div>
-
-        <!-- Story 3 -->
-
-        <div class="story_intro story3">
-            <div class="title_story">
-                <h4>{{story3.title.date}}</h4>
-                <h1>{{story3.title.firstname}}</h1>
-                <h1>{{story3.title.secondname}}</h1>
-                <h1>{{story3.title.intro-sentence}}</h1>
-            </div>
-            <div class="description_story">
-                <h3>{{story3.description}}</h3>
-            </div>
-            <div class="para_story">
-                <p>{{story3.story-part1.one}}</p>
-            </div>
-            <div class="para_story">
-                <p>{{story3.story-part1.two}}</p>
-            </div>
-        </div>
-        <div class="story_part1 story3">
-            <div class="para_story">
-                <p>{{story3.story-part2.one}}</p>
-            </div>
-            <div class="para_story">
-                <p>{{story3.story-part2.two}}</p>
-            </div>
-            <div class="para_story">
-                <p>{{story3.story-part2.three}}</p>
-            </div>
-            <div class="para_story">
-                <p>{{story3.story-part2.four}}</p>
-            </div>
-        </div>
-
-        <!-- Story 4 -->
-
-        <div class="story_intro story4">
-            <div class="title_story">
-                <h4>{{story4.title.date}}</h4>
-                <h1>{{story4.title.firstname}}</h1>
-                <h1>{{story4.title.secondname}}</h1>
-                <h1>{{story4.title.intro-sentence}}</h1>
-            </div>
-            <div class="description_story">
-                <h3>{{story4.description}}</h3>
-            </div>
-            <div class="para_story">
-                <p>{{story4.story-part1.one}}</p>
-            </div>
-            <div class="para_story">
-                <p>{{story4.story-part1.two}}</p>
-            </div>
-        </div>
-        <div class="story_part1 story4">
-            <div class="para_story">
-                <p>{{story4.story-part2.one}}</p>
-            </div>
-            <div class="para_story">
-                <p>{{story4.story-part2.two}}</p>
-            </div>
-            <div class="para_story">
-                <p>{{story4.story-part2.three}}</p>
-            </div>
-            <div class="para_story">
-                <p>{{story4.story-part2.four}}</p>
-            </div>
-        </div>
+        {{/stories}}
     </div>
 </div>
