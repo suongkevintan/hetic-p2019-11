@@ -2,17 +2,19 @@ import {loadData} from './loader-data.js'
 import {scrollHorizontal} from './models/class.scroll-horizontal.js'
 import {AnimationInterface} from './models/class.animation.js'
 import {Particule} from './models/class.particule.js'
+import {Redirect} from './models/class.redirect.js'
 import {DomManipulator} from './models/class.dommanipulator.js'
 import {Fidget} from './fidget.js'
 
 // replace some Jquery function with vanilla Javascript
 let $ = new DomManipulator();
-// Particule js
+// All animation site
+let animation = new AnimationInterface();
+
 if ($.el('.index-detect')) {
 
     // let particule = new Particule();
-    // All animation site
-    let animation = new AnimationInterface();
+
 
     // ===================================//
     // ! take json data and display them  //
@@ -48,6 +50,9 @@ if ($.el('.index-detect')) {
                 break;
         }
     });
+
+    if(window.location.hash.length > 0)
+      new Redirect(window.location.hash)
 
 }
 else{
