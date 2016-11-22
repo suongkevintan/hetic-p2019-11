@@ -15,8 +15,6 @@ if ($.el('.index-detect')) {
 
     let particule = new Particule();
     // All animation site
-    let animation = new AnimationInterface();
-
     // ===================================//
     // ! take json data and display them  //
     // ==================================//
@@ -53,7 +51,7 @@ if ($.el('.index-detect')) {
     });
 
     if(window.location.hash.length > 0)
-      new Redirect(window.location.hash)
+       new Redirect(window.location.hash)
 
 }
 else{
