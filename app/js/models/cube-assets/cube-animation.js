@@ -55,10 +55,12 @@ export class CubeAnimation {
     renderSpin(angle) {
         let target = this.args.mesh.rotation
         let target2 = this.args.mesh2.rotation
-        const newAngle = angle + (Math.PI / 48);
+        const newAngle = angle + (Math.PI / 24);
         if (newAngle <= Math.PI * 2) {
             target.z = newAngle;
             target2.z = newAngle;
+            navigator.vibrate(2);
+
         } else {
             target.z = 0;
             target2.z = 0;
