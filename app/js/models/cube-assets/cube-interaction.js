@@ -1,5 +1,5 @@
 export class CubeInteraction {
   constructor(event) {
-    console.log(event);
+    //console.log(event);
   }
 }
