@@ -10,7 +10,7 @@ let $ = new DomManipulator();
 // Particule js
 if ($.el('.index-detect')) {
 
-    let particule = new Particule();
+    // let particule = new Particule();
     // All animation site
     let animation = new AnimationInterface();
 

@@ -9,7 +9,6 @@
     display: flex;
     padding: 1rem 2rem;
     justify-content: space-between;
-    // background-color: $background-color;
     @media only screen and (min-device-width : 375px) and (max-device-width : 667px) and (orientation : portrait) {
         padding: 1rem 2rem;
     }
@@ -168,10 +167,9 @@
 
 .revealMenu__list--link {
     color: black;
-    font-family: "PathwayGothicOne-Book",Arial, sans-serif;
+    font-family: "Pathway Gothic One",Arial, sans-serif;
     font-size: 2em;
     text-decoration: none;
-    margin: 1em 3em;
 
     &:hover {
         opacity: 0.5;
@@ -194,6 +192,14 @@
         width: 100%;
         height: auto;
     }
+}
+
+.revealMenu__link {
+  height: 25em;
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+  padding-left: 8%;
 }
 
 .revealMenu__imageContainer {

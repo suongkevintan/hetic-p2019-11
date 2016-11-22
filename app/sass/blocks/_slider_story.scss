@@ -137,7 +137,6 @@
         .slide1-img1 {
             @include image('../images/chap1/1.jpg');
             @include slide;
-
         }
         .slide1-img2 {
             @include image('../images/chap1/2.jpg');
@@ -166,46 +165,34 @@
             @include image('../images/chap2/7.jpg');
             @include slide;
         }
-        .slide2-img4 {
-            @include image('../images/chap2/8.jpg');
-            @include slide;
-        }
 
         // Slider 3
         .slide3-img1 {
-            @include image('../images/chap3/9.jpg');
+            @include image('../images/chap3/8.jpg');
             @include slide;
 
         }
         .slide3-img2 {
-            @include image('../images/chap3/10.jpg');
+            @include image('../images/chap3/9.jpg');
             @include slide;
         }
         .slide3-img3 {
-            @include image('../images/chap3/11.jpg');
-            @include slide;
-        }
-        .slide3-img4 {
-            @include image('../images/chap3/12.jpg');
+            @include image('../images/chap3/10.jpg');
             @include slide;
         }
 
         // Slider 4
         .slide4-img1 {
-            @include image('../images/chap4/13.jpg');
+            @include image('../images/chap4/11.jpg');
             @include slide;
 
         }
         .slide4-img2 {
-            @include image('../images/chap4/14.jpg');
+            @include image('../images/chap4/12.jpg');
             @include slide;
         }
         .slide4-img3 {
-            @include image('../images/chap4/15.jpg');
-            @include slide;
-        }
-        .slide4-img4 {
-            @include image('../images/chap4/16.jpg');
+            @include image('../images/chap4/13.jpg');
             @include slide;
         }
     }
