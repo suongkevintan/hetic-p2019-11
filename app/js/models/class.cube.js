@@ -118,39 +118,43 @@ export class Cube {
 
             //bind our components
             model.children.forEach((mesh, index) => {
+                switch (mesh.name) {
+                    case "pivot_breathe Pivot flip":
+                        mesh.animation = new CubeAnimation("animateSwitcher", {
+                            mesh: mesh,
+                            type: "interaction"
+                        });
+                        break;
+                    case "click cylindre1":
+                    case "click cyllindre2":
+                    case "click cylindre3":
+                    case "click cylindre4":
+                    case "click cylindre_middle":
+                        mesh.animation = new CubeAnimation("animateButtonsPush", {
+                            mesh: mesh,
+                            type: "interaction"
+                        });
+                        break;
 
-              //  domEvents.addEventListener(mesh, 'touchstart', new CubeInteraction(event), false);
+                }
+
+                //  domEvents.addEventListener(mesh, 'touchstart', new CubeInteraction(event), false);
                 domEvents.addEventListener(mesh, 'touchstart', (event) => {
-
-                    //debug
-                    //  console.info(event.target.name, event.target.id, mesh);
-                    console.info(event.target.name);
-
                     switch (event.target.name) {
-                        case "pivot_breathe Pivot flip":
-                            // ===================//
-                            // Switch Interruptor //
-                            // ==================//
-                            window.navigator.vibrate(500)
-
-                            mesh.rotation.x += Math.PI;
-                            mesh.rotation.z += Math.PI;
-                            break;
                         case "click cylindre1":
                         case "click cyllindre2":
                         case "click cylindre3":
                         case "click cylindre4":
                         case "click cylindre_middle":
-
-                            // ====================//
-                            // Press button bubble //
-                            // ===================//
-                            mesh.position.y = 5
+                            navigator.vibrate([10, 30, 90]);
                             break;
-                        case 300:
-                            //mesh.rotation.x += Math.PI / 2;
-                            mesh.rotateY += Math.PI / 2;
                     }
+                    if (mesh.animation)
+                        mesh.animation();
+
+                    //  console.info(event.target.name, event.target.id, mesh);
+                    console.info(event.target);
+
                 }, false);
             });
             if (window.Detector.isMobile)
@@ -208,7 +212,8 @@ export class Cube {
         // const color = new THREE.Color(0xffffff);
         this.renderer.render(this.scene, this.camera);
         if (this.group) {
-            //let mesh2 = this.group.children.filter((m) => m.name === "spin spin3")[0].rotation.y += 0.1;
+            let parent = this.group.children.filter((m) => m.name === "spin spin2")[0].rotation.z += 0.1;
+            let child = this.group.children.filter((m) => m.name === "spin spin3")[0].rotation.z += 0.1;
             //this.group.rotation.x += 0.06
         }
     }
