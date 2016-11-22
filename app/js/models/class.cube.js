@@ -1,6 +1,7 @@
 import {CubeThemes} from './cube-assets/cube-themes.js'
 import {CubePositions} from './cube-assets/cube-positions.js'
 import {CubeAnimation} from './cube-assets/cube-animation.js'
+import {CubeInteraction} from './cube-assets/cube-interaction.js'
 import {Detector} from '../modules/detector.js'
 
 export class Cube {
@@ -34,29 +35,29 @@ export class Cube {
                         b: 255 / 255
                     }
                     break;
-                    //typo spoted
-                case "cyllindre2":
-                case "cylindre1_1":
+                    //SWICTHER
                 case "pivot_breathe Pivot flip":
+                    //SPIN
                 case "spin spin2":
                 case "spin spin3":
+                    //JOYSTCK
                 case "glide1 base_glade":
                 case "glide1 extru_glide glide":
+                    //ENGRENAGES
                 case "roll roll1":
                 case "roll rollmiddle":
                 case "roll roll3":
+                    //SMALL BUTTONS
                 case "click cylindre1":
                 case "click cyllindre2":
                 case "click cylindre3":
                 case "click cylindre4":
                 case "click cylindre_middle":
-
                     texture.material.color = themeSelected.colorSet.mainColor
                     break;
 
                 default:
-                texture.material.color = themeSelected.colorSet.cube
-
+                    texture.material.color = themeSelected.colorSet.cube
 
             }
         })
@@ -92,7 +93,7 @@ export class Cube {
         const onProgress = function(xhr) {
             if (xhr.lengthComputable) {
                 const percentComplete = xhr.loaded / xhr.total * 100;
-                console.log(Math.round(percentComplete, 2) + '% downloaded');
+                //console.log(Math.round(percentComplete, 2) + '% downloaded');
                 //loaderDisplay.innerHTML = Math.round(percentComplete, 2) + "%"
             }
         };
@@ -112,40 +113,43 @@ export class Cube {
             //debug
             window.model = model;
 
-            // model.position.x = 35.379 *1;
-            // model.position.y = 18.538 * -1
-
             //enable library for easy event listener
             const domEvents = new THREEx.DomEvents(this.camera, this.renderer.domElement);
 
             //bind our components
             model.children.forEach((mesh, index) => {
 
-                domEvents.addEventListener(mesh, 'touchstart', (event) => {
-
-                    //debug
-                  //  console.info(event.target.name, event.target.id, mesh);
-                    console.info(event.target.name);
-
-                    switch (event.target.id) {
-                        case 100:
-                            // ===================//
-                            // Switch Interruptor //
-                            // ==================//
-                            mesh.rotation.x += Math.PI;
-                            mesh.rotation.z += Math.PI;
-                            break;
-                        case 200:
-                            // ====================//
-                            // Press button bubble //
-                            // ===================//
-                            mesh.position.y = 5
-                            break;
-                        case 300:
-                            //mesh.rotation.x += Math.PI / 2;
-                            mesh.rotateY += Math.PI / 2;
-                    }
-                }, false);
+                domEvents.addEventListener(mesh, 'touchstart', new CubeInteraction(event), false);
+                // domEvents.addEventListener(mesh, 'touchstart', (event) => {
+                //
+                //     //debug
+                //     //  console.info(event.target.name, event.target.id, mesh);
+                //     console.info(event.target.name);
+                //
+                //     switch (event.target.name) {
+                //         case "pivot_breathe Pivot flip":
+                //             // ===================//
+                //             // Switch Interruptor //
+                //             // ==================//
+                //             mesh.rotation.x += Math.PI;
+                //             mesh.rotation.z += Math.PI;
+                //             break;
+                //         case "click cylindre1":
+                //         case "click cyllindre2":
+                //         case "click cylindre3":
+                //         case "click cylindre4":
+                //         case "click cylindre_middle":
+                //
+                //             // ====================//
+                //             // Press button bubble //
+                //             // ===================//
+                //             mesh.position.y = 5
+                //             break;
+                //         case 300:
+                //             //mesh.rotation.x += Math.PI / 2;
+                //             mesh.rotateY += Math.PI / 2;
+                //     }
+                // }, false);
             });
             if (window.Detector.isMobile)
                 model.position.y = 100;
@@ -201,15 +205,15 @@ export class Cube {
         //we need to work on theses ones
         // const color = new THREE.Color(0xffffff);
         this.renderer.render(this.scene, this.camera);
-        //  let mesh2 = cubeBase.children.filter((m) => m.id === 36);
         if (this.group) {
+            //let mesh2 = this.group.children.filter((m) => m.name === "spin spin3")[0].rotation.y += 0.1;
             //this.group.rotation.x += 0.06
         }
     }
 
     setLights() {
         // =======================================================================//
-        // Lights and this.camera                                                      //
+        // Lights and this.camera                                                 //
         // =======================================================================//
 
         var directionalLight = new THREE.DirectionalLight(0xffffff, 1);

@@ -44,7 +44,7 @@ export class scrollHorizontal {
             deltaX = -1 * orgEvent.wheelDeltaX / 120;
         }
 
-        domNode.scrollLeft -= (delta * 20);
+        domNode.scrollLeft -= (delta * 10);
 
         // Percentage scroll to change sliders
         let scrollPercent = 100 * $.el('#container_story').scrollLeft / (document.documentElement.clientWidth - $.el('.story').clientWidth);
