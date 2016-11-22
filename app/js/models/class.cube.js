@@ -20,14 +20,14 @@ export class Cube {
                     texture.material.envMap = cubeCamera.textureCube;
                     cubeCamera.update(this.renderer, this.scene);
                     break;
-                case "gilde":
+                case "glide1 extru_glide extru_glide1":
                     texture.material.color = themeSelected.colorSet.lightColor
                     break;
-                case "Cube":
+                case "extru_cube Cube1":
                     texture.material.color = themeSelected.colorSet.cube
                     break;
                     //need a glow
-                case "breathe_1":
+                case "extru_cube Neutre breathe":
                     texture.material.color = {
                         r: 255 / 255,
                         g: 255 / 255,
@@ -37,26 +37,26 @@ export class Cube {
                     //typo spoted
                 case "cyllindre2":
                 case "cylindre1_1":
-                case "flip":
-                case "spin_1":
-                case "spin3":
-                case "roll1":
-                case "roll3":
-                case "rollmiddle":
-                case "cylindre3_1":
-                case "cylindre4_1":
-                case "cylindre_middle_1":
+                case "pivot_breathe Pivot flip":
+                case "spin spin2":
+                case "spin spin3":
+                case "glide1 base_glade":
+                case "glide1 extru_glide glide":
+                case "roll roll1":
+                case "roll rollmiddle":
+                case "roll roll3":
+                case "click cylindre1":
+                case "click cyllindre2":
+                case "click cylindre3":
+                case "click cylindre4":
+                case "click cylindre_middle":
 
                     texture.material.color = themeSelected.colorSet.mainColor
                     break;
 
                 default:
-                    //to remove
-                    texture.material.color = {
-                        r: 255 / 255,
-                        g: 0 / 255,
-                        b: 0 / 255
-                    }
+                texture.material.color = themeSelected.colorSet.cube
+
 
             }
         })
@@ -121,30 +121,27 @@ export class Cube {
             //bind our components
             model.children.forEach((mesh, index) => {
 
-                domEvents.addEventListener(mesh, 'click', (event) => {
+                domEvents.addEventListener(mesh, 'touchstart', (event) => {
 
                     //debug
-                    console.info(event.target.name, event.target.id, mesh);
+                  //  console.info(event.target.name, event.target.id, mesh);
+                    console.info(event.target.name);
 
                     switch (event.target.id) {
-                        case 45:
+                        case 100:
                             // ===================//
                             // Switch Interruptor //
                             // ==================//
                             mesh.rotation.x += Math.PI;
                             mesh.rotation.z += Math.PI;
                             break;
-                        case 41:
-                        case 38:
-                        case 56:
-                        case 39:
-                        case 40:
+                        case 200:
                             // ====================//
                             // Press button bubble //
                             // ===================//
                             mesh.position.y = 5
                             break;
-                        case 28:
+                        case 300:
                             //mesh.rotation.x += Math.PI / 2;
                             mesh.rotateY += Math.PI / 2;
                     }
