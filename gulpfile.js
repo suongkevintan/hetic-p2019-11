@@ -110,6 +110,7 @@ gulp.task('imagemin', function() {
      gulp.src('app/images/chap1/*').pipe(imagemin({progressive: true})).pipe(gulp.dest('app/dist/images/chap1'))
      gulp.src('app/images/chap2/*').pipe(gulp.dest('app/dist/images/chap2'))
      gulp.src('app/images/chap3/*').pipe(imagemin({progressive: true})).pipe(gulp.dest('app/dist/images/chap3'))
+     gulp.src('app/images/menu/*').pipe(imagemin({progressive: true})).pipe(gulp.dest('app/dist/images/menu'))
      gulp.src('app/images/chap4/*').pipe(imagemin({progressive: true})).pipe(gulp.dest('app/dist/images/chap4'))
 })
 
@@ -125,7 +126,7 @@ gulp.task("importDatas", function() {
 
 });
 
-gulp.task('build', ['importDatas', 'importModels', 'templates', 'style', 'scripts', 'vendor','importFonts'], function() {
+gulp.task('build', ['imagemin','importDatas', 'importModels', 'templates', 'style', 'scripts', 'vendor','importFonts'], function() {
     var path = require('path');
     var root = path.resolve(__dirname);
     var webpack2 = require("webpack");
