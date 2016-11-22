@@ -9,7 +9,7 @@
             height: 97vh;
 
             .story_intro {
-                padding-right:10%;
+                padding-right:5%;
 
                 .title_story {
                     margin-top: calc(6.666666666666667%);
@@ -60,6 +60,7 @@
                 display: flex;
                 flex-flow: column;
                 justify-content: space-around;
+                padding-right:5%;
             }
 
             .story_part1 div:nth-child(1) {

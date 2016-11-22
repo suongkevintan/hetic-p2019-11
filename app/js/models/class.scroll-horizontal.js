@@ -46,8 +46,12 @@ export class scrollHorizontal {
 
         domNode.scrollLeft -= (delta * 10);
 
+        let story_introW = $.el('.story_intro').clientWidth;
+        let story_part1W = $.el('.story_part1').clientWidth;
+        // calcul the width of the story container multiply by 4 because there is 4 story
+        let widthContainerStory = (story_introW + story_part1W) * 4;
         // Percentage scroll to change sliders
-        let scrollPercent = 100 * $.el('#container_story').scrollLeft / (document.documentElement.clientWidth - $.el('.story').clientWidth);
+        let scrollPercent = 100 * $.el('#container_story').scrollLeft / ($.el('.story').clientWidth - widthContainerStory);
         scrollPercent = Math.round(-scrollPercent);
 
         const slider1 = $.el('.slider1');
@@ -60,17 +64,17 @@ export class scrollHorizontal {
               slider1.classList.remove('hide_slider');
               slider2.classList.add('hide_slider');
               break;
-          case scrollPercent > 32 && scrollPercent < 64:
+          case scrollPercent > 32 && scrollPercent < 62:
               slider1.classList.add('hide_slider');
               slider2.classList.remove('hide_slider');
               slider3.classList.add('hide_slider');
               break;
-          case scrollPercent > 64 && scrollPercent < 95:
+          case scrollPercent > 62 && scrollPercent < 92:
               slider2.classList.add('hide_slider');
               slider3.classList.remove('hide_slider');
               slider4.classList.add('hide_slider');
               break;
-          case scrollPercent > 95:
+          case scrollPercent > 92:
               slider3.classList.add('hide_slider');
               slider4.classList.remove('hide_slider');
               break;

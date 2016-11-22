@@ -19,7 +19,9 @@
 
         .filter_slider {
           position: fixed;
-          background: blue;
+          background: rgba(0,0,0,0.38);
+          height: 100%;
+          width: 40%;
         }
 
         .container_pagination--slider {
