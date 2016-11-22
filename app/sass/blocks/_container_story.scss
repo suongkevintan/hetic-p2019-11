@@ -6,12 +6,10 @@
 
         .story {
             display: flex;
-            justify-content: space-around;
-            width: 550%;
             height: 97vh;
 
             .story_intro {
-                justify-content: space-around;
+                padding-right:10%;
 
                 .title_story {
                     margin-top: calc(6.666666666666667%);

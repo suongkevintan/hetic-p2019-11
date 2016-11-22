@@ -125,7 +125,7 @@ gulp.task("importDatas", function() {
 
 });
 
-gulp.task('build', [ 'imagemin','importDatas', 'importModels', 'templates', 'style', 'scripts', 'vendor','importFonts'], function() {
+gulp.task('build', ['importDatas', 'importModels', 'templates', 'style', 'scripts', 'vendor','importFonts'], function() {
     var path = require('path');
     var root = path.resolve(__dirname);
     var webpack2 = require("webpack");
