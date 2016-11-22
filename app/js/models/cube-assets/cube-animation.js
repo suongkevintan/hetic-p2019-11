@@ -1,19 +1,79 @@
 export class CubeAnimation {
     constructor(method, args) {
         this.args = args
+
+        if (method === "animatePositionChange") {
+            this.id = String.fromCharCode(Math.floor(Math.random() * 11)) + Math.floor(Math.random() * 1000000)
+            //custom method call via parameters
+            if (!cubeAnimationState && method === "animatePositionChange")
+                window.cubeAnimationState = this;
+            else
+                return console.debug('cannot overide animation')
+
+        }
+
+        if (this.args.type === "interaction") {
+            console.log(this.args.mesh  );
+            if (this.args.mesh.isAnimating)
+                return console.log('block jiadhusqo');
+            this.args.mesh[method] = this;
+
+            return this[method]
+        }
         this.calls = 0;
-        this.id = String.fromCharCode(Math.floor(Math.random() * 11)) + Math.floor(Math.random() * 1000000)
-        //custom method call via parameters
-        if (!cubeAnimationState)
-            window.cubeAnimationState = this;
-        else
-            return console.debug('cannot overide animation')
 
         this[method]()
         console.info(this.id + ' init animation');
         this.end = false;
     }
 
+    animateSwitcher() {
+        let mesh = this;
+        // ===================//
+        // Switch Interruptor //
+        // ==================//
+        navigator.vibrate([30, 50, 125]);
+
+        mesh.rotation.x += Math.PI;
+        mesh.rotation.z += Math.PI;
+
+        mesh.position.x = (mesh.position.x === 10)
+            ? 0
+            : 10;
+    }
+
+    animateButtonsPush() {
+        let mesh = this;
+        let animation = mesh.animation
+        this.mesh = mesh;
+
+        // ====================//
+        // Press button bubble //
+        // ===================//
+        this.animationFrame = window.requestAnimationFrame(() => this.animation());
+
+        return mesh.animateButtonsPush.renderButtonsPush(mesh.position.y)
+    }
+
+    renderButtonsPush(pos) {
+        let target = this.args.mesh.position
+        const newPos = pos + 0.2;
+        if (newPos <= 5.2 && this.args.mesh.stop !== true) {
+            target.y = newPos;
+        } else if (parseInt(target.y) === 5 && this.args.mesh.stop !== true) {
+            this.args.mesh.stop = true;
+        } else if (this.args.mesh.stop && target.y >= 0.3) {
+            target.y -= 0.4;
+        } else {
+            target.y = 0;
+            this.args.mesh.stop = false;
+            this.args.mesh.isAnimating = false;
+
+            let animation = this.args.mesh.animationFrame;
+            animation = window.cancelAnimationFrame(animation);
+        }
+
+    }
     animatePositionChange() {
         //    this.state = this.args.beginPosition;
         this.state = {
@@ -82,8 +142,8 @@ export class CubeAnimation {
 
                                 this.end = false;
                             }
-                            if(key === 'rotation')
-                            s[key][prop] = parseFloat(parseFloat(s[key][prop]).toFixed(1))
+                            if (key === 'rotation')
+                                s[key][prop] = parseFloat(parseFloat(s[key][prop]).toFixed(1))
                         }
                     }
                 }
