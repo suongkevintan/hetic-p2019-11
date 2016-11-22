@@ -135,7 +135,14 @@ export class Cube {
                             type: "interaction"
                         });
                         break;
-
+                    case "spin spin2":
+                    case "spin spin3":
+                    mesh.animation = new CubeAnimation("animateSpin", {
+                        mesh: mesh,
+                        mesh2: (mesh.name === "spin spin3")? model.children.filter((m) => m.name === "spin spin2")[0] :model.children.filter((m) => m.name === "spin spin3")[0],
+                        type: "interaction"
+                    });
+                        break;
                 }
 
                 //  domEvents.addEventListener(mesh, 'touchstart', new CubeInteraction(event), false);
@@ -212,8 +219,8 @@ export class Cube {
         // const color = new THREE.Color(0xffffff);
         this.renderer.render(this.scene, this.camera);
         if (this.group) {
-            let parent = this.group.children.filter((m) => m.name === "spin spin2")[0].rotation.z += 0.1;
-            let child = this.group.children.filter((m) => m.name === "spin spin3")[0].rotation.z += 0.1;
+            //let parent = this.group.children.filter((m) => m.name === "spin spin2")[0].rotation.z += 0.1;
+            //let child = this.group.children.filter((m) => m.name === "spin spin3")[0].rotation.z += 0.1;
             //this.group.rotation.x += 0.06
         }
     }
