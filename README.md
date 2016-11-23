@@ -1,6 +1,11 @@
 # Fidget Cube Website Project
 ## hetic-p2019-11
 
+
+>__The [Fidget cube](https://www.kickstarter.com/projects/antsylabs/fidget-cube-a-vinyl-desk-toy) is an unusually addicting, high-quality desk toy designed to help you focus. Fidget at work, in class, and at home in style.__
+
+![alt tag](https://ksr-ugc.imgix.net/assets/013/420/296/e24f67863aab868dea2dc321ad59a3b5_original.jpg?w=1024&h=576&fit=fill&bg=000000&v=1472591316&auto=format&q=92&s=f0461f206334b0b8365f50fa84d85387)
+
 ##### Main repository for the front-end developpement project of the third-year HETIC
 - Kévin Tan  -- [@FrostOne](https://github.com/FrostOne)
 - Corentin Marzin  -- [@CMarzin](https://github.com/CMarzin)
@@ -8,33 +13,32 @@
 - Adrien Zaganelli -- [@adrienZ](https://github.com/adrienZ)
 - Emmanuel Naïm -- [@NaiemHapar](https://github.com/NaiemHapar)
 
->__The [Fidget cube](https://www.kickstarter.com/projects/antsylabs/fidget-cube-a-vinyl-desk-toy) is an unusually addicting, high-quality desk toy designed to help you focus. Fidget at work, in class, and at home in style.__
-
 ### Installation
 
-This Projetct requires [Node.js](https://nodejs.org/) v6+ and [Webpack](http://webpack.github.io/docs/) to run .
-
+This Project requires [Node.js](https://nodejs.org/) v6+, [Webpack](http://webpack.github.io/docs/), [Bower](https://bower.io/#install-bower), and [Gulp](https://github.com/gulpjs/gulp/blob/master/docs/getting-started.md) to run .
+```sh
+$ npm i -g gulp
+$ npm i -g bower
+$ npm i -g webpack
+```
 __1. Get the repository and install the dependencies and devDependencies__
 
 ```sh
 $ git clone https://github.com/FrostOne/hetic-p2019-11
 $ cd hetic-p2019-11
-$ git checkout dev
-$ npm install -d
+$ bower i & npm i -d
 ```
 
-__2. Get the cube Model and import into the projet__
+__2. Build the project with gulp__
 
-- Get the cube model [here](https://mega.nz/#!nJUHwCob!GOyKQfDZ_tRwSAk37onWiJnVr3E6OUs6u6OE_Qc-sbU)
-- copy it at `./app/src/models3D/model.obj``
-```sh
-$ gulp importModels
+```
+$ gulp build
 ```
 
 __3. Finally, start the server.__
 
 ```sh
-$ gulp build && gulp dev
+$ gulp dev
 ```
 
 ### Features and Tech stacks:
@@ -44,13 +48,6 @@ $ gulp build && gulp dev
   - Sass & ES6
   - Gulp & Webpack
   - Handlebars & Flexbox
-
-### Todos
-
- - Anchor point on .obj cube
- - Styling cube menu & responsive
- - End Integration
- - Mobile interactions
 
 License
 ----

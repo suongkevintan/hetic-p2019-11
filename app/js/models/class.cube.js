@@ -25,16 +25,12 @@ export class Cube {
                     texture.material.color = themeSelected.colorSet.lightColor
                     break;
                 case "extru_cube Cube1":
+                case "extru_cube Neutre breathe":
+
                     texture.material.color = themeSelected.colorSet.cube
                     break;
                     //need a glow
-                case "extru_cube Neutre breathe":
-                    texture.material.color = {
-                        r: 255 / 255,
-                        g: 255 / 255,
-                        b: 255 / 255
-                    }
-                    break;
+
                     //SWICTHER
                 case "pivot_breathe Pivot flip":
                     //SPIN
@@ -137,11 +133,13 @@ export class Cube {
                         break;
                     case "spin spin2":
                     case "spin spin3":
-                    mesh.animation = new CubeAnimation("animateSpin", {
-                        mesh: mesh,
-                        mesh2: (mesh.name === "spin spin3")? model.children.filter((m) => m.name === "spin spin2")[0] :model.children.filter((m) => m.name === "spin spin3")[0],
-                        type: "interaction"
-                    });
+                        mesh.animation = new CubeAnimation("animateSpin", {
+                            mesh: mesh,
+                            mesh2: (mesh.name === "spin spin3")
+                                ? model.children.filter((m) => m.name === "spin spin2")[0]
+                                : model.children.filter((m) => m.name === "spin spin3")[0],
+                            type: "interaction"
+                        });
                         break;
                 }
 
