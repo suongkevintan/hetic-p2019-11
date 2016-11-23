@@ -6,6 +6,7 @@ export class AnimationInterface {
     //menu animation
     let menu__button = $.el('.menu__button');
     menu__button.addEventListener('click', () => {
+        // document.body.classList.toggle('block_scroll');
         menu__button.querySelector('.menu__button-lineFirst').classList.toggle('active')
         menu__button.querySelector('.menu__button-lineSecond').classList.toggle('active')
         $.el('.revealMenu').classList.toggle('active')

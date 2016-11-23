@@ -13,6 +13,8 @@ $active-background-button : $background-color;
 $active-text-button : #181818;
 $active-logo-button : #181818;
 
+@import '_family.scss';
+
 
 @mixin slide {
   background-size:cover;
