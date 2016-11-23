@@ -1,7 +1,0 @@
-node_modules
-dist/
-**/.DS_Store
-*.obj
-app/fonts/
-app/images/
-bower_components
