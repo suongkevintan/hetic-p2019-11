@@ -167,7 +167,7 @@ export class Cube {
                 }, false);
             });
             if (window.Detector.isMobile)
-                model.position.y = 100;
+                model.position.y = 0;
 
             //send new model to the Cube Class
             this.group = model;
@@ -240,6 +240,9 @@ export class Cube {
         this.scene.add(directionalLight);
         var directionalLight = new THREE.DirectionalLight(0xffffff, 1);
         directionalLight.position.set(1, 1, 0);
+        this.scene.add(directionalLight);
+        var directionalLight = new THREE.DirectionalLight(0xffffff, 1);
+        directionalLight.position.set(-1, -1, 0);
         this.scene.add(directionalLight);
 
         const light = new THREE.HemisphereLight(0xffffbb, 0x080820, 0.5);
