@@ -57,7 +57,7 @@ export class Cube {
 
             }
         })
-
+        document.querySelector('.menu__buttonBuy.unselectable').setAttribute('href', "https://www.antsylabs.com/products/fidget-cube?variant=" + themeSelected.buy_code)
         //update cube theme
         this.activeTheme = themeSelected
     }
