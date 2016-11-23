@@ -18,6 +18,18 @@
         transform: translateX(0em);
     }
 }
+
+@keyframes slideHorizontalReverse {
+  0%{
+      opacity: 1;
+      transform: translateX(0em);
+  }
+    100%{
+        opacity: 0;
+        transform: translateX(-150vw);
+    }
+
+}
 @keyframes slideVertical {
     0%{
         opacity: 0;
