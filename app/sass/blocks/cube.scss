@@ -82,7 +82,6 @@ body.mobile {
     width: 100%;
     letter-spacing: -1rem;
     font-size: 15em;
-    opacity:0;
     font-family: sans-serif;
 }
 
@@ -90,7 +89,7 @@ body.mobile {
     float: right;
     position: relative;
     z-index: 2;
-    margin-top: 100vh;
+    margin-top: 50vh;
     transform: translate3d(-25%, -100%, 0);
 }
 

@@ -82,6 +82,7 @@ export class Cube {
         // =======================================================================//
         // .obj loader from threejs with his native method (onProgress, onerror)  //
         // =======================================================================//
+        loader.__proto__.changeState("loading the cube");
 
         const manager = new THREE.LoadingManager();
         let loaderDisplay = document.querySelector('.value')
@@ -93,16 +94,19 @@ export class Cube {
                 //loaderDisplay.innerHTML = Math.round(percentComplete, 2) + "%"
             }
         };
+        const onLoad = function(xhr){
+          loader.changeState("end");
+        }
         // on error callback
         const onError = function(xhr) {};
 
         //final constructor
-        const loader = new THREE.OBJLoader(manager);
+        const loaderCube = new THREE.OBJLoader(manager);
 
         // =======================================================================//
         // dom events for component ofs the cube,  components are model.children  //
         // =======================================================================//
-        let model = loader.load('dist/models3D/model.obj', (model) => {
+        let model = loaderCube.load('dist/models3D/model.obj', (model) => {
 
             this.scene.add(model);
 
@@ -169,7 +173,7 @@ export class Cube {
             this.group = model;
             this.setTheme(model, this.activeTheme, true)
             this.setPosition(model, this.activePosition, false)
-        }, onProgress, onError);
+        }, onLoad,onProgress, onError);
     }
 
     constructor() {

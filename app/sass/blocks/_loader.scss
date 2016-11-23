@@ -1,0 +1,26 @@
+.loader {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background: white;
+    z-index: 9000000;
+    text-align: center;
+    display: table-cell;
+    vertical-align: middle;
+    opacity:1;
+    transition : opacity 0.15s ease-out;
+}
+
+.loader.hide{
+  opacity:0;
+}
+
+.loader--illu {
+    display: block;
+    margin: auto;
+    max-width: 100%;
+}
+
+.loader--state {
+    font-family: $font-title;
+}
