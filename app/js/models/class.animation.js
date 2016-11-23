@@ -1,7 +1,6 @@
 import {DomManipulator} from './class.dommanipulator.js';
 // replace some Jquery function with vanilla Javascript
 let $ = new DomManipulator();
-
 export class AnimationInterface {
   constructor() {
     //menu animation
