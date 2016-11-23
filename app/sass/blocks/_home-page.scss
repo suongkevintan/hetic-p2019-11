@@ -1,12 +1,16 @@
 // Style for the home section
 .container-home__fidgetCube{
-  padding: 10em 0em 0em 5em;
+  display: flex;
+  flex-flow:row;
+  justify-content: space-between;
   @media only screen and (min-device-width : 375px) and (max-device-width : 667px) and (orientation : portrait) {
     padding: 2.5rem 2rem;
   }
 }
 .container__texteContainer{
-  width: 35em;
+  padding:15% 0 0 5%;
+  width: 50%;
+  height: 100vh;
   @media only screen and (min-device-width : 375px) and (max-device-width : 667px) and (orientation : portrait) {
     width: 100%;
   }
@@ -81,13 +85,10 @@
   color: #181818;
 }
 .container__imageContext{
-  position: absolute;
+  height: 100vh;
   z-index: -2;
-  width: 53em;
-  height: 40em;
   overflow: hidden;
-  right: 3em;
-  bottom: 0;
+
   @media only screen and (min-device-width : 375px) and (max-device-width : 667px) and (orientation : portrait) {
     width: 100%;
     vertical-align: bottom;

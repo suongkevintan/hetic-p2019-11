@@ -35,6 +35,8 @@ if ($.el('.index-detect')) {
     });
 
     document.addEventListener('DOMNodeInserted', function() {
+      // detect if its desktop or tablet to enable scroll only on desktop
+      if(document.body.clientWidth > 1024) {
         switch (true) {
             case $.el('#container_story') == null:
                 // if #container_story is not yet loaded
@@ -48,6 +50,7 @@ if ($.el('.index-detect')) {
                 containerInvertScroll.addEventListener('DOMMouseScroll', (event) => new scrollHorizontal(event, containerInvertScroll));
                 break;
         }
+      }
     });
 
     if(window.location.hash.length > 0)
