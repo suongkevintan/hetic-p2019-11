@@ -121,6 +121,9 @@
     margin: 0 0 0 0.75em;
     transition: all 0.2s;
     color: #181818;
+    @media only screen and (min-device-width : 375px) and (max-device-width : 667px) and (orientation : portrait) {
+        font-size: 0.7em;
+    }
 }
 
 .menu__buttonBuy--textBold {
@@ -158,7 +161,7 @@
     flex-direction: column;
     justify-content: center;
     @media only screen and (min-device-width : 375px) and (max-device-width : 667px) and (orientation : portrait) {
-        margin-top: 8em;
+        margin-top: 4em;
         width: 100%;
         display: block;
         text-align: center;
@@ -177,7 +180,7 @@
     @media only screen and (min-device-width : 375px) and (max-device-width : 667px) and (orientation : portrait) {
         display: block;
         width: 100%;
-        margin: 1em 0;
+        margin: 0.3em 0;
     }
 }
 
@@ -195,7 +198,7 @@
 }
 
 .revealMenu__link {
-  height: 25em;
+  height: 60%;
   display: flex;
   flex-flow: column;
   justify-content: space-between;
@@ -204,7 +207,7 @@
 
 .revealMenu__imageContainer {
     width: 100%;
-    height: 25em;
+    height: 60%;
     overflow: hidden;
     @media only screen and (min-device-width : 375px) and (max-device-width : 667px) and (orientation : portrait) {
         width: 100%;
