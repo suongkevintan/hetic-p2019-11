@@ -13,35 +13,35 @@ $sliderSize: 400px;
 }
 
 .select {
-    fill: red;
+    fill: #2F9BC2;
 }
 
 .after {
-    fill: green;
+    fill: #2F9BC2;
 }
 
 .before {
-    fill: blue;
+    fill: #2F9BC2;
 }
 
 .anim_svg {
     @include first(1) {
-        fill: blue;
+        fill: grey;
     }
     @include last(1) {
-        fill: red;
+        fill: grey;
     }
     @include first(2) {
-        fill: yellow;
+        fill: grey;
     }
     @include last(2) {
-        fill: yellow;
+        fill: grey;
     }
     @include first(3) {
-        fill: green;
+        fill: grey;
     }
     @include last(3) {
-        fill: green;
+        fill: grey;
     }
 }
 
@@ -61,6 +61,7 @@ $sliderSize: 400px;
     // pointer-events: none;
     // color: #016C8F;
     // text-shadow: 0 1px 0 black;
+    display: none;
 }
 
 .radial-slider {

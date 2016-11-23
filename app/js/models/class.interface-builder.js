@@ -2,7 +2,24 @@ import {loadData} from '../modules/handlebars-loader.js'
 import {InterfaceCube} from './class.interface_cube.js'
 
 export class interfaceBuilder {
+
     constructor(isMobile) {
+      let moreInfoBtn = $.el('.cubeUi__infos--text');
+      let moreInfo = $.el('.cubeUi__moreInfo');
+      moreInfoBtn.addEventListener('click', ()=>{
+        moreInfo.classList.toggle('active')
+        moreInfo.classList.toggle('hide')
+      })
+
+    $.el('.cubeUi__moreInfo--close').addEventListener('click',()=>{
+      moreInfo.classList.toggle('active')
+      moreInfo.classList.toggle('hide')
+    })
+
+
+
+
+
         isMobile = Detector.isMobile;
         if (isMobile === null)
             this.loadSlider();
@@ -13,6 +30,7 @@ export class interfaceBuilder {
 
     loadSlider() {
         let data = new loadData('dist/data/slider.json', () => {
+
             data = JSON.parse(data.responseText);
             // throw data in the file home/story/contact in the folder templates
             const slider = MyApp.templates.slider(data);
@@ -30,18 +48,20 @@ export class interfaceBuilder {
         // let data = new loadData(null, () => {
         //
 
+        loader.changeState("building cube interface mobile");
 
-        const slider = MyApp.templates.slider_mobile();
 
         //DESKTOP SLIDER
         this.container = document.createElement('div');
         this.container.className = "cubeUI--mobile";
         document.body.className = "mobile";
-        this.container.innerHTML = slider;
         document.body.appendChild(this.container);
+        loader.changeState( "builded cube interface mobile");
+
         //     //BIND DOM
         //     Fidget.interface = new InterfaceCube();
         // });
+
 
     }
 

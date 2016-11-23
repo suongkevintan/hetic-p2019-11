@@ -36,10 +36,13 @@
     &:active {
         opacity: 0.8;
     }
+<<<<<<<
     @media only screen and (min-device-width : 320px) and (max-device-width : 568px) and (orientation : portrait) {
         margin-top: 1%;
         margin-right:5%;
     }
+=======
+>>>>>>> a4296a2dc0056986a47f57e047e84d00794e72da
 }
 
 .menu__button-lineFirst {
@@ -111,10 +114,8 @@
         .menu__buttonBuy--text {
             color: $active-text-button;
 
-            .menu__buttonBuy--textBold {
-                font-weight: 500;
-            }
-        }
+    @media only screen and (min-device-width : 375px) and (max-device-width : 667px) {
+        display: none;
     }
 }
 
@@ -220,6 +221,7 @@
         width: 100%;
         height: auto;
     }
+
     @media only screen and (min-device-width : 320px) and (max-device-width : 568px) and (orientation : portrait) {
         display: block;
         width: 102%;
@@ -237,7 +239,9 @@
           padding-left: 0;
     }
     @media only screen and (min-device-width : 320px) and (max-device-width : 568px) and (orientation : portrait) {
-          padding-left: 0;
+        padding-left: 0;
+        padding-bottom: 1rem;
+
     }
 }
 
@@ -254,10 +258,9 @@
 }
 
 .revealMenu__imageContainer--picture {
+    width: 55em;
     @media only screen and (min-device-width : 375px) and (max-device-width : 667px) and (orientation : portrait) {
-        width: 25em;
-    }
-    @media only screen and (min-device-width : 320px) and (max-device-width : 568px) and (orientation : portrait) {
-        width: 25em;
+        width: 100%;
+        transform: translateY(-3rem);
     }
 }

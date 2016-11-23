@@ -8,6 +8,26 @@
     }
 }
 
+@keyframes slideHorizontal {
+    0%{
+        opacity: 0;
+        transform: translateX(-150vw);
+    }
+    100%{
+        opacity: 1;
+        transform: translateX(0em);
+    }
+}
+@keyframes slideVertical {
+    0%{
+        opacity: 0;
+        transform: translateY(100%);
+    }
+    100%{
+        opacity: 1;
+        transform: translateY(0em);
+    }
+}
 
 #container_page--home {
     @include hide_page;

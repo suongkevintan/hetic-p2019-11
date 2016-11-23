@@ -1,6 +1,7 @@
 export class InterfaceCube {
     constructor() {
         this.DetectPosSlider();
+        loader.changeState("builded cube interface desktop");
     }
 
     DetectPosSlider() {
