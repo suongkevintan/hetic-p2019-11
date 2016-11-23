@@ -7,11 +7,13 @@ body {
 .cubeUI {}
 
 .cubeUI--mobile {
+    //z-index:-1;
     pointer-events: none;
     position: absolute;
     bottom: 50px;
     transform: scale(1);
     left: 20%;
+    //right: 0;
     margin-left: auto;
     margin-right: auto;
     @media only screen and (min-device-width : 375px) and (max-device-width : 667px) and (orientation : portrait) {
@@ -20,6 +22,7 @@ body {
 }
 
 #three {
+    //z-index: -1000;
     left: 0;
     top: 0;
     position: absolute;
@@ -49,7 +52,7 @@ body {
     animation: slideHorizontal .5s ease-in-out normal running 1 forwards;
 
     &.hide {
-        animation: slideHorizontalReverse .5s ease-in-out normal running 1 forwards;
+        display: none;
     }
 }
 
@@ -205,9 +208,10 @@ body.mobile {
         z-index: 100000000;
         top: 0;
         overflow: auto;
+        animation: slideVertical 0.3s ease-in-out normal running 1 forwards;
 
         &:before {
-          display: none;
+            display: none;
         }
     }
   }

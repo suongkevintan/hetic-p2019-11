@@ -7,46 +7,23 @@
         transform: translateX(-9rem) scale(1.15);
     }
 }
+
 @keyframes slideHorizontal {
-    0% {
+    0%{
         opacity: 0;
         transform: translateX(-150vw);
     }
-
-    100% {
+    100%{
         opacity: 1;
         transform: translateX(0em);
-    }
-}
-@keyframes slideHorizontalReverse {
-    0% {
-        opacity: 1;
-        transform: translateX(0em);
-    }
-
-    100% {
-        opacity: 0;
-        transform: translateX(-150vw);
     }
 }
 @keyframes slideVertical {
-    0% {
+    0%{
         opacity: 0;
         transform: translateY(100%);
     }
-
-    100% {
-        opacity: 1;
-        transform: translateY(0em);
-    }
-}
-@keyframes slideVerticalReverse {
-    0% {
-        opacity: 0;
-        transform: translateY(100%);
-    }
-
-    100% {
+    100%{
         opacity: 1;
         transform: translateY(0em);
     }
@@ -65,9 +42,8 @@
 }
 
 &.fadeIn {
-    @include fadeIn;
+  @include fadeIn;
 }
-
 &.fadeOut {
-    @include fadeOut;
+  @include fadeOut;
 }
