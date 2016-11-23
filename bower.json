@@ -31,6 +31,7 @@
   "devDependencies": {
     "handlebars": "~3.0.0",
     "three.min": "https://cdnjs.cloudflare.com/ajax/libs/three.js/r79/three.min.js",
-    "particles.min": "https://raw.githubusercontent.com/VincentGarreau/particles.js/master/particles.min.js"
+    "particles.min": "https://raw.githubusercontent.com/VincentGarreau/particles.js/master/particles.min.js",
+    "viewport-units-buggyfill": "^0.6.0"
   }
 }
