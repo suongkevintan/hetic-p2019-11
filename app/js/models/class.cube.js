@@ -232,20 +232,21 @@ export class Cube {
         // Lights and this.camera                                                 //
         // =======================================================================//
 
-        var directionalLight = new THREE.DirectionalLight(0xffffff, 1);
+        var directionalLight = new THREE.DirectionalLight(0xffffff, 0.75);
         directionalLight.position.set(0, 0, 1);
         this.scene.add(directionalLight);
-        var directionalLight = new THREE.DirectionalLight(0xffffff, 1);
+        var directionalLight = new THREE.DirectionalLight(0xffffff, 0.75);
         directionalLight.position.set(-1, 0, -1);
         this.scene.add(directionalLight);
-        var directionalLight = new THREE.DirectionalLight(0xffffff, 1);
+        var directionalLight = new THREE.DirectionalLight(0xffffff, 0.75);
         directionalLight.position.set(1, 1, 0);
         this.scene.add(directionalLight);
-        var directionalLight = new THREE.DirectionalLight(0xffffff, 1);
+        var directionalLight = new THREE.DirectionalLight(0xffffff, 0.75);
         directionalLight.position.set(-1, -1, 0);
         this.scene.add(directionalLight);
 
-        const light = new THREE.HemisphereLight(0xffffbb, 0x080820, 0.5);
+
+        //const light = new THREE.HemisphereLight(0xffffbb, 0x080820, 0.5);
         //this.scene.add(light);
 
     }
