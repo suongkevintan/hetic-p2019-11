@@ -1,197 +1,207 @@
 .container-menu_story {
-    position: fixed;
-    width: 100%;
-    z-index: 1001;
+  position: fixed;
+  width: 100%;
+  z-index: 1001;
 }
 
 // Style for the menu section
 .menu {
-    display: flex;
+  display: flex;
+  padding: 1rem 2rem;
+  justify-content: space-between;
+  @media only screen and (min-device-width : 375px) and (max-device-width : 667px) and (orientation : portrait) {
     padding: 1rem 2rem;
-    justify-content: space-between;
-    @media only screen and (min-device-width : 375px) and (max-device-width : 667px) and (orientation : portrait) {
-        padding: 1rem 2rem;
-    }
-    padding: 1.5rem 2rem;
+    background-color: white;
+    box-shadow: 1px 0px 6px -3px rgba(0, 0, 0, 0.55);
+  }
+  padding: 1.5rem 2rem;
 }
 
+
+
 .menu__button {
-    z-index: 4;
-    opacity: 0.5;
-    display: inline-block;
-    transition: all 0.2s;
-    width: 2rem;
-    margin-top: 0.5em;
+  z-index: 4;
+  opacity: 0.5;
+  display: inline-block;
+  transition: all 0.2s;
+  width: 2rem;
+  margin-top: 0.5em;
 
-    &:hover {
-        opacity: 1;
-        cursor: pointer;
-    }
+  &:hover {
+    opacity: 1;
+    cursor: pointer;
+  }
 
-    &:active {
-        opacity: 0.8;
-    }
+  &:active {
+    opacity: 0.8;
+  }
 }
 
 .menu__button-lineFirst {
-    transform: translateX(0) translateY(0) rotate(0);
-    transform-origin: center;
-    transition: all 0.2s;
+  transform: translateX(0) translateY(0) rotate(0);
+  transform-origin: center;
+  transition: all 0.2s;
 }
 
 .menu__button-lineSecond {
-    transform: translateX(0) translateY(0) rotate(0);
-    transform-origin: center;
-    transition: all 0.2s;
+  transform: translateX(0) translateY(0) rotate(0);
+  transform-origin: center;
+  transition: all 0.2s;
 }
 
 .menu__button-lineFirst.active {
-    transform: translateX(0px) translateY(5px) rotate(44deg);
+  transform: translateX(0px) translateY(5px) rotate(44deg);
 }
 
 .menu__button-lineSecond.active {
-    transform: translateX(0px) translateY(-2px) rotate(-44deg);
+  transform: translateX(0px) translateY(-2px) rotate(-44deg);
 }
 
 .menu__logo {
-    width: 2.5rem;
-    padding-left: 9vw;
-    @media only screen and (min-device-width : 375px) and (max-device-width : 667px) and (orientation : portrait) {
-        display: none;
-    }
+  width: 2.5rem;
+  padding-left: 9vw;
+  @media only screen and (min-device-width : 375px) and (max-device-width : 667px) and (orientation : portrait) {
+    display: none;
+  }
 }
 
 .menu__buttonBuy {
-    width: 13rem;
-    font-family: $font-title;
-    padding: 0.65rem 1rem 0.5rem;
-    border: 1px solid grey;
-    border-radius: 5px;
-    display:block;
-    transition: all 0.2s;
+  width: 13rem;
+  font-family: $font-title;
+  padding: 0.65rem 1rem 0.5rem;
+  border: 1px solid grey;
+  border-radius: 5px;
+  display:block;
+  transition: all 0.2s;
+  @media only screen
+  and (min-device-width : 375px)
+  and (max-device-width : 667px) {
+    display: none;
+  }
+  &:hover {
+    background-color: $primary-color;
+    border: 1px solid $primary-color;
+    cursor: pointer;
 
-    &:hover {
-        background-color: $primary-color;
-        border: 1px solid $primary-color;
-        cursor: pointer;
-
-        .menu__buttonBuy--logo {
-            fill: $hover-logo-button;
-        }
-
-        .menu__buttonBuy--text {
-            color: $hover-text-button;
-
-            .menu__buttonBuy--textBold {
-                font-weight: 500;
-            }
-        }
+    .menu__buttonBuy--logo {
+      fill: $hover-logo-button;
     }
 
-    &:active {
-        background-color: $active-background-button;
-        border: 1px solid $active-border-button;
+    .menu__buttonBuy--text {
+      color: $hover-text-button;
 
-        .menu__buttonBuy--logo {
-            fill: $active-logo-button;
-        }
-
-        .menu__buttonBuy--text {
-            color: $active-text-button;
-
-            .menu__buttonBuy--textBold {
-                font-weight: 500;
-            }
-        }
+      .menu__buttonBuy--textBold {
+        font-weight: 500;
+      }
     }
+  }
+
+  &:active {
+    background-color: $active-background-button;
+    border: 1px solid $active-border-button;
+
+    .menu__buttonBuy--logo {
+      fill: $active-logo-button;
+    }
+
+    .menu__buttonBuy--text {
+      color: $active-text-button;
+
+      .menu__buttonBuy--textBold {
+        font-weight: 500;
+      }
+    }
+  }
 }
 
 .menu__buttonBuy--logo {
-    width: 10%;
+  width: 10%;
 }
 
 .menu__buttonBuy--text {
-    display: inline-block;
-    text-transform: uppercase;
-    font-family: $font-title;
-    font-size: 0.85em;
-    font-weight: 300;
-    vertical-align: super;
-    letter-spacing: 0.25px;
-    margin: 0 0 0 0.75em;
-    transition: all 0.2s;
-    color: #181818;
+  display: inline-block;
+  text-transform: uppercase;
+  font-family: $font-title;
+  font-size: 0.85em;
+  font-weight: 300;
+  vertical-align: super;
+  letter-spacing: 0.25px;
+  margin: 0 0 0 0.75em;
+  transition: all 0.2s;
+  color: #181818;
 }
 
 .menu__buttonBuy--textBold {
-    font-weight: 500;
+  font-weight: 500;
 }
 // Style for the reveal menu section
 .revealMenu {
-    position: absolute;
-    display: none;
-    background-color: rgba(255,255,255,.50);
-    opacity: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    top: 0;
-    z-index: -1;
-    transform: translateX(-2em);
-    transition: all 0.3s;
+  position: absolute;
+  display: none;
+  background-color: rgba(255,255,255,.50);
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  top: 0;
+  z-index: -1;
+  transform: translateX(-2em);
+  transition: all 0.3s;
 
-    &.active {
-        z-index: 1000;
-        opacity: 1;
-        background-color: rgba(255,255,255,1);
-        transform: translateX(0em);
-    }
-    @media only screen and (min-device-width : 375px) and (max-device-width : 667px) and (orientation : portrait) {
-        display: block;
-    }
+  &.active {
+    z-index: 1000;
+    opacity: 1;
+    background-color: rgba(255,255,255,1);
+    transform: translateX(0em);
+  }
+  @media only screen and (min-device-width : 375px) and (max-device-width : 667px) and (orientation : portrait) {
+    display: block;
+  }
 }
 
+
+
 .revealMenu__list {
-    width: 50%;
-    display: flex;
-    text-align: left;
-    flex-direction: column;
-    justify-content: center;
-    @media only screen and (min-device-width : 375px) and (max-device-width : 667px) and (orientation : portrait) {
-        margin-top: 8em;
-        width: 100%;
-        display: block;
-        text-align: center;
-    }
+  width: 50%;
+  display: flex;
+  text-align: left;
+  flex-direction: column;
+  justify-content: center;
+  @media only screen and (min-device-width : 375px) and (max-device-width : 667px) and (orientation : portrait) {
+    margin-top: 8em;
+    width: 100%;
+    display: block;
+    text-align: center;
+  }
 }
 
 .revealMenu__list--link {
-    color: black;
-    font-family: "Pathway Gothic One",Arial, sans-serif;
-    font-size: 2em;
-    text-decoration: none;
+  color: black;
+  font-family: "Pathway Gothic One",Arial, sans-serif;
+  font-size: 2em;
+  text-decoration: none;
 
-    &:hover {
-        opacity: 0.5;
-    }
-    @media only screen and (min-device-width : 375px) and (max-device-width : 667px) and (orientation : portrait) {
-        display: block;
-        width: 100%;
-        margin: 1em 0;
-    }
+  &:hover {
+    opacity: 0.5;
+  }
+  @media only screen and (min-device-width : 375px) and (max-device-width : 667px) and (orientation : portrait) {
+    display: block;
+    width: 100%;
+    margin: 1em 0;
+  }
 }
 
 .revealMenu__image {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    width: 50%;
-    @media only screen and (min-device-width : 375px) and (max-device-width : 667px) and (orientation : portrait) {
-        display: block;
-        width: 100%;
-        height: auto;
-    }
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 50%;
+  @media only screen and (min-device-width : 375px) and (max-device-width : 667px) and (orientation : portrait) {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
 }
 
 .revealMenu__link {
@@ -203,18 +213,18 @@
 }
 
 .revealMenu__imageContainer {
+  width: 100%;
+  height: 25em;
+  overflow: hidden;
+  @media only screen and (min-device-width : 375px) and (max-device-width : 667px) and (orientation : portrait) {
     width: 100%;
-    height: 25em;
-    overflow: hidden;
-    @media only screen and (min-device-width : 375px) and (max-device-width : 667px) and (orientation : portrait) {
-        width: 100%;
-        height: 15em;
-    }
+    height: 15em;
+  }
 }
 
 .revealMenu__imageContainer--picture {
-    width: 55em;
-    @media only screen and (min-device-width : 375px) and (max-device-width : 667px) and (orientation : portrait) {
-        width: 25em;
-    }
+  width: 55em;
+  @media only screen and (min-device-width : 375px) and (max-device-width : 667px) and (orientation : portrait) {
+    width: 25em;
+  }
 }

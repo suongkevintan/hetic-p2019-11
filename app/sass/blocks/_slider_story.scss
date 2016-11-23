@@ -4,13 +4,21 @@
     width: 100%;
     display: flex;
     flex-flow: row;
-
+    @media only screen
+    and (min-device-width : 375px)
+    and (max-device-width : 667px) {
+        display: block;
+    }
     #container_slider--story {
         width: 40%;
         height: 100vh;
         overflow: hidden;
         transition: 2s ease;
-
+        @media only screen
+        and (min-device-width : 375px)
+        and (max-device-width : 667px) {
+            display: none;
+        }
         .img {
             position: absolute;
             width: 40%;
@@ -19,9 +27,14 @@
 
         .filter_slider {
           position: fixed;
-          background: rgba(0,0,0,0.38);
+          background: rgba(0,0,0,0.25);
           height: 100%;
           width: 40%;
+          @media only screen
+          and (min-device-width : 375px)
+          and (max-device-width : 667px) {
+              width: 100%;
+          }
         }
 
         .container_pagination--slider {
