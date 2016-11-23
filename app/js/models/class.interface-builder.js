@@ -4,6 +4,21 @@ import {InterfaceCube} from './class.interface_cube.js'
 export class interfaceBuilder {
 
     constructor(isMobile) {
+      let moreInfoBtn = $.el('.cubeUi__infos--text');
+      let moreInfo = $.el('.cubeUi__moreInfo');
+      moreInfoBtn.addEventListener('click', ()=>{
+        moreInfo.classList.toggle('active')
+        moreInfo.classList.toggle('hide')
+      })
+
+    $.el('.cubeUi__moreInfo--close').addEventListener('click',()=>{
+      moreInfo.classList.toggle('active')
+      moreInfo.classList.toggle('hide')
+    })
+
+
+
+
 
         isMobile = Detector.isMobile;
         if (isMobile === null)
@@ -36,13 +51,10 @@ export class interfaceBuilder {
         loader.changeState("building cube interface mobile");
 
 
-        const slider = MyApp.templates.slider_mobile();
-
         //DESKTOP SLIDER
         this.container = document.createElement('div');
         this.container.className = "cubeUI--mobile";
         document.body.className = "mobile";
-        this.container.innerHTML = slider;
         document.body.appendChild(this.container);
         loader.changeState( "builded cube interface mobile");
 

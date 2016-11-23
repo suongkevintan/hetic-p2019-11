@@ -2,19 +2,6 @@ export class InterfaceCube {
     constructor() {
         this.DetectPosSlider();
         loader.changeState("builded cube interface desktop");
-
-        let moreInfoBtn = $.el('.cubeUi__infos--text');
-        let moreInfo = $.el('.cubeUi__moreInfo');
-        moreInfoBtn.addEventListener('click', ()=>{
-          moreInfo.classList.toggle('active')
-          moreInfo.classList.toggle('hide')
-        })
-
-      $.el('.cubeUi__moreInfo--close').addEventListener('click',()=>{
-        moreInfo.classList.toggle('active')
-        moreInfo.classList.toggle('hide')
-      })
-
     }
 
     DetectPosSlider() {
