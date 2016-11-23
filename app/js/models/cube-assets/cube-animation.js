@@ -2,6 +2,7 @@ export class CubeAnimation {
     constructor(method, args) {
         this.args = args
 
+
         if (method === "animatePositionChange") {
             this.id = String.fromCharCode(Math.floor(Math.random() * 11)) + Math.floor(Math.random() * 1000000)
             //custom method call via parameters
@@ -20,7 +21,7 @@ export class CubeAnimation {
         this.calls = 0;
 
         this[method]()
-        console.info(this.id + ' init animation');
+        //console.info(this.id + ' init animation');
         this.end = false;
     }
 
@@ -125,7 +126,7 @@ export class CubeAnimation {
     renderPosition(move) {
 
         if (this.end) {
-            console.debug(this.id + " delete aniamtion", this.calls);
+          //  console.debug(this.id + " delete aniamtion", this.calls);
             let animation = this.animation;
             window.cancelAnimationFrame(animation);
             document.getElementsByClassName('cubeUi__face--name')[0].innerHTML = this.args.positionSelected.name;
@@ -177,7 +178,7 @@ export class CubeAnimation {
                 this.calls++;
                 if (this.calls > 14) {
                     if (s.rotation.x === 3 && s.rotation.y === 0.1)
-                        console.info("stop animation to fix");
+                      //  console.info("stop animation to fix");
                     this.end = true;
                 }
             }
