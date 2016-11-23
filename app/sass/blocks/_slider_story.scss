@@ -9,6 +9,11 @@
     and (max-device-width : 667px) {
         display: block;
     }
+    @media only screen
+    and (min-device-width : 320px)
+    and (max-device-width : 568px) {
+        display: block;
+    }
     #container_slider--story {
         width: 40%;
         height: 100vh;
@@ -17,6 +22,11 @@
         @media only screen
         and (min-device-width : 375px)
         and (max-device-width : 667px) {
+            display: none;
+        }
+        @media only screen
+        and (min-device-width : 320px)
+        and (max-device-width : 568px) {
             display: none;
         }
         .img {
@@ -33,6 +43,11 @@
           @media only screen
           and (min-device-width : 375px)
           and (max-device-width : 667px) {
+              width: 100%;
+          }
+          @media only screen
+          and (min-device-width : 320px)
+          and (max-device-width : 568px) {
               width: 100%;
           }
         }

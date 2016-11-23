@@ -9,12 +9,23 @@
             width: 100%;
             padding-top: 3rem;
         }
+        @media only screen
+        and (min-device-width : 320px)
+        and (max-device-width : 568px) {
+            width: 100%;
+            padding-top: 3rem;
+        }
         .story {
             display: flex;
             height: 97vh;
             @media only screen
             and (min-device-width : 375px)
             and (max-device-width : 667px) {
+                flex-flow: column;
+            }
+            @media only screen
+            and (min-device-width : 320px)
+            and (max-device-width : 568px) {
                 flex-flow: column;
             }
             .story_intro {
@@ -66,6 +77,11 @@
                         and (max-device-width : 667px) {
                             width: 100%;
                         }
+                        @media only screen
+                        and (min-device-width : 320px)
+                        and (max-device-width : 568px) {
+                            width: 100%;
+                        }
                     }
                 }
             }
@@ -78,6 +94,11 @@
                 @media only screen
                 and (min-device-width : 375px)
                 and (max-device-width : 667px) {
+                    display: block;
+                }
+                @media only screen
+                and (min-device-width : 320px)
+                and (max-device-width : 568px) {
                     display: block;
                 }
             }
@@ -100,6 +121,11 @@
                     @media only screen
                     and (min-device-width : 375px)
                     and (max-device-width : 667px) {
+                        width: 100%;
+                    }
+                    @media only screen
+                    and (min-device-width : 320px)
+                    and (max-device-width : 568px) {
                         width: 100%;
                     }
                 }
