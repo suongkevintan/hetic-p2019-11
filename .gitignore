@@ -1,0 +1,6 @@
+app/vendor/libs/
+bower_components/
+node_modules/
+dist/
+**/.DS_Store
+dist/*.obj

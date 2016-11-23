@@ -1,0 +1,49 @@
+@keyframes scale {
+    from {
+        transform: translateX(-9rem) scale(1);
+    }
+
+    to {
+        transform: translateX(-9rem) scale(1.15);
+    }
+}
+
+@keyframes slideHorizontal {
+    0%{
+        opacity: 0;
+        transform: translateX(-150vw);
+    }
+    100%{
+        opacity: 1;
+        transform: translateX(0em);
+    }
+}
+@keyframes slideVertical {
+    0%{
+        opacity: 0;
+        transform: translateY(100%);
+    }
+    100%{
+        opacity: 1;
+        transform: translateY(0em);
+    }
+}
+
+#container_page--home {
+    @include hide_page;
+}
+
+#container_page--story {
+    @include hide_page;
+}
+
+#container_page--contact {
+    @include hide_page;
+}
+
+&.fadeIn {
+  @include fadeIn;
+}
+&.fadeOut {
+  @include fadeOut;
+}
