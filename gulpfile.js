@@ -125,13 +125,8 @@ gulp.task("importDatas", function() {
     return gulp.src("./app/data/*.json").pipe(gulp.dest("./app/dist/data"));
 
 });
-gulp.task("importVideo", function() {
 
-    return gulp.src("./app/video/*.mp4").pipe(gulp.dest("./app/dist/video"));
-
-});
-
-gulp.task('build', ['imagemin','importDatas', 'importModels','importVideo' ,'templates', 'style', 'scripts', 'vendor','importFonts'], function() {
+gulp.task('build', ['imagemin','importDatas', 'importModels', 'templates', 'style', 'scripts', 'vendor','importFonts'], function() {
     var path = require('path');
     var root = path.resolve(__dirname);
     var webpack2 = require("webpack");
