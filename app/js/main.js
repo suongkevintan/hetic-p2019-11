@@ -74,4 +74,4 @@ function MsgConsole() {
         i = 1;
     }
 }
-//MsgConsole();
+MsgConsole();
