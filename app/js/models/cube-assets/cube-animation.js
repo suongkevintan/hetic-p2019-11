@@ -177,7 +177,7 @@ export class CubeAnimation {
                 this.calls++;
                 if (this.calls > 14) {
                     if (s.rotation.x === 3 && s.rotation.y === 0.1)
-                        console.infos("stop animation to fix");
+                        console.info("stop animation to fix");
                     this.end = true;
                 }
             }
