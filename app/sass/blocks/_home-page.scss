@@ -7,6 +7,9 @@
     @media only screen and (min-device-width : 375px) and (max-device-width : 768px) and (orientation : portrait) {
         flex-flow:column;
     }
+    @media only screen and (min-device-width : 320px) and (max-device-width : 568px) and (orientation : portrait) {
+        flex-flow:column;
+    }
 }
 
 .container__texteContainer {
@@ -14,6 +17,9 @@
     @media only screen and (min-device-width : 375px) and (max-device-width : 667px) and (orientation : portrait) {
         width: 100%;
         padding:25% 0 0 5%;
+    }
+    @media only screen and (min-device-width : 320px) and (max-device-width : 568px) and (orientation : portrait) {
+        padding: 30% 0 0 5%;
     }
 }
 
@@ -27,6 +33,10 @@
         font-size: 1.15em;
         margin-left: 0.25em;
     }
+    @media only screen and (min-device-width : 320px) and (max-device-width : 568px) and (orientation : portrait) {
+      font-size: 1.15em;
+      margin-left: 0.25em;
+    }
 }
 
 .container__texteContainer--headtitle {
@@ -36,6 +46,10 @@
     @media only screen and (min-device-width : 375px) and (max-device-width : 667px) and (orientation : portrait) {
         font-size: 1.8em;
         margin-left: 0.15em;
+    }
+    @media only screen and (min-device-width : 320px) and (max-device-width : 568px) and (orientation : portrait) {
+      font-size: 1.8em;
+      margin-left: 0.15em;
     }
 }
 
@@ -50,6 +64,9 @@
     padding-bottom: 1.25em;
     @media only screen and (min-device-width : 375px) and (max-device-width : 667px) and (orientation : portrait) {
         font-size: 1em;
+    }
+    @media only screen and (min-device-width : 320px) and (max-device-width : 568px) and (orientation : portrait) {
+      // width:90%;
     }
 }
 
@@ -69,6 +86,9 @@
     border-radius: 5px;
     transition: all 0.3s;
     @media only screen and (min-device-width : 375px) and (max-device-width : 667px) and (orientation : portrait) {
+        width: 90%;
+    }
+    @media only screen and (min-device-width : 320px) and (max-device-width : 568px) and (orientation : portrait) {
         width: 90%;
     }
 
@@ -113,14 +133,20 @@
           height: 40%;
       }
     }
+    @media only screen and (min-device-width : 320px) and (max-device-width : 568px) and (orientation : portrait) {
+      width: 100%;
+      height: 36%;
+      display: flex;
+      justify-content: center;
+    }
 }
 
 .container__imageContext--image {
   position: absolute;
   bottom:0;
-    @media only screen and (min-device-width : 375px) and (max-device-width : 667px) and (orientation : portrait) {
-
-    }
+  @media only screen and (min-device-width : 320px) and (max-device-width : 568px) and (orientation : portrait) {
+    position: relative;
+  }
 }
 // Style for the particular section
 #particles-js {
