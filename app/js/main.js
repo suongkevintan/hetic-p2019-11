@@ -53,7 +53,7 @@ if ($.el('.index-detect')) {
       }
     });
 
-    if(window.location.hash.length > 0)
+    if(window.location.hash.length > 1)
        new Redirect(window.location.hash)
 
 }
