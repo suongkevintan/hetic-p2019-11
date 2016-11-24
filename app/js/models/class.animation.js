@@ -19,7 +19,13 @@ export class AnimationInterface {
             let sourcePicture = elem.getAttribute('data-src');
             $.el(".revealMenu__imageContainer--picture").setAttribute("src", sourcePicture);
         });
+        elem.addEventListener('click', function(e) {
+          $.el('.revealMenu').classList.toggle('active')
+          menu__button.querySelector('.menu__button-lineFirst').classList.toggle('active')
+          menu__button.querySelector('.menu__button-lineSecond').classList.toggle('active')
+        });
     });
+
 
     // menu show page
     const home = $.el('.home');
