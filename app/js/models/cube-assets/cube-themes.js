@@ -71,8 +71,8 @@ export class CubeThemes {
                 },
                 mainColor: {
                     r: 232 / 255,
-                    g: 166 / 255,
-                    b: 65 / 255
+                    g: 30 / 255,
+                    b: 158 / 255
                 },
                 lightColor: {
                     r: 56 / 255,
@@ -80,6 +80,7 @@ export class CubeThemes {
                     b: 56 / 255
                 }
             }
+
         }, {
             name: "sunset",
             "buy_code": "30253660876",
@@ -91,8 +92,8 @@ export class CubeThemes {
                 },
                 mainColor: {
                     r: 232 / 255,
-                    g: 30 / 255,
-                    b: 158 / 255
+                    g: 166 / 255,
+                    b: 65 / 255
                 },
                 lightColor: {
                     r: 56 / 255,
@@ -100,6 +101,7 @@ export class CubeThemes {
                     b: 56 / 255
                 }
             }
+
         }, {
             name: "fresh",
             "buy_code": "30253661004",
