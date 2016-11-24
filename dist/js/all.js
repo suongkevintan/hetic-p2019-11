@@ -17,8 +17,11 @@ var Fidget = exports.Fidget = function () {
     function Fidget() {
         _classCallCheck(this, Fidget);
 
+        //webGL time ! bring me the cube
         this.cube = new _classCube.Cube();
+        //build me a dope interface depending on user device
         this.interfaceBuilder = new _classInterfaceBuilder.interfaceBuilder(window.Detector.isMobile);
+        //render themes if desktop
         this.renderThemes(window.Detector.isMobile);
     }
 
@@ -27,16 +30,27 @@ var Fidget = exports.Fidget = function () {
         value: function renderThemes(isMobile) {
             var _this = this;
 
+            //render themes if desktop
             isMobile = Detector.isMobile;
             if (isMobile) return false;
+
+            //class opacity utilitary
             var showLabel = window.Detector.isMobile ? "showLabel" : "";
+
+            //dom i will return
             var domNode = this.cube.themes.map(function (theme, index) {
+
+                //dom for one theme
                 var domString = '';
+
+                //convert three.js color to css format
                 var colorObj = JSON.parse(JSON.stringify(theme.colorSet.mainColor));
                 Object.keys(colorObj).forEach(function (rgb) {
                     colorObj[rgb] = colorObj[rgb] * 255;
                 });
                 var color = 'rgb( ' + colorObj.r + ', ' + colorObj.g + ', ' + colorObj.b + '  )';
+
+                //go
                 domString += '<li>\n                                <a href="#" class="cubeUi__themes--item " data-index="' + index + '">\n                                    <div class="round" style="background:' + color + '"></div><span class="' + showLabel + '">' + theme.name + '</span>\n                                </a>\n                          </li>';
 
                 return domString;
@@ -72,6 +86,7 @@ Object.defineProperty(exports, "__esModule", {
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
+//ajax for handlebars
 var loadData = exports.loadData = function loadData(json, cb) {
     _classCallCheck(this, loadData);
 
@@ -105,21 +120,25 @@ var _classDommanipulator = require('./models/class.dommanipulator.js');
 
 var _fidget = require('./fidget.js');
 
+// replace some Jquery function with vanilla Javascript
 var $ = new _classDommanipulator.DomManipulator();
 window.$ = $;
 
-// replace some Jquery function with vanilla Javascript
+//loader manager
 var loader = new _classLoader.appLoader();
 window.loader = loader;
-// All animation site
+
+// dom event handler for menu
 var animation = new _classAnimation.AnimationInterface();
 
+//if index launch handlebars to create a one page
 if ($.el('.index-detect')) {
     (function () {
         loader.changeState("detect home");
 
+        //yay
         var particule = new _classParticule.Particule();
-        // All animation site
+
         // ===================================//
         // ! take json data and display them  //
         // ==================================//
@@ -130,16 +149,21 @@ if ($.el('.index-detect')) {
             data = data.responseText;
             // Parse data
             data = JSON.parse(data);
+
             // throw data in the file home/story/contact in the folder templates
             var home = MyApp.templates.home(data);
             var story = MyApp.templates.story(data);
             var contact = MyApp.templates.contact(data);
+
             // Insert information in DOM
             $.el('#container_page--home').innerHTML = home;
             $.el('#container_page--story').innerHTML = story;
             $.el('#container_page--contact').innerHTML = contact;
+        }, function () {
+            loader.__proto___.changeState("rendering cool pages");
         });
 
+        //when dom from handlebars is inserted bind scroll on story pages
         document.addEventListener('DOMNodeInserted', function () {
 
             // detect if its desktop or tablet to enable scroll only on desktop
@@ -165,17 +189,19 @@ if ($.el('.index-detect')) {
                 })();
             }
         });
-
+        //if i was on story or credit, dont bring to home when i reload
         if (window.location.hash.length > 1) new _classRedirect.Redirect(window.location.hash);
-
-        loader.__proto__.changeState('template home inserted');
+        //end loading of page
         loader.__proto__.changeState('end');
     })();
-} else {
-    loader.changeState("detect cube");
-    window.Fidget = new _fidget.Fidget();
 }
+//i'm on the cube page
+else {
+        loader.changeState("detect cube");
+        window.Fidget = new _fidget.Fidget();
+    }
 
+//you came to the wrong neighborhood
 function MsgConsole() {
     if (!window.console) {
         return;
@@ -195,7 +221,7 @@ MsgConsole();
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+    value: true
 });
 exports.AnimationInterface = undefined;
 
@@ -207,57 +233,64 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 var $ = new _classDommanipulator.DomManipulator();
 
 var AnimationInterface = exports.AnimationInterface = function AnimationInterface() {
-  _classCallCheck(this, AnimationInterface);
+    _classCallCheck(this, AnimationInterface);
 
-  //menu animation
-  var menu__button = $.el('.menu__button');
-  menu__button.addEventListener('click', function () {
-    // document.body.classList.toggle('block_scroll');
-    menu__button.querySelector('.menu__button-lineFirst').classList.toggle('active');
-    menu__button.querySelector('.menu__button-lineSecond').classList.toggle('active');
-    $.el('.revealMenu').classList.toggle('active');
-  });
-
-  //menu item hover
-  var links = $.all('.revealMenu__list--link');
-  [].forEach.call(links, function (elem) {
-    elem.addEventListener('mouseenter', function (e) {
-      var sourcePicture = elem.getAttribute('data-src');
-      $.el(".revealMenu__imageContainer--picture").setAttribute("src", sourcePicture);
+    //menu animation
+    var menu__button = $.el('.menu__button');
+    menu__button.addEventListener('click', function () {
+        // document.body.classList.toggle('block_scroll');
+        menu__button.querySelector('.menu__button-lineFirst').classList.toggle('active');
+        menu__button.querySelector('.menu__button-lineSecond').classList.toggle('active');
+        $.el('.revealMenu').classList.toggle('active');
     });
-  });
 
-  // menu show page
-  var home = $.el('.home');
-  var story = $.el('.story_page');
-  var credit = $.el('.credit');
+    //menu item hover
+    var links = $.all('.revealMenu__list--link');
+    [].forEach.call(links, function (elem) {
+        elem.addEventListener('mouseenter', function (e) {
+            var sourcePicture = elem.getAttribute('data-src');
+            $.el(".revealMenu__imageContainer--picture").setAttribute("src", sourcePicture);
+        });
+    });
 
-  home.addEventListener('click', function () {
-    $.el('.revealMenu').classList.toggle('active');
-    menu__button.querySelector('.menu__button-lineFirst').classList.toggle('active');
-    menu__button.querySelector('.menu__button-lineSecond').classList.toggle('active');
-    $.el('#container_page--home').classList.remove('hide_home');
-    $.el('#container_page--story').classList.add('hide_story');
-    $.el('#container_page--contact').classList.add('hide_contact');
-  });
+    // menu show page
+    var home = $.el('.home');
+    var story = $.el('.story_page');
+    var credit = $.el('.credit');
+    var cube = $.el('.cube');
 
-  story.addEventListener('click', function () {
-    $.el('.revealMenu').classList.toggle('active');
-    menu__button.querySelector('.menu__button-lineFirst').classList.toggle('active');
-    menu__button.querySelector('.menu__button-lineSecond').classList.toggle('active');
-    $.el('#container_page--story').classList.remove('hide_story');
-    $.el('#container_page--home').classList.add('hide_home');
-    $.el('#container_page--contact').classList.add('hide_contact');
-  });
+    home.addEventListener('click', function () {
+        $.el('.revealMenu').classList.toggle('active');
+        menu__button.querySelector('.menu__button-lineFirst').classList.toggle('active');
+        menu__button.querySelector('.menu__button-lineSecond').classList.toggle('active');
+        $.el('#container_page--home').classList.remove('hide_home');
+        $.el('#container_page--story').classList.add('hide_story');
+        $.el('#container_page--contact').classList.add('hide_contact');
+    });
 
-  credit.addEventListener('click', function () {
-    $.el('.revealMenu').classList.toggle('active');
-    menu__button.querySelector('.menu__button-lineFirst').classList.toggle('active');
-    menu__button.querySelector('.menu__button-lineSecond').classList.toggle('active');
-    $.el('#container_page--contact').classList.remove('hide_contact');
-    $.el('#container_page--home').classList.add('hide_home');
-    $.el('#container_page--story').classList.add('hide_story');
-  });
+    cube.addEventListener('click', function () {
+        $.el('.revealMenu').classList.toggle('active');
+        menu__button.querySelector('.menu__button-lineFirst').classList.toggle('active');
+        menu__button.querySelector('.menu__button-lineSecond').classList.toggle('active');
+    });
+
+    story.addEventListener('click', function () {
+        $.el('.revealMenu').classList.toggle('active');
+        menu__button.querySelector('.menu__button-lineFirst').classList.toggle('active');
+        menu__button.querySelector('.menu__button-lineSecond').classList.toggle('active');
+        $.el('#container_page--story').classList.remove('hide_story');
+        $.el('#container_page--home').classList.add('hide_home');
+        $.el('#container_page--contact').classList.add('hide_contact');
+    });
+
+    credit.addEventListener('click', function () {
+        $.el('.revealMenu').classList.toggle('active');
+        menu__button.querySelector('.menu__button-lineFirst').classList.toggle('active');
+        menu__button.querySelector('.menu__button-lineSecond').classList.toggle('active');
+        $.el('#container_page--contact').classList.remove('hide_contact');
+        $.el('#container_page--home').classList.add('hide_home');
+        $.el('#container_page--story').classList.add('hide_story');
+    });
 };
 'use strict';
 
@@ -361,7 +394,6 @@ var Cube = exports.Cube = function () {
             // =======================================================================//
             // .obj loader from threejs with his native method (onProgress, onerror)  //
             // =======================================================================//
-            loader.__proto__.changeState("loading the cube");
 
             var manager = new THREE.LoadingManager();
             var loaderDisplay = document.querySelector('.value');
@@ -373,9 +405,7 @@ var Cube = exports.Cube = function () {
                     //loaderDisplay.innerHTML = Math.round(percentComplete, 2) + "%"
                 }
             };
-            var onLoad = function onLoad(xhr) {
-                loader.changeState("end");
-            };
+            var onLoad = function onLoad(xhr) {};
             // on error callback
             var onError = function onError(xhr) {};
 
@@ -391,6 +421,7 @@ var Cube = exports.Cube = function () {
 
                 //debug
                 window.model = model;
+                loader.changeState("end");
 
                 //enable library for easy event listener
                 var domEvents = new THREEx.DomEvents(_this2.camera, _this2.renderer.domElement);
@@ -463,26 +494,31 @@ var Cube = exports.Cube = function () {
         window.Detector = new _detector.Detector();
         this.enableVibration = window.Detector.vibrate;
 
+        //themes config
         window.Cube = this;
         this.themes = new _cubeThemes.CubeThemes();
         this.activeTheme = this.themes[0];
 
+        //positions config
         this.positions = new _cubePositions.CubePositions();
         this.activePosition = this.positions[0];
-
         window.cubeAnimationState = false;
 
+        //three.js set up
         this.renderScene();
         this.setLights();
         this.setCamera();
 
+        //sandbox for three.js
         if (window.Detector.isMobile) {
             var controls = new THREE.OrbitControls(this.camera, this.renderer.domElement);
         }
+
         // =======================================================================//
         // Let's get stared  (ha!)                                                //
         // =======================================================================//
         this.animate();
+        loader.changeState("loading the cube");
         this.loadModel();
         //dom events handlers
         window.addEventListener('resize', function () {
@@ -657,12 +693,14 @@ var interfaceBuilder = exports.interfaceBuilder = function () {
         var moreInfo = $.el('.cubeUi__moreInfo');
         moreInfoBtn.addEventListener('click', function () {
             moreInfo.classList.toggle('active');
-            moreInfo.classList.toggle('hide');
+            // moreInfo.classList.toggle('hide')
+            moreInfo.classList.toggle('animation_hide');
         });
 
         $.el('.cubeUi__moreInfo--close').addEventListener('click', function () {
             moreInfo.classList.toggle('active');
-            moreInfo.classList.toggle('hide');
+            // moreInfo.classList.toggle('hide')
+            moreInfo.classList.toggle('animation_hide');
         });
 
         isMobile = Detector.isMobile;
@@ -702,7 +740,7 @@ var interfaceBuilder = exports.interfaceBuilder = function () {
             this.container.className = "cubeUI--mobile";
             document.body.className = "mobile";
             document.body.appendChild(this.container);
-            loader.changeState("builded cube interface mobile");
+            loader.changeState("loading the cube");
 
             //     //BIND DOM
             //     Fidget.interface = new InterfaceCube();
@@ -1091,11 +1129,13 @@ var appLoader = exports.appLoader = function () {
         value: function changeState(state) {
             window.loadState = state;
             if (state === "end") {
-                //return document.querySelector('.loader').className += "hide";
-                return document.querySelector('.loader').className = "loader hide";
+                setTimeout(function () {
+                    document.querySelector('.loader').className = "loader hide";
+                }, 250);
+                state = "Almost there";
             }
 
-            if (this.display) this.display.innerHTML = state;else document.querySelector('.loader--state').innerHTML = state;
+            if (this.display) this.display.innerHTML = state + "...";else document.querySelector('.loader--state').innerHTML = state + "...";
         }
     }]);
 
@@ -1474,7 +1514,7 @@ var CubeAnimation = exports.CubeAnimation = function () {
         this.calls = 0;
 
         this[method]();
-        //console.info(this.id + ' init animation');
+        // console.info(this.id + ' init animation');
         this.end = false;
     }
 
@@ -1586,12 +1626,15 @@ var CubeAnimation = exports.CubeAnimation = function () {
             window.animation = this.animation;
             return this.renderPosition();
         }
+
+        //short summary : a mess
+
     }, {
         key: "renderPosition",
         value: function renderPosition(move) {
 
             if (this.end) {
-                //  console.debug(this.id + " delete aniamtion", this.calls);
+                //console.debug(this.id + " delete aniamtion", this.calls);
                 var animation = this.animation;
                 window.cancelAnimationFrame(animation);
                 document.getElementsByClassName('cubeUi__face--name')[0].innerHTML = this.args.positionSelected.name;
@@ -1640,9 +1683,7 @@ var CubeAnimation = exports.CubeAnimation = function () {
                     // still rendering position
                     this.calls++;
                     if (this.calls > 14) {
-                        if (s.rotation.x === 3 && s.rotation.y === 0.1)
-                            //  console.info("stop animation to fix");
-                            this.end = true;
+                        if (s.rotation.x === 3 && s.rotation.y === 0.1) return this.end = true;
                     }
                 }
             }
@@ -1658,6 +1699,8 @@ Object.defineProperty(exports, "__esModule", {
 });
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+//Rest in Pixels
 
 var CubeInteraction = exports.CubeInteraction = function CubeInteraction(event) {
   //console.log(event);
@@ -1817,8 +1860,8 @@ var CubeThemes = exports.CubeThemes = function CubeThemes() {
             },
             mainColor: {
                 r: 232 / 255,
-                g: 166 / 255,
-                b: 65 / 255
+                g: 30 / 255,
+                b: 158 / 255
             },
             lightColor: {
                 r: 56 / 255,
@@ -1826,6 +1869,7 @@ var CubeThemes = exports.CubeThemes = function CubeThemes() {
                 b: 56 / 255
             }
         }
+
     }, {
         name: "sunset",
         "buy_code": "30253660876",
@@ -1837,8 +1881,8 @@ var CubeThemes = exports.CubeThemes = function CubeThemes() {
             },
             mainColor: {
                 r: 232 / 255,
-                g: 30 / 255,
-                b: 158 / 255
+                g: 166 / 255,
+                b: 65 / 255
             },
             lightColor: {
                 r: 56 / 255,
@@ -1846,6 +1890,7 @@ var CubeThemes = exports.CubeThemes = function CubeThemes() {
                 b: 56 / 255
             }
         }
+
     }, {
         name: "fresh",
         "buy_code": "30253661004",
