@@ -2,5 +2,7 @@ app/vendor/libs/
 bower_components/
 node_modules/
 dist/
+css/
+img/
 **/.DS_Store
 dist/*.obj
