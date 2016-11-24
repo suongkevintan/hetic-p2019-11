@@ -1,3 +1,4 @@
+//ajax for handlebars
 export class loadData {
     constructor(json, cb) {
 

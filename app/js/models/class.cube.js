@@ -179,22 +179,28 @@ export class Cube {
         window.Detector = new Detector()
         this.enableVibration = window.Detector.vibrate;
 
+        //themes config
         window.Cube = this
         this.themes = new CubeThemes()
         this.activeTheme = this.themes[0]
 
+        //positions config
         this.positions = new CubePositions()
         this.activePosition = this.positions[0]
-
         window.cubeAnimationState = false
 
+
+        //three.js set up
         this.renderScene()
         this.setLights()
         this.setCamera();
 
+
+        //sandbox for three.js
         if (window.Detector.isMobile) {
             const controls = new THREE.OrbitControls(this.camera, this.renderer.domElement);
         }
+
         // =======================================================================//
         // Let's get stared  (ha!)                                                //
         // =======================================================================//

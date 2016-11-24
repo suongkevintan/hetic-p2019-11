@@ -8,47 +8,53 @@ import {DomManipulator} from './models/class.dommanipulator.js'
 import {Fidget} from './fidget.js'
 
 
+// replace some Jquery function with vanilla Javascript
 const $ = new DomManipulator();
 window.$ = $;
 
-// replace some Jquery function with vanilla Javascript
+//loader manager
 let loader = new appLoader();
 window.loader = loader;
-// All animation site
+
+
+
+// dom event handler for menu
 let animation = new AnimationInterface();
 
+//if index launch handlebars to create a one page
 if ($.el('.index-detect')) {
   loader.changeState("detect home")
 
 
-
+    //yay
     let particule = new Particule();
-    // All animation site
+
     // ===================================//
     // ! take json data and display them  //
     // ==================================//
     loader.changeState = 'load data json'
     let data = new loadData('dist/data/data.json', () => {
-      loader.changeState("rendering cool pages")
 
         // Load data from data.json
         data = data.responseText;
         // Parse data
         data = JSON.parse(data);
+
         // throw data in the file home/story/contact in the folder templates
         const home = MyApp.templates.home(data);
         const story = MyApp.templates.story(data);
         const contact = MyApp.templates.contact(data);
+
         // Insert information in DOM
         $.el('#container_page--home').innerHTML = (home);
         $.el('#container_page--story').innerHTML = (story);
         $.el('#container_page--contact').innerHTML = (contact);
 
-        loader.changeState("rendering cool pages")
+
+    }, ()=>{loader.__proto___.changeState("rendering cool pages");} );
 
 
-    } );
-
+    //when dom from handlebars is inserted bind scroll on story pages
     document.addEventListener('DOMNodeInserted', () => {
 
         // detect if its desktop or tablet to enable scroll only on desktop
@@ -69,18 +75,27 @@ if ($.el('.index-detect')) {
         }
 
     });
+      //if i was on story or credit, dont bring to home when i reload
+      if (window.location.hash.length > 1)
+          new Redirect(window.location.hash);
+          //end loading of page
+           loader.__proto__.changeState('end')
 
-    if (window.location.hash.length > 1)
-        new Redirect(window.location.hash);
+      }
+      //i'm on the cube page
+      else {
+        loader.changeState("detect cube");
+        window.Fidget = new Fidget();
+      }
 
-         loader.__proto__.changeState('template home inserted')
-         loader.__proto__.changeState('end')
 
-} else {
-    loader.changeState("detect cube");
-    window.Fidget = new Fidget();
-}
 
+
+
+
+
+
+//you came to the wrong neighborhood
 function MsgConsole() {
     if (!window.console) {
         return;

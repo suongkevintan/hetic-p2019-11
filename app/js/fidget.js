@@ -3,25 +3,40 @@ import {interfaceBuilder} from './models/class.interface-builder.js'
 
 export class Fidget {
     constructor() {
+        //webGL time ! bring me the cube
         this.cube = new Cube()
+        //build me a dope interface depending on user device
         this.interfaceBuilder = new interfaceBuilder(window.Detector.isMobile)
+        //render themes if desktop
         this.renderThemes(window.Detector.isMobile);
     }
 
     renderThemes(isMobile) {
+      //render themes if desktop
         isMobile = Detector.isMobile;
         if (isMobile)
             return false;
-        const showLabel = (window.Detector.isMobile)
+
+        //class opacity utilitary
+        let showLabel = (window.Detector.isMobile)
             ? "showLabel"
             : ""
+
+        //dom i will return
         const domNode = this.cube.themes.map((theme, index) => {
+
+            //dom for one theme
             let domString = '';
+
+            //convert three.js color to css format
             let colorObj = (JSON.parse(JSON.stringify(theme.colorSet.mainColor)));
             Object.keys(colorObj).forEach(function(rgb) {
                 colorObj[rgb] = colorObj[rgb] * 255;
             });
             const color = `rgb( ${colorObj.r}, ${colorObj.g}, ${colorObj.b}  )`;
+
+
+            //go
             domString += (`<li>
                                 <a href="#" class="cubeUi__themes--item " data-index="${index}">
                                     <div class="round" style="background:${color}"></div><span class="${showLabel}">${theme.name}</span>
