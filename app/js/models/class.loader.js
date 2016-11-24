@@ -12,12 +12,13 @@ export class appLoader {
     changeState(state) {
         window.loadState = state;
         if (state === "end") {
-            return setTimeout(() => {document.querySelector('.loader').className = "loader hide"}, 250)
+             setTimeout(() => {document.querySelector('.loader').className = "loader hide"}, 250)
+             state = "Almost there";
         }
 
         if (this.display)
-            this.display.innerHTML = state;
+            this.display.innerHTML = state + "...";
         else
-            document.querySelector('.loader--state').innerHTML = state
+            document.querySelector('.loader--state').innerHTML = state + "..."
     }
 }

@@ -9,7 +9,8 @@
     display: table-cell;
     vertical-align: middle;
     opacity: 1;
-    transition: opacity 0.15s ease-out;
+    z-index: 98371690176084130748691379893068178;
+    transition: opacity 0.75s ease-out 1s;
 }
 
 .loader.hide {
@@ -32,4 +33,10 @@
 
 .loader--state {
     font-family: $font-title;
+    color: #7fbe6d;
+    position: absolute;
+    top: 60%;
+    left: 0;
+    margin:auto;
+    right: 0;
 }

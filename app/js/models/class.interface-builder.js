@@ -58,7 +58,7 @@ export class interfaceBuilder {
         this.container.className = "cubeUI--mobile";
         document.body.className = "mobile";
         document.body.appendChild(this.container);
-        loader.changeState( "builded cube interface mobile");
+        loader.changeState( "loading the cube");
 
         //     //BIND DOM
         //     Fidget.interface = new InterfaceCube();

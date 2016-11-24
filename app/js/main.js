@@ -1,11 +1,27 @@
-import {loadData} from './loader-data.js'
-import {scrollHorizontal} from './models/class.scroll-horizontal.js'
-import {AnimationInterface} from './models/class.animation.js'
-import {appLoader} from './models/class.loader.js'
-import {Particule} from './models/class.particule.js'
-import {Redirect} from './models/class.redirect.js'
-import {DomManipulator} from './models/class.dommanipulator.js'
-import {Fidget} from './fidget.js'
+import {
+    loadData
+} from './loader-data.js'
+import {
+    scrollHorizontal
+} from './models/class.scroll-horizontal.js'
+import {
+    AnimationInterface
+} from './models/class.animation.js'
+import {
+    appLoader
+} from './models/class.loader.js'
+import {
+    Particule
+} from './models/class.particule.js'
+import {
+    Redirect
+} from './models/class.redirect.js'
+import {
+    DomManipulator
+} from './models/class.dommanipulator.js'
+import {
+    Fidget
+} from './fidget.js'
 
 
 const $ = new DomManipulator();
@@ -18,7 +34,7 @@ window.loader = loader;
 let animation = new AnimationInterface();
 
 if ($.el('.index-detect')) {
-  loader.changeState("detect home")
+    loader.changeState("detect home")
 
 
 
@@ -29,6 +45,7 @@ if ($.el('.index-detect')) {
     // ==================================//
     loader.changeState = 'load data json'
     let data = new loadData('dist/data/data.json', () => {
+        loader.changeState("rendering cool pages")
 
         // Load data from data.json
         data = data.responseText;
@@ -43,8 +60,10 @@ if ($.el('.index-detect')) {
         $.el('#container_page--story').innerHTML = (story);
         $.el('#container_page--contact').innerHTML = (contact);
 
+        loader.changeState("rendering cool pages")
 
-    } );
+
+    });
 
     document.addEventListener('DOMNodeInserted', () => {
 
@@ -70,8 +89,8 @@ if ($.el('.index-detect')) {
     if (window.location.hash.length > 1)
         new Redirect(window.location.hash);
 
-         loader.__proto__.changeState('template home inserted')
-         loader.__proto__.changeState('end')
+    loader.__proto__.changeState('template home inserted')
+    loader.__proto__.changeState('end')
 
 } else {
     loader.changeState("detect cube");

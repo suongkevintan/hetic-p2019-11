@@ -82,7 +82,6 @@ export class Cube {
         // =======================================================================//
         // .obj loader from threejs with his native method (onProgress, onerror)  //
         // =======================================================================//
-        loader.__proto__.changeState("loading the cube");
 
         const manager = new THREE.LoadingManager();
         let loaderDisplay = document.querySelector('.value')
@@ -95,7 +94,6 @@ export class Cube {
             }
         };
         const onLoad = function(xhr){
-          loader.changeState("end");
         }
         // on error callback
         const onError = function(xhr) {};
@@ -112,6 +110,7 @@ export class Cube {
 
             //debug
             window.model = model;
+            loader.changeState("end");
 
             //enable library for easy event listener
             const domEvents = new THREEx.DomEvents(this.camera, this.renderer.domElement);
@@ -200,6 +199,7 @@ export class Cube {
         // Let's get stared  (ha!)                                                //
         // =======================================================================//
         this.animate()
+        loader.changeState("loading the cube");
         this.loadModel()
         //dom events handlers
         window.addEventListener('resize', () => this.onWindowResize(), false)
