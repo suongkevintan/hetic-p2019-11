@@ -11,10 +11,9 @@ export class appLoader {
 
     changeState(state) {
         window.loadState = state;
-        if(state === "end"){
-            //return document.querySelector('.loader').className += "hide";
-            return console.log( document.querySelector('.loader').className = "loader hide");
-          }
+        if (state === "end") {
+            return document.querySelector('.loader').className = "loader hide"
+        }
 
         if (this.display)
             this.display.innerHTML = state;
