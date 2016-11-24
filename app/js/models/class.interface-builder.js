@@ -8,12 +8,14 @@ export class interfaceBuilder {
       let moreInfo = $.el('.cubeUi__moreInfo');
       moreInfoBtn.addEventListener('click', ()=>{
         moreInfo.classList.toggle('active')
-        moreInfo.classList.toggle('hide')
+        // moreInfo.classList.toggle('hide')
+        moreInfo.classList.toggle('animation_hide')
       })
 
     $.el('.cubeUi__moreInfo--close').addEventListener('click',()=>{
       moreInfo.classList.toggle('active')
-      moreInfo.classList.toggle('hide')
+      // moreInfo.classList.toggle('hide')
+      moreInfo.classList.toggle('animation_hide')
     })
 
 

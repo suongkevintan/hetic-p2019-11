@@ -51,10 +51,15 @@ body {
     }
     animation: slideHorizontal .5s ease-in-out normal running 1 forwards;
 
-    &.hide {
+    &.animation_hide {
         animation: slideHorizontalReverse .5s ease-in-out normal running 1 forwards;
-        //display: none;
+        // animation: slideVerticalReverse .5s ease-in-out normal running 1 forwards;
     }
+
+    &.hide {
+      display: none;
+    }
+
 }
 
 .cubeUi__moreInfo--title {
@@ -214,6 +219,11 @@ body.mobile {
         &:before {
             display: none;
         }
+
+        &.animation_hide {
+        animation: slideVerticalReverse 0.3s ease-in-out normal running 1 forwards;
+        }
+
     }
   }
 
