@@ -4,7 +4,7 @@ export class CubeAnimation {
 
         if (method === "animatePositionChange") {
             this.id = String.fromCharCode(Math.floor(Math.random() * 11)) + Math.floor(Math.random() * 1000000)
-                //custom method call via parameters
+            //custom method call via parameters
             if (!cubeAnimationState && method === "animatePositionChange")
                 window.cubeAnimationState = this;
             else
@@ -20,7 +20,7 @@ export class CubeAnimation {
         this.calls = 0;
 
         this[method]()
-            // console.info(this.id + ' init animation');
+        // console.info(this.id + ' init animation');
         this.end = false;
     }
 
@@ -34,9 +34,9 @@ export class CubeAnimation {
         mesh.rotation.x += Math.PI;
         mesh.rotation.z += Math.PI;
 
-        mesh.position.x = (mesh.position.x === 10) ?
-            0 :
-            10;
+        mesh.position.x = (mesh.position.x === 10)
+            ? 0
+            : 10;
     }
 
     animateSpin() {
@@ -108,14 +108,14 @@ export class CubeAnimation {
     animatePositionChange() {
         //    this.state = this.args.beginPosition;
         this.state = {
-                name: this.args.beginPosition.name,
-                rotation: {
-                    x: Cube.group.rotation.x,
-                    y: Cube.group.rotation.y,
-                    z: Cube.group.rotation.z
-                }
+            name: this.args.beginPosition.name,
+            rotation: {
+                x: Cube.group.rotation.x,
+                y: Cube.group.rotation.y,
+                z: Cube.group.rotation.z
             }
-            //catch in variables to stop it later
+        }
+        //catch in variables to stop it later
         this.animation = window.requestAnimationFrame(this.animatePositionChange.bind(this));
 
         window.animation = this.animation;
@@ -177,8 +177,8 @@ export class CubeAnimation {
                 // still rendering position
                 this.calls++;
                 if (this.calls > 14) {
-                    if (s.rotation.x === 3 && s.rotation.y === 0.1)
-                        return this.end = true;
+                    //if (s.rotation.x === 3 && s.rotation.y === 0.1)
+                    return this.end = true;
                 }
             }
         }
